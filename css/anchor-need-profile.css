@@ -1,0 +1,66 @@
+/**
+ *
+ *  @author liuwei
+ *  @2016/07/09  14:09
+ *  @广告主注册页面css样式
+ *
+ *
+ */
+ .container{
+   margin-top: 100px;
+   padding-bottom: 40px;
+   margin-bottom: 100px;
+ }
+
+
+
+ .js-login-btn{
+   visibility: hidden;
+ }
+
+
+ .labe-tel{
+   /*display: inline-block;
+   width: 200px;
+   height: 40px;
+   margin-left: 150px;
+   line-height: 40px;*/
+   font-size: 18px;
+   color: #337ab7;
+ }
+ @media (min-width: 990px){
+   .labe-tel{
+     display: inline-block;
+     width: 200px;
+     height: 40px;
+     margin-left: 200px;
+     line-height: 40px;
+   }
+ }
+
+ @media (min-width: 840px){
+   .labe-tel{
+     display: inline-block;
+     width: 200px;
+     height: 40px;
+     /*margin-left: 50px;*/
+     line-height: 40px;
+   }
+ }
+
+ @media (max-width: 840px){
+   .labe-tel{
+     display: none;
+
+   }
+ }
+
+ @media (max-width: 750px){
+   .labe-tel{
+     display: inline-block;
+     width: 100px;
+     height: 20px;
+
+     line-height: 20px;
+   }
+ }

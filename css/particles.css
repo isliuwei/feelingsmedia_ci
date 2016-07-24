@@ -1,0 +1,137 @@
+/* =============================================================================
+   HTML5 CSS Reset Minified - Eric Meyer
+   ========================================================================== */
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1;font-family: 'helvetica neue', tahoma, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif;
+    -webkit-font-smoothing: antialiased;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+li{list-style:none}
+
+
+/* =============================================================================
+   My CSS
+   ========================================================================== */
+
+/* ---- base ---- */
+
+
+
+
+
+canvas{
+  display:block;
+  vertical-align:bottom;
+}
+
+
+/* ---- stats.js ---- */
+
+/*.count-particles{
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles{
+  font-size: 1.1em;
+}*/
+
+
+.navbar-top {
+    background: rgba(41, 171, 246, 0);
+    border-color: #e7e7e7;
+    
+    /*background: rgba(41, 171, 246, 0.3);*/
+}
+.navbar-left li a {
+   
+    
+    color: #fff;
+}
+
+.navbar-collapse {
+    background: rgba(41, 171, 246, 0.3);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.8);
+}
+
+#particles-js{
+  /*margin-top: 50px;*/
+  width: 1280px;
+  height: 450px;
+  
+  /*background-image: url("demo.jpg"); */
+  background-color: rgba(37, 38, 42, 0.811765);
+  background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+
+}
+.particles-mask{
+  width: 1280px;
+  height: 500px;
+  background-color: rgba(37, 38, 42, 0.811765);
+ 
+}
+.carousel-inner{
+  height: 450px;
+}
+.footer{
+  text-align: left;
+}
+.footer-nav li,.footer-contact-info li{
+  list-style: none;
+  margin-bottom: 15px;
+  color: #444;
+  cursor: pointer;
+}
+.footer-contact-info a{
+  text-decoration: none;
+}
+.wrap{
+  padding-top: 20px;
+}
+
+
+/*#stats,
+.count-particles{
+  -webkit-user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats{
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles{
+  border-radius: 0 0 3px 3px;
+}*/
+
+
+

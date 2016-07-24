@@ -1,0 +1,216 @@
+.circle{
+  width: 200px;
+  height: 200px;
+}
+.circle h1{
+  position: absolute;
+  top: -20px;
+  left: 50px;
+}
+.slogan1{
+  position: absolute;
+  top: 100px;
+  left: 550px;
+  animation: top 1s ease forwards;
+}
+
+@keyframes top {
+  from{
+    top:-100px;
+  }
+  to{
+    top: 100px;
+  }
+}
+
+
+
+.slogan2{
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    animation: left 1s ease forwards;
+}
+
+.circle .slogan-text{
+  margin-left: 65px;
+  margin-top: 22px;
+}
+
+
+@keyframes left {
+  0%{
+    left:-100px;
+  }
+  70%{
+    left: 550px;
+  }
+  100%{
+    left: 300px;
+  }
+}
+.slogan3{
+    position: absolute;
+    top: 300px;
+    left: 800px;
+    animation: right 1s ease forwards;
+}
+@keyframes right {
+  0%{
+    left:1300px;
+  }
+  70%{
+    left: 550px;
+  }
+  100%{
+    left: 800px;
+  }
+}
+
+.slogan4{
+  position: absolute;
+  top: 500px;
+  left: 550px;
+  animation: bottom 2s ease forwards;
+}
+@keyframes bottom {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.btns{
+   background: #fff;
+   position: absolute;
+   top: 48px;
+   left: 28px;
+   opacity: 0;
+   display: none;
+   transition: all 1s ease;
+   animation: flash 4s ease forwards;
+   /*transition-delay: 1s;*/
+}
+@keyframes flash{
+  from{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+
+  }
+}
+.slogan p.title{
+  position: absolute;
+  top: 90px;
+  left: 60px;
+  /*display: none;*/
+  animation: show 1s ease 4s forwards;
+}
+@keyframes show{
+  from{
+    display: none;
+  }
+  to{
+    display: block;
+  }
+}
+
+
+.main .btns a{
+  font-size: 20px;
+  /*display: none;*/
+  text-decoration: none;
+  transition: all 1s ease;
+  animation: flash1 1s ease forwards;
+  /*transition-delay: 1s;*/
+
+}
+@keyframes flash1{
+
+  to{
+    display: none;
+  }
+
+}
+
+
+.slogan:hover .btns{
+  opacity: 1;
+  display: block;
+}
+.slogan:hover p.title{
+  display: none;
+}
+/*.slogan:hover .btns a{
+  display: block;
+}*/
+.am-expanded.am-back {
+  width: 800px;
+  margin-top: 100px;
+}
+.am-modal-content p{
+  text-align: left;
+  padding-left: 20px;
+}
+
+
+.js-login-btn{
+  visibility: hidden;
+}
+
+
+.labe-tel{
+  /*display: inline-block;
+  width: 200px;
+  height: 40px;
+  margin-left: 150px;
+  line-height: 40px;*/
+  font-size: 18px;
+  color: #337ab7;
+}
+@media (min-width: 1100px){
+  .labe-tel{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    margin-left: 200px;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 1099px){
+  .labe-tel{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    /*margin-left: 100px;*/
+  }
+}
+
+
+
+@media (max-width: 1000px){
+  .labe-tel{
+    display: none;
+  }
+}
+
+/*@media (max-width: 840px){
+
+}*/
+
+@media (max-width: 750px){
+  .labe-tel{
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+  }
+}

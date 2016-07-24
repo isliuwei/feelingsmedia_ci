@@ -1,0 +1,123 @@
+/**
+ *
+ *  @author liuwei
+ *  @2016/07/09  14:09
+ *  @广告主注册页面css样式
+ *
+ *
+ */
+
+
+
+
+ .container{
+   margin-top: 100px;
+   padding-bottom: 40px;
+   
+ }
+ .container .title{
+   font-size: 20px;
+   margin-top: 26px;
+   margin-left: 40px;
+   margin-bottom: 40px;
+ }
+.form{
+  margin-top: 40px;
+}
+#captcha{
+  width: 170px;
+  display: inline-block;
+}
+#captcha-img{
+  position: absolute;
+  margin-left: 30px;
+}
+#captcha-tip{
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  position: absolute;
+  margin-left: 140px;
+}
+#sub-btn{
+  width: 270px;
+  cursor: pointer;
+}
+.gender-select{
+  width: 15%;
+}
+.country-select{
+  width: 25%;
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
+.province-select{
+  width: 20%;
+  display: inline-block;
+  float: left;
+
+
+}
+
+
+/*表单填写错误样式*/
+ .error{
+   border: 1px solid #f00;
+   background: rgb(250, 255, 189);
+   /*background-color: #f0ad4e;*/
+   -webkit-box-shadow: 0 0 0.275rem #f8b9b7;
+   -moz-box-shadow: 0 0 0.275rem #f8b9b7;
+   box-shadow: 0 0 0.275rem #f8b9b7;
+ }
+
+ /*表单填写正确样式*/
+ .success{
+   border: 1px solid #2ecc71;
+ }
+
+  /*表单错误提示信息样式*/
+ .error-info{
+   margin-top: 10px;
+   color: #f00;
+   text-indent: 10px;
+ }
+ .wrap{
+   position: relative;
+ }
+
+   /*表单提示样式*/
+ .tip{
+   position: absolute;;
+   top: 0.1em;
+   right: 0.5em;
+   font-size: 2em;
+   display: none;
+ }
+ i.right{
+   color: #2ecc71;
+   display: inline;
+ }
+ i.wrong{
+   color: #f00;
+   display: inline;
+ }
+
+ /*去掉html5 input number默认样式*/
+ input[type="number"]{
+   -moz-appearance: textfield;
+ }
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button{
+   -webkit-appearance: none !important;
+   margin: 0;
+ }
+ .icheckbox_square-blue{
+   width: 20px;
+   height: 20px;
+   margin-bottom: 10px;
+ }
+
+ .js-login-btn{
+   visibility: hidden;
+ }

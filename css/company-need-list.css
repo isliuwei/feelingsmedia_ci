@@ -1,0 +1,239 @@
+/**
+ *
+ *  @author liuwei
+ *  @2016/07/09  14:09
+ *  @广告主注册页面css样式
+ *
+ *
+ */
+
+
+
+
+ .container{
+
+   padding-bottom: 40px;
+
+ }
+ .container .title{
+   font-size: 20px;
+   margin-top: 26px;
+   margin-left: 40px;
+   margin-bottom: 40px;
+ }
+ .cate-container{
+   margin-top: 100px;
+ }
+.form{
+  margin-top: 40px;
+}
+#captcha{
+  width: 170px;
+  display: inline-block;
+}
+#captcha-img{
+  position: absolute;
+  margin-left: 30px;
+}
+#captcha-tip{
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  position: absolute;
+  margin-left: 140px;
+}
+#sub-btn{
+  width: 270px;
+  cursor: pointer;
+}
+.gender-select{
+  width: 15%;
+}
+.country-select{
+  width: 25%;
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
+.province-select{
+  width: 20%;
+  display: inline-block;
+  float: left;
+
+
+}
+
+
+/*表单填写错误样式*/
+ .error{
+   border: 1px solid #f00;
+   background: rgb(250, 255, 189);
+   /*background-color: #f0ad4e;*/
+   -webkit-box-shadow: 0 0 0.275rem #f8b9b7;
+   -moz-box-shadow: 0 0 0.275rem #f8b9b7;
+   box-shadow: 0 0 0.275rem #f8b9b7;
+ }
+
+ /*表单填写正确样式*/
+ .success{
+   border: 1px solid #2ecc71;
+ }
+
+  /*表单错误提示信息样式*/
+ .error-info{
+   margin-top: 10px;
+   color: #f00;
+   text-indent: 10px;
+ }
+ .wrap{
+   position: relative;
+ }
+
+   /*表单提示样式*/
+ .tip{
+   position: absolute;;
+   top: 0.1em;
+   right: 0.5em;
+   font-size: 2em;
+   display: none;
+ }
+ i.right{
+   color: #2ecc71;
+   display: inline;
+ }
+ i.wrong{
+   color: #f00;
+   display: inline;
+ }
+
+ /*去掉html5 input number默认样式*/
+ input[type="number"]{
+   -moz-appearance: textfield;
+ }
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button{
+   -webkit-appearance: none !important;
+   margin: 0;
+ }
+ .icheckbox_square-blue{
+   width: 20px;
+   height: 20px;
+   margin-bottom: 10px;
+ }
+
+
+ .js-login-btn{
+   visibility: hidden;
+ }
+
+
+ .labe-tel{
+   /*display: inline-block;
+   width: 200px;
+   height: 40px;
+   margin-left: 150px;
+   line-height: 40px;*/
+   font-size: 18px;
+   color: #337ab7;
+ }
+ @media (min-width: 1100px){
+   .labe-tel{
+     display: inline-block;
+     width: 200px;
+     height: 40px;
+     margin-left: 200px;
+     line-height: 40px;
+   }
+ }
+
+ @media (max-width: 1099px){
+   .labe-tel{
+     display: inline-block;
+     width: 200px;
+     height: 40px;
+     line-height: 40px;
+     /*margin-left: 100px;*/
+   }
+ }
+
+
+
+ @media (max-width: 1000px){
+   .labe-tel{
+     display: none;
+   }
+ }
+
+ /*@media (max-width: 840px){
+
+ }*/
+
+ @media (max-width: 750px){
+   .labe-tel{
+     display: inline-block;
+     width: 100px;
+     height: 20px;
+     line-height: 20px;
+   }
+ }
+
+
+ .select-group{
+   padding-left: 22px;
+   margin-top: 8px;
+ }
+
+ .type-select{
+   width: 150px;
+ }
+
+ input[type=text]:focus,input[type=password]:focus{
+   transition:border linear .2s,box-shadow linear .5s;
+   -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+   -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+   outline:none;border-color:rgba(93,149,242,.75);
+   box-shadow:0 0 8px rgba(93,149,242,.105);
+   -moz-box-shadow:0 0 8px rgba(93,149,242,.5);
+   -webkit-box-shadow:0 0 8px rgba(93,149,242,3);
+   background-color: #fff;
+
+ }
+
+ input[type=text],input[type=password],input[type=number],input[type=email]{
+   /*background: rgb(250, 255, 189);
+   background-color: #d9edf7;
+   background-color: #f2dede;
+   background-color: #dff0d8;
+   background-color: #337ab7;*/
+   background-color: #fcf8e3;
+ }
+ .control-label{
+   color: #fff;
+ }
+ .img-responsive{
+   width: 100%;
+   cursor: pointer;
+ }
+
+
+ .tel{
+   font-size: 18px;
+   font-weight: 900;
+ }
+ textarea{
+   resize: none;
+ }
+ .fa-asterisk{
+   font-weight: 0;
+   color: red;
+   font-size: 5px;
+ }
+ .modal-body{
+   margin-left: 20px;
+ }
+
+
+ span.input-group-addon{
+   width: 170px;
+   text-align: left;
+ }

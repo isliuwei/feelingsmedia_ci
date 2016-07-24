@@ -1,0 +1,46 @@
+/**
+*   author:wangying;
+*   date:2016/7/10 9:20;
+*   
+*/
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#title{
+		width: 42px;
+		height: 16px;
+		background: url(../img/word.png) no-repeat;
+		margin-left: 137px;
+		margin-top: 30px;
+	}
+	#container .container-title{
+		width: 107px;
+		height: 25px;
+		background: url(../img/word.png) no-repeat 0 -44px;
+		margin-left: 315px;
+		margin-top: 34px;
+	}
+	#container .container-content{
+		width: 458px;
+		height: 343px;
+		background: url(../img/word.png) no-repeat 0 -128px;
+		margin-left: 138px;
+		margin-top: 36px;
+	}
+	#container .container-num{
+		width: 202px;
+		height: 16px;
+		background: url(../img/word.png) no-repeat 0 -525px;
+		margin-left: 269px;
+		margin-top: 42px;
+	}
+	#img{
+		width: 100%;
+		height: 100%;
+		background: url(../img/bg1.png) no-repeat;
+		position: absolute;
+		right: 0;
+		top: 0;
+		background-size: cover;
+	}

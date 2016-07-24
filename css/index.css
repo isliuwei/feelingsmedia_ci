@@ -1,0 +1,89 @@
+/**
+ *
+ * @author 王颖
+ * @time 2016/07/09 08:00
+ * @
+ *
+ */
+
+ #login{
+   background: rgba(255, 255, 255, 0);
+   margin-left: 100px;
+ }
+ .login{
+   background: rgba(255, 255, 255, 0);
+   margin-left: 100px;
+ }
+ #captcha{
+   width: 120px;
+ }
+ .captcha{
+   width: 120px;
+ }
+ /*去掉html5 input number默认样式*/
+ input[type="number"]{
+   -moz-appearance: textfield;
+ }
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button{
+   -webkit-appearance: none !important;
+   margin: 0;
+ }
+ .modal-btn{
+   padding: 0;
+   width: 65%;
+   margin-bottom: 10px;
+ }
+ .form-actions{
+   padding:5px 20px;
+ }
+ .close {
+   float: right;
+   font-size: 50px;
+   font-weight: 900;
+   line-height: 1;
+   color: #fff;
+   text-shadow: 0 1px 0 #fff;
+   filter: alpha(opacity=50);
+   opacity: .5;
+   transition: all 0.1 liner;
+ }
+ .close:hover{
+   transform: rotate(360deg);
+   opacity: 1;
+   color: #fff;
+ }
+ label{
+   z-index: 999;
+ }
+
+
+ /*表单填写错误样式*/
+  .error{
+    border: 1px solid #f00;
+    background: rgb(250, 255, 189);
+    /*background-color: #f0ad4e;*/
+    -webkit-box-shadow: 0 0 0.275rem #f8b9b7;
+    -moz-box-shadow: 0 0 0.275rem #f8b9b7;
+    box-shadow: 0 0 0.275rem #f8b9b7;
+  }
+
+  /*表单填写正确样式*/
+  .success{
+    border: 1px solid #2ecc71;
+  }
+
+  .error-info{
+    margin-top: 10px;
+    color: #f00;
+    /*text-indent: 10px;*/
+    text-align: left;
+  }
+
+
+  .captcha-img{
+    padding-top: 5px;
+  }
+  .captcha-tip{
+    cursor: pointer;
+  }

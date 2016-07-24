@@ -1,0 +1,86 @@
+/*****
+	author：gaoyingying 
+	time:2016/7/17 9:05;
+*****/
+*{
+	margin: 0;
+}
+ul,ol{
+	list-style:none; 
+}
+a{
+	text-decoration: none;
+}
+img{
+	border: 0;
+}
+body{
+	font-family:"FZLTZHK GBK1 0","宋体";
+}
+#gcontainer{
+	width: 1280px;
+	height: 580px;
+	margin:40px auto;
+	background: url(../img/g-pic5.jpg) no-repeat ;
+	
+}
+
+#gcontainer .first{
+	color:#fff;
+	font-size:14px;
+	margin-top:27px;
+	margin-left: 160px;
+	float:left;
+	padding-bottom: 0;
+}
+
+#gcontainer .tel{
+	font-size: 18px;
+	padding-top: 25px;
+	margin-left: 512px;
+	color:#fff;
+	margin-right: 227px;
+}
+#gcontainer .menu{
+	width: 237px;
+	height: 23px;
+	float: right;
+	margin-top: -19px;
+	margin-right:94px;
+}
+#gcontainer .menu  a{
+	font-size: 14px;
+	color: #fff;
+}
+#gcontainer .content{
+	margin-top: 117px;
+	margin-left: 158px;
+}
+#gcontainer .left,#gcontainer .right{
+	width: 373px;
+	height: 298px;	
+}
+#gcontainer .left{
+	float: left;
+}
+#gcontainer .right{
+	margin-right: 158px;
+	float: right;	
+}
+#gcontainer .list{
+	width: 371px;
+	height: 72px;
+	background: #fefefe;
+	border:#666b69 solid 1px;
+	font-size: 19.92px;
+	color: #12b7f5;
+	text-align: center;
+	line-height: 72px;
+}
+#gcontainer .service{
+	margin-top: 38px;
+	margin-bottom: 38px;
+}
+#gcontainer .need{
+	color: #4685d4;
+}

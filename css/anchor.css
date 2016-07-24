@@ -1,0 +1,138 @@
+
+.banner{
+	margin-top: 60px;
+	height: 100px;
+	position: relative;
+	overflow: hidden;
+}
+.img{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.img li{
+	list-style: none;
+	float: left;
+}
+.img img{
+	width: 170px;
+	height: 100px;
+	margin-right: 10px;
+}
+.carousel-btn{
+	display: none;
+}
+.carousel-btn span{
+	display: block;
+	width: 50px;
+	height: 100px;background: rgba(0,0,0,0.6);
+	color: #fff;
+	font-size: 40px;
+	line-height: 100px;
+	text-align: center;
+	cursor:pointer;
+}
+.carousel-btn .prev{
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	margin-top: -50px;
+}
+.carousel-btn .next{
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	margin-top: -50px;
+}
+.classify{
+	margin-top: 10px;
+	margin-left: 50px;
+}
+/*.anc-title{
+	display: inline-block;
+	width: 100px;
+}
+.anc-fans,.anc-business,.anc-area{
+	height: 30px;
+	line-height: 30px;
+}
+.anc-span a{
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.anchors{
+	margin-left: 50px;
+}
+.anchor{
+	width: 158px;
+	height: 250px;
+	border: 1px solid #ccc;
+	position: relative;
+	float: left;
+	margin-right: 25px;
+	margin-top: 10px;
+	background-color: #f1f4f6;
+}
+.anchor img{
+	width: 158px;
+}
+.anchor span{
+	position: absolute;
+	right: 15px;
+}
+.anc-meg{
+	margin: 15px;
+}
+.anc-meg div{
+	height: 25px;
+	line-height: 25px;
+}*/
+
+
+
+.js-login-btn{
+	visibility: hidden;
+}
+.labe-tel{
+  font-size: 18px;
+  color: #337ab7;
+}
+@media (min-width: 990px){
+  .labe-tel{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    margin-left: 200px;
+    line-height: 40px;
+  }
+}
+
+@media (min-width: 840px){
+  .labe-tel{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    /*margin-left: 50px;*/
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 840px){
+  .labe-tel{
+    display: none;
+
+  }
+}
+
+@media (max-width: 750px){
+  .labe-tel{
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+
+    line-height: 20px;
+  }
+}
+.a-tel{
+  text-decoration: none;
+}

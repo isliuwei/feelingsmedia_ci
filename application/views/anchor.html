@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主播页面</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/anchor.css" >
+    <!-- <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css"> -->
+    <style>
+      #owl-demo .item{
+        margin: 3px;
+      }
+      #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .cate-container{
+        margin-top: 50px;
+
+      }
+      .tag{
+        display: inline-block;
+        margin-right: 20px;
+      }
+      .label-city{
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+      .tag-city{
+        margin-bottom: 60px;
+      }
+      .city-select{
+        width: 150px;
+        margin-bottom: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header class='navbar navbar-default navbar-fixed-top' id='main-navbar' role='banner'>
+  		<div class='container-fluid'>
+  			<div class='navbar-header'>
+  				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+  	      </button>
+          <!-- <a href="index5.html" target="_blank">广告主公司名称</a> -->
+  			  <!-- <img class="logo" alt="" src="img/favicon.ico"> -->
+  			</div>
+  			<nav class='collapse navbar-collapse' role='navigation'>
+  			  <ul class='nav navbar-nav navbar-left'>
+  			    <li><a href="index5.html" target="_blank">广告主公司名称</a></li>
+  			    <li class="active"><a href="#">主播资源合作</a></li>
+  			  </ul>
+
+          <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
+
+          <ul class='nav navbar-nav navbar-right'>
+            <a class="btn btn-success navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="anchor-need-profile.html">账号信息</a>
+            <a class="btn btn-primary navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="ader-setting.html">账号管理</a>
+            <a class="btn btn-default navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="#">退出登录</a>
+            <a class="btn navbar-btn js-login-btn" href="#">Register</a>
+
+          </ul>
+  			</nav>
+  		</div>
+  	</header>
+
+    <!-- <div id="owl-demo">
+
+      <div class="item"><img src="img/carousel-1.png" alt="Owl Image"></div>
+      <div class="item"><img src="img/carousel-2.png" alt="Owl Image"></div>
+      <div class="item"><img src="img/carousel-3.png" alt="Owl Image"></div>
+      <div class="item"><img src="img/carousel-4.png" alt="Owl Image"></div>
+      <div class="item"><img src="img/carousel-5.png" alt="Owl Image"></div>
+      <div class="item"><img src="img/carousel-6.png" alt="Owl Image"></div>
+      <div class="item"><img src="img/carousel-7.png" alt="Owl Image"></div>
+      <div class="item"><img src="img/carousel-8.png" alt="Owl Image"></div>
+
+    </div> -->
+
+    <!--轮播-->
+    <div class="container">
+      <div class="row">
+        <div class="banner col-md-12">
+          <ul class="img">
+            <li><a href="#"><img src="img/carousel-1.png" alt="第1张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-2.png" alt="第2张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-3.png" alt="第3张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-4.png" alt="第4张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-5.png" alt="第5张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-6.png" alt="第6张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-7.png" alt="第7张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-8.png" alt="第8张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-9.jpg" alt="第9张图片"></a></li>
+            <li><a href="#"><img src="img/carousel-10.jpg" alt="第10张图片"></a></li>
+          </ul>
+          <div class="carousel-btn">
+            <span class="prev"><i class="fa fa-angle-left"></i></span>
+            <span class="next"><i class="fa fa-angle-right"></i></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="container cate-container">
+      	<div class="row">
+          <div class="form-group">
+              <label for="region" class="col-sm-2 control-label label-warning tag">粉丝数量</label>
+                <!-- <select name="country" id="country" class="form-control type-select">
+                  <option value="">行业分类</option>
+                  <option value="快消">快消</option>
+                  <option value="日化">日化</option>
+                  <option value="电商">电商</option>
+                  <option value="影视">影视</option>
+                  <option value="互联网">互联网</option>
+                  <option value="汽车">汽车</option>
+                  <option value="金融">金融</option>
+                  <option value="医疗">医疗</option>
+                  <option value="文化艺术">文化艺术</option>
+                  <option value="服装">服装</option>
+                  <option value="珠宝">珠宝</option>
+                  <option value="数码">数码</option>
+                  <option value="电脑">电脑</option>
+                  <option value="APP">APP</option>
+                  <option value="地产">地产</option>
+                  <option value="旅行">旅行</option>
+                  <option value="教育">教育</option>
+                  <option value="餐饮">餐饮</option>
+                </select> -->
+                <a class="label label-danger" href="#">1万以下</a>
+                <a class="label label-danger" href="#">1万-5万</a>
+                <a class="label label-danger" href="#">5万-10万</a>
+                <a class="label label-danger" href="#">10万-15万</a>
+                <a class="label label-danger" href="#">15万-25万</a>
+                <a class="label label-danger" href="#">25万-40万</a>
+                <a class="label label-danger" href="#">40万-60万</a>
+                <a class="label label-danger" href="#">60万-100万</a>
+                <a class="label label-danger" href="#">100万以上</a>
+
+        </div>
+
+
+
+
+
+
+
+          <div class="form-group">
+              <label for="region" class="col-sm-2 control-label label-info tag">主播行业分类</label>
+                <!-- <select name="country" id="country" class="form-control type-select">
+                  <option value="">渠道类型</option>
+                  <option value="楼宇">楼宇</option>
+                  <option value="公交">公交</option>
+                  <option value="机场">机场</option>
+                  <option value="户外楼体LED大屏">户外楼体LED大屏</option>
+                  <option value="校园">校园</option>
+                  <option value="地铁">地铁</option>
+                  <option value="院线">院线</option>
+                  <option value="擎天柱">擎天柱</option>
+                  <option value="自媒体">自媒体</option>
+                </select> -->
+
+
+                <a class="label label-success" href="#">体育</a>
+                <a class="label label-success" href="#">游戏</a>
+                <a class="label label-success" href="#">影视</a>
+                <a class="label label-success" href="#">搞笑</a>
+                <a class="label label-success" href="#">音乐</a>
+                <a class="label label-success" href="#">舞蹈</a>
+                <a class="label label-success" href="#">艺术</a>
+                <a class="label label-success" href="#">汽车</a>
+                <a class="label label-success" href="#">潮品</a>
+                <a class="label label-success" href="#">旅游</a>
+                <a class="label label-success" href="#">数码</a>
+                <a class="label label-success" href="#">美食</a>
+                <a class="label label-success" href="#">文学</a>
+                <a class="label label-success" href="#">军事</a>
+                <a class="label label-success" href="#">法律</a>
+                <a class="label label-success" href="#">萌宠</a>
+                <a class="label label-success" href="#">动漫</a>
+                <a class="label label-success" href="#">财经</a>
+                <a class="label label-success" href="#">秀场</a>
+          </div>
+
+
+          <div class="form-group">
+              <label for="region" class="col-sm-2 control-label label-success tag tag-city">主播地域</label>
+              <select name="country" id="country" class="form-control city-select">
+                <option value="">省市</option>
+                <option value="北京">北京</option>
+                <option value="上海">上海</option>
+                <option value="广州">广州</option>
+                <option value="深圳">深圳</option>
+                <option value="天津">天津</option>
+                <option value="重庆">重庆</option>
+                <option value="石家庄">石家庄</option>
+                <option value="太原">太原</option>
+                <option value="沈阳">沈阳</option>
+                <option value="长春">长春</option>
+                <option value="哈尔滨">哈尔滨</option>
+                <option value="南京">南京</option>
+                <option value="杭州">杭州</option>
+                <option value="合肥">合肥</option>
+                <option value="福州">福州</option>
+                <option value="南昌">南昌</option>
+                <option value="济南">济南</option>
+                <option value="郑州">郑州</option>
+                <option value="武汉">武汉</option>
+                <option value="长沙">长沙</option>
+                <option value="成都">成都</option>
+                <option value="贵阳">贵阳</option>
+                <option value="昆明">昆明</option>
+                <option value="西安">西安</option>
+                <option value="南宁">南宁</option>
+                <option value="呼和浩特">呼和浩特</option>
+                <option value="乌鲁木齐">乌鲁木齐</option>
+                <option value="大连">大连</option>
+                <option value="青岛">青岛</option>
+              </select>
+                <a href="#" class="label label-primary label-city">北京</a>
+                <a href="#" class="label label-primary label-city">上海</a>
+                <a href="#" class="label label-primary label-city">广州</a>
+                <a href="#" class="label label-primary label-city">深圳</a>
+                <a href="#" class="label label-primary label-city">天津</a>
+                <a href="#" class="label label-primary label-city">重庆</a>
+                <a href="#" class="label label-primary label-city">石家庄</a>
+                <a href="#" class="label label-primary label-city">太原</a>
+                <a href="#" class="label label-primary label-city">沈阳</a>
+                <a href="#" class="label label-primary label-city">长春</a>
+                <a href="#" class="label label-primary label-city">哈尔滨</a>
+                <a href="#" class="label label-primary label-city">南京</a>
+                <a href="#" class="label label-primary label-city">杭州</a>
+                <a href="#" class="label label-primary label-city">合肥</a>
+                <a href="#" class="label label-primary label-city">福州</a>
+                <a href="#" class="label label-primary label-city">南昌</a>
+                <a href="#" class="label label-primary label-city">济南</a>
+                <a href="#" class="label label-primary label-city">郑州</a>
+                <a href="#" class="label label-primary label-city">武汉</a>
+                <a href="#" class="label label-primary label-city">长沙</a>
+                <a href="#" class="label label-primary label-city">成都</a>
+                <a href="#" class="label label-primary label-city">贵阳</a>
+                <a href="#" class="label label-primary label-city">昆明</a>
+                <a href="#" class="label label-primary label-city">西安</a>
+                <a href="#" class="label label-primary label-city">南宁</a>
+                <a href="#" class="label label-primary label-city">呼和浩特</a>
+                <a href="#" class="label label-primary label-city">乌鲁木齐</a>
+                <a href="#" class="label label-primary label-city">大连</a>
+                <a href="#" class="label label-primary label-city">青岛</a>
+
+            </div>
+
+      </div>
+  </div>
+
+    <!--分类筛选-->
+    <!-- <div class="classify">
+      <div class="anc-fans">
+        <span class="anc-title">粉丝数量</span>
+        <span class="anc-span">
+          <a href="#">10000以下</a>/
+          <a href="#">10000~50000</a>/
+          <a href="#">50000~100000</a>/
+          <a href="#">100000~150000</a>/
+          <a href="#">150000~200000</a>/
+          <a href="#">200000~250000</a>/
+          <a href="#">250000~500000</a>
+        </span>
+      </div>
+      <div class="anc-business">
+        <span class="anc-title">行业分类</span>
+        <span class="anc-span">
+          <a href="#">体育</a>/
+          <a href="#">音乐</a>/
+          <a href="#">影视</a>/
+          <a href="#">搞笑</a>/
+          <a href="#">旅游</a>/
+          <a href="#">数码</a>/
+          <a href="#">动漫</a>/
+          <a href="#">美学</a>/
+          <a href="#">文学</a>/
+          <a href="#">萌宠</a>/
+          <a href="#">美食</a>/
+          <a href="#">军事</a>
+        </span>
+      </div>
+      <div class="anc-area">
+        <span class="anc-title">所在地</span>
+        <select  class="anc-span">
+          <option>请选择</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="anchors">
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+      <div class="anchor">
+        <img src="img/anchor.jpg">
+        <div class="anc-meg">
+          <div>粉丝数<span>12万</span></div>
+          <div>地域<span>北京</span></div>
+          <div>在线人数<span>5万</span></div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/anchor.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+
+
+
+
+  </body>
+</html>

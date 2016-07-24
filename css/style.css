@@ -1,0 +1,28 @@
+
+
+/*样式重置*/
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+ul,ol{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: #000;
+}
+
+img{
+	border: 0;
+}
+canvas{
+	position: fixed;
+	left: 0;
+	top: 0;
+	opacity: 0.3;
+	z-index: 0;
+}

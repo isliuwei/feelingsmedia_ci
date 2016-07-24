@@ -1,0 +1,226 @@
+/*-----------------------------------*/
+/*--------------  Index  ------------*/
+/*-----------------------------------*/
+
+
+/*
+ *   by liuwei
+ *
+ *   最后修改时间： 2016/1/16  23:09
+ *
+ *	 还未上传至Github
+ *
+ *
+ *
+ */
+
+
+
+
+
+
+/*----------  footer  ----------*/
+#Bfooter{
+	width: 100%;
+	height: 380px;
+	margin-top: 20px;
+	border-top: 2px solid #fe595d;
+	background-color: #2b2d2e;
+	background-image: url(../img/footer-bg.png);
+}
+
+
+
+
+#Bfooter .Bfooter-wrap{
+	padding-top: 25px;
+	padding-bottom: 15px;
+}
+#Bfooter .Bfooter-info{
+	margin-left: 50px;
+	float: left;
+}
+#Bfooter .Bfooter-info .logo-title{
+	width: 85%;
+}
+/*#Bfooter .Bfooter-info h3{
+	font-family: "PT Sans Narrow", sans-serif;
+	color: #fff;
+	font-size: 35px;
+}*/
+#Bfooter .Bfooter-info p{
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	color: #ff946e;
+}
+#Bfooter .Bfooter-info .about-us li a{
+	display: block;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	color: #b1d1e8;
+}
+#Bfooter .Bfooter-info .about-us li a:hover{
+	color: #fff;
+}
+
+
+#Bfooter .Bfooter-contact{
+	float: left;
+	margin-left: 80px;
+	margin-top: 100px;
+	color: #aaa;
+	line-height: 30px;
+}
+#Bfooter .Bfooter-contact i{
+	margin-right: 10px;
+}
+#Bfooter .Bfooter-contact p a{
+	color: #b1d1e8;
+}
+#Bfooter .Bfooter-contact .fa-microphone{
+	margin-right: 5px;
+}
+#Bfooter .Bweixin-QRcode{
+	width: 120px;
+	height: 120px;
+	float: right;
+	margin-right: 20px;
+	margin-top: 100px;
+	text-align: center;
+}
+#Bfooter .Bweixin-QRcode img{
+	width: 100px;
+	height: 100px;
+	margin-bottom: 5px;
+}
+#Bfooter .Bweixin-QRcode p{
+	color: #aaa;
+	font-size: 12px;
+}
+#online-chat{
+	text-align: center;
+	display: block;
+	width: 112px;
+	height: 24px;
+	color: #fff;
+	background: #ff946e;
+    border: 1px solid #ff946e;
+    margin-top: 18px;
+    border-radius: 6px;
+    line-height: 22px;
+    cursor: pointer;
+}
+#Bfooter .Bfooter-detail{
+	height: 40px;
+	width: 90%;
+	margin: 0 auto;
+}
+#Bfooter .Bcopyright{
+	float: left;
+	line-height: 40px;
+	/*margin-left: 20px;*/
+	color: #aaa;
+}
+#Bfooter .Bfooter-detail .Bweb-secure{
+	width: 280px;
+	height: 40px;
+	float: left;
+}
+#Bfooter .Bfooter-detail .Bweb-secure p{
+	margin-top: 11px;
+	margin-left: 20px;
+	color: #aaa;
+	float: left;
+}
+
+#Bfooter .Bfooter-detail .Bweb-secure a{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-top: 11px;
+	margin-right: 10px;
+	float: left;
+	border-radius: 5px;
+	opacity: 0.6;
+}
+#Bfooter .Bfooter-detail .Bweb-secure a:hover{
+	opacity: 1;
+}
+
+
+#Bfooter .Bshare{
+
+}
+
+#Bfooter .Bshare .Bshare-list li{
+	margin-top: 10px;
+	text-align: center;
+	margin-left: 10px;
+	float: right;
+}
+
+#Bfooter .Bshare .Bshare-list li a{
+	display: block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	background: rgba(0,0,0,.5);
+	color: #fff;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#Bfooter .Bshare .Bshare-list .share-alt:hover{
+    background: #289D3E;
+    color: #fff;
+}
+#Bfooter .Bshare .Bshare-list .facebook:hover{
+    background: #6495ED;
+    color: #fff;
+}
+#Bfooter .Bshare .Bshare-list .qq:hover{
+    background: #70CEF9;
+    color: #fff;
+}
+#Bfooter .Bshare .Bshare-list .weibo:hover{
+    background: #FFC72C;
+    /*color: #F10013;*/
+    color: #E52A22;
+
+}
+#Bfooter .Bshare .Bshare-list .twitter:hover{
+    background: #00BFFF;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+/*#Bfooter .Bfooter-contact h3{
+	font-weight: none;
+
+}*/
+
+/*#Bfooter .Bfooter-contact p{
+	color: #b1d1e8;
+}*/
+
+
+
+
+/*#Bfooter .copyright{
+	clear: both;
+	width: 100%;
+	height: 40px;
+    line-height: 40px;
+    background: #23282d;
+    padding: 8px;
+    color: #666666;
+}*/
