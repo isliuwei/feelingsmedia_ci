@@ -218,7 +218,7 @@ class Ader extends CI_Controller {
 
 		if($row==0){
 				echo "<script>alert('未修改任何信息！')</script>";
-				redirect('ader/ader_setting');
+				echo "<script>location.href='ader_setting?ader_id='+$id;</script>";
 		}else{
 				$this -> load -> view('redirect',$data);
 		}
@@ -287,6 +287,38 @@ class Ader extends CI_Controller {
 
 
 
+
+	}
+
+
+	public function check_password()
+	{
+			$oldPassword = $this -> input -> get('oldPassword');
+	    $aderInfo = $this -> session -> userdata('aderInfo');
+	    $username = $aderInfo -> ader_username;
+
+	    $row = $this -> ader_model -> get_by_username_and_password($username,$oldPassword);
+
+	    if($row){
+	        echo "true";
+
+	    }else{
+	        echo "false";
+	    }
+	}
+
+	public function update_password()
+	{
+			$ader_id = $this -> input -> post('ader_id');
+			$password = $this -> input -> post('newPassword1');
+
+			$row = $this -> ader_model -> update_password_by_id($ader_id,$password);
+			if($row==0){
+					echo "<script>alert('未修改密码信息！')</script>";
+					echo "<script>location.href='ader_setting?ader_id='+$ader_id;</script>";
+			}else{
+					$this -> load -> view('redirect-pwd');
+			}
 
 	}
 

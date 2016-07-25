@@ -60,3 +60,6 @@ myApp.controller('updateFormController',['$scope',function($scope){
   }
   return obj;
 })
+.controller('passwordFormController',['$scope',function($scope){
+  $scope.passwordInfo = {};
+}]);

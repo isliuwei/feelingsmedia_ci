@@ -103,6 +103,19 @@ class Ader_model extends CI_Model{
 
 	}
 
+	public function update_password_by_id($ader_id,$password)
+	{
+		$data = array(
+        'ader_password' => $password
+    );
+
+    $this->db->where('ader_id', $ader_id);
+    $this->db->update('t_ader', $data);
+
+    return $this -> db -> affected_rows();
+
+	}
+
 
 
 
