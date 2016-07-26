@@ -116,6 +116,56 @@ class Ader_model extends CI_Model{
 
 	}
 
+	public function save_anchorNeed_by_all($aderBrand,$aderPro,$aderTime,$aderCycle,$anchorNum,$fansNum,$anchorCoop,$aderLogo_url,$otherNeed,$anchorCate,$aderCate,$anchorCates,$aderCates,$ader_id)
+	{
+			$data = array(
+				'anchorNeed_brand' => $aderBrand,
+				'anchorNeed_pro' => $aderPro,
+				'anchorNeed_time' => $aderTime,
+				'anchorNeed_cycle' => $aderCycle,
+				'anchorNeed_number' => $anchorNum,
+				'anchorNeed_fansNumber' => $fansNum,
+				'anchorNeed_coopCate' => $anchorCoop,
+				'anchorNeed_logo' => $aderLogo_url,
+				'anchorNeed_anchorCates' => $anchorCates,
+				'anchorNeed_aderCates' => $aderCates,
+				'anchorNeed_otherNeed' => $otherNeed,
+				'ader_id' => $ader_id
+			);
+
+			$this -> db -> insert('t_anchorNeed',$data);
+
+			return $this -> db -> affected_rows();
+	}
+
+	public function get_anchorNeed_by_aderId($ader_id)
+	{
+			$data = array(
+	        'ader_id' => $ader_id
+	    );
+	    $query = $this -> db -> get_where('t_anchorNeed',$data);
+			//$query = $this -> db -> query('select * from t_anchorNeed where ader_id = '.$ader_id);
+			return $query -> result();
+	}
+
+	public function get_anchorNeed_count(){
+		return $this->db->count_all('t_anchorNeed');
+	}
+
+	public function get_anchorNeed_by_aderId_and_page($ader_id,$per_page,$offset)
+	{
+			//$this -> db -> order_by('add_time','desc');
+			$query = $this -> db -> query( 'select * from t_anchorNeed need where need.ader_id = '.$ader_id.' order by add_time desc limit '.$offset.','.$per_page );
+			return $query -> result();
+	}
+
+
+
+
+
+
+
+
 
 
 

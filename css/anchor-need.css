@@ -107,3 +107,25 @@ textarea{
 .a-tel{
   text-decoration: none;
 }
+
+/*表单填写错误样式*/
+ .error{
+   border: 1px solid #f00;
+   background: rgb(250, 255, 189);
+   /*background-color: #f0ad4e;*/
+   -webkit-box-shadow: 0 0 0.275rem #f8b9b7;
+   -moz-box-shadow: 0 0 0.275rem #f8b9b7;
+   box-shadow: 0 0 0.275rem #f8b9b7;
+ }
+
+ /*表单填写正确样式*/
+ .success{
+   border: 1px solid #2ecc71;
+ }
+
+  /*表单错误提示信息样式*/
+ .error-info{
+   margin-top: 10px;
+   color: #f00;
+   text-indent: 10px;
+ }

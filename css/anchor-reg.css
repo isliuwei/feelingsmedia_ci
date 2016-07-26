@@ -8,7 +8,10 @@
  */
 
 
-
+ .main-wrap{
+   margin: 0 auto;
+   /*width: 1000px;*/
+ }
 
 .container{
   margin-top: 100px;
@@ -96,6 +99,7 @@
    -webkit-appearance: none !important;
    margin: 0;
  }
+
  .js-login-btn{
    visibility: hidden;
  }
@@ -106,7 +110,7 @@
    background: rgba(255, 255, 255, 0);
  }
 
- #captcha1{
+ #captcha_login{
    width: 120px;
  }
  /*去掉html5 input number默认样式*/
@@ -119,10 +123,17 @@
    margin: 0;
  }
 
+
+
+ .modal-btn{
+   padding: 0;
+   width: 65%;
+   margin-bottom: 10px;
+ }
  .form-actions{
    padding:5px 20px;
  }
- .close-btn{
+ #close-btn{
    float: right;
    font-size: 50px;
    font-weight: 900;
@@ -133,12 +144,8 @@
    opacity: .5;
    transition: all 0.1 liner;
  }
- .close-btn:hover{
+ #close-btn:hover{
    transform: rotate(360deg);
    opacity: 1;
-   color: #fff;
- }
- .a-btn{
-   text-decoration: none;
    color: #fff;
  }

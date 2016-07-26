@@ -31,14 +31,14 @@
 			</div>
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
-			    <li><a href="index5.html" target="_blank"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
+			    <li><a href="ader/ader_index"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
 			    <li class="active"><a href="#">账号信息</a></li>
 			  </ul>
 
         <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
 
         <ul class='nav navbar-nav navbar-right'>
-        <a class="btn btn-success navbar-btn login-btn"  href="anchor-need-profile.html">账号信息</a>
+        <a class="btn btn-success navbar-btn login-btn"  href="ader/anchor_need_profile">账号信息</a>
         <a class="btn btn-primary navbar-btn login-btn"  href="ader/ader_setting?ader_id=<?php echo  $aderInfo -> ader_id ;?>">账号管理</a>
         <a class="btn btn-default navbar-btn login-btn" href="ader/logout">退出登录</a>
 
@@ -62,7 +62,7 @@
 		<div class="left">
 			<div class="list source">平台主播资源</div>
 			<div class="list service">直播内容策划服务</div>
-			<div class="list need">发布主播需求</div>
+			<div class="list need"><a href="ader/anchor_need">发布主播需求</a></div>
 		</div>
 		<div class="right">
 			<div class="list source">媒体资源服务</div>

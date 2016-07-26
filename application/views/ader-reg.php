@@ -357,7 +357,6 @@
             ng-model="userdata.captcha_ci"
             name="captcha_ci"
             id="captcha_ci"
-
           >
 
 
@@ -367,7 +366,7 @@
 
 
           <img id="captcha-img" src="captcha/<?php echo $codeinfo['time']; ?>.jpg" alt="">
-          <span id="captcha-tip"> <i class="fa fa-refresh"></i> 看不清？换一张</span>
+          <span id="captcha-tip"> <i class="fa fa-refresh"></i> 看不清?换一张</span>
           <p
             class="error-info"
             ng-if="signUpForm.captcha.$error.compare && signUpForm.captcha.$touched">

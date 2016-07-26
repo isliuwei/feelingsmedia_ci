@@ -2170,6 +2170,7 @@ hr.dots:before {
   left: 13px;
   font-size: 16px;
   color: rgba(0,0,0,0.3);
+  z-index: 999;
 }
 .login .loginform input {
   padding: 9px 6px 9px 40px;

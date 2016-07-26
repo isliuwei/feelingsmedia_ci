@@ -10,6 +10,7 @@ class Ader extends CI_Controller {
 		$this -> load -> model('ader_model');
     $this -> load -> model('anchor_model');
     $this -> load -> model('company_model');
+
 	}
 
 
@@ -86,7 +87,8 @@ class Ader extends CI_Controller {
 	public function check_ader_username()
 	{
 		$username = $this -> input -> get('username');
-
+		// echo $username;
+		// die();
 
 
 		$result = $this -> ader_model -> get_by_username($username);
@@ -124,10 +126,14 @@ class Ader extends CI_Controller {
 			$result = $this -> ader_model -> save_by_all($username,$password,$email,$tel,$company,$website);
 
 			if($result>0){
+				$data = array(
+					'info'=>'注册成功',
+					'url' => 'ader_reg'
+				);
 				// echo "<script>alert('注册成功！请点击登录按钮进行登录！')</script>";
 				// redirect('ader/ader_reg');
-				$this -> load -> view('redirect-reg');
-				//$this -> load -> view('ader-reg');
+				//$this -> load -> view('redirect-reg');
+				$this -> load -> view('redirect-null',$data);
 			}else{
 				echo "<script>alert('注册失败！')</script>";
 			}
@@ -153,6 +159,7 @@ class Ader extends CI_Controller {
 				$this -> load -> view('redirect-login');
 		}
 	}
+
 
 	public function logout()
 	{
@@ -317,8 +324,114 @@ class Ader extends CI_Controller {
 					echo "<script>alert('未修改密码信息！')</script>";
 					echo "<script>location.href='ader_setting?ader_id='+$ader_id;</script>";
 			}else{
-					$this -> load -> view('redirect-pwd');
+					$this -> load -> view('redirect-oldpwd');
 			}
+
+	}
+
+
+
+	public function anchor_need()
+	{
+		$this -> load -> view('anchor-need');
+	}
+
+	public function save_anchor_need()
+	{
+      $config['upload_path'] = './uploads/';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size'] = '3072';
+      $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+
+      $this -> load -> library('upload', $config);
+      $this -> upload -> do_upload('aderLogo');
+
+      $upload_data = $this -> upload -> data();
+
+      if ( $upload_data['file_size'] > 0 ) {
+          $aderLogo_url = 'uploads/'.$upload_data['file_name'];
+      }else{
+          $aderLogo_url = 'img/anchorLogo.jpg';
+      }
+
+
+			$ader_id = $this -> input -> post('ader_id');
+			$aderBrand = $this -> input -> post('aderBrand');
+			$aderPro = $this -> input -> post('aderPro');
+			$aderTime = $this -> input -> post('aderTime');
+			$aderCycle = $this -> input -> post('aderCycle');
+			$anchorNum = $this -> input -> post('anchorNum');
+			$fansNum = $this -> input -> post('fansNum');
+			$anchorCoop = $this -> input -> post('anchorCoop');
+			$otherNeed = $this -> input -> post('otherNeed');
+			$anchorCate = $this -> input -> post('anchorCate');
+			$aderCate = $this -> input -> post('aderCate');
+			$anchorCateStr = "";
+			$aderCateStr = "";
+			for($i=0;$i<count($anchorCate);$i++){
+					$anchorCateStr=$anchorCateStr.$anchorCate[$i]."、";
+			}
+			$anchorCates =  substr($anchorCateStr,0,-1);
+
+			for($i=0;$i<count($aderCate);$i++){
+					$aderCateStr=$aderCateStr.$aderCate[$i]."、";
+			}
+			$aderCates =  substr($aderCateStr,0,-1);
+
+
+			$row = $this -> ader_model -> save_anchorNeed_by_all($aderBrand,$aderPro,$aderTime,$aderCycle,$anchorNum,$fansNum,$anchorCoop,$aderLogo_url,$otherNeed,$anchorCate,$aderCate,$anchorCates,$aderCates,$ader_id);
+
+			if($row>0){
+				$data = array(
+					'ader_id' => $ader_id
+				);
+				$this -> load -> view('redirect-add',$data);
+			}
+
+	}
+
+	public function anchor_need_profile()
+	{
+
+				$aderNeeds_count = $this -> ader_model -> get_anchorNeed_count();
+
+				$aderInfo = $this -> session -> userdata('aderInfo');
+
+				$ader_id = $aderInfo -> ader_id;
+
+				$offset = $this -> uri -> segment(3)==NULL?0 : $this -> uri ->segment(3);
+
+        $this->load->library('pagination');
+
+        $config['base_url'] = 'ader/anchor_need_profile';
+        $config['total_rows'] = $aderNeeds_count;
+        $config['per_page'] = 3;
+				$config['full_tag_open'] = '<ul class="pagination">';
+			  $config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+				$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+				$result = $this -> ader_model -> get_anchorNeed_by_aderId_and_page($ader_id,$config['per_page'],$offset);
+
+				$data = array(
+					'anchorNeeds' => $result
+				);
+
+				if($result){
+		        $this -> load -> view('anchor-need-profile',$data);
+		    }
 
 	}
 
