@@ -485,7 +485,7 @@
                         <p><a href="anchor/forget_password" tabindex="5" class=" pull-left btn-link text-muted">忘记密码?</a></p>
                         <br>
                         <button type="submit" tabindex="4" class="btn btn-primary" ng-disabled="loginForm.$invalid">登录</button>
-                        <button type="button" tabindex="4" class="btn btn-warning"><a href="anchor-reg.php" style="display:block;color:#fff;">注册</a></button>
+                        <button type="button" tabindex="4" class="btn btn-warning"><a href="anchor/anchor-reg" style="display:block;color:#fff;">注册</a></button>
                     </div>
 
                 </form>
@@ -527,6 +527,7 @@
                     $emailInput.after("<p class='error-info'>邮箱重复，请重新输入！</p>");
                     alert("邮箱重复");
                     location.reload();
+
                 }
             },'text');
         }

@@ -8,8 +8,8 @@ class Ader extends CI_Controller {
 		$this -> load -> helper('captcha');
 
 		$this -> load -> model('ader_model');
-    $this -> load -> model('anchor_model');
-    $this -> load -> model('company_model');
+	    $this -> load -> model('anchor_model');
+	    $this -> load -> model('company_model');
 
 	}
 
@@ -215,7 +215,7 @@ class Ader extends CI_Controller {
 
 		$url = (object)[
 			'tip' => '修改成功!',
-			'href' => 'ader_reg'
+			'href' => 'ader/ader_reg'
 		];
 
 
@@ -273,7 +273,7 @@ class Ader extends CI_Controller {
 			$this->email->initialize($config);
 
 			//以下设置Email内容
-			$this->email->from('lw.588@163.com', 'lw.588');
+			$this->email->from('lw.588@163.com', '北京慧灵思投资管理有限公司');
 			$this->email->to($email);
 			$this->email->subject('找回密码');
 			$this->email->message(
@@ -300,7 +300,7 @@ class Ader extends CI_Controller {
 
 	public function check_password()
 	{
-			$oldPassword = $this -> input -> get('oldPassword');
+		$oldPassword = $this -> input -> get('oldPassword');
 	    $aderInfo = $this -> session -> userdata('aderInfo');
 	    $username = $aderInfo -> ader_username;
 

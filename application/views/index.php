@@ -374,7 +374,7 @@
 
                   </div>
                   <div class="form-actions">
-                      <p><a href="anchor/anchor_forget_password" tabindex="5" class=" pull-left btn-link text-muted">忘记密码?</a></p>
+                      <p><a href="anchor/forget_password" tabindex="5" class=" pull-left btn-link text-muted">忘记密码?</a></p>
                       <br>
                       <button type="submit" tabindex="4" class="btn btn-primary modal-btn" ng-disabled="anchorForm.$invalid">登录</button>
                       <button type="button" tabindex="4" class="btn btn-warning modal-btn"><a href="anchor/anchor_reg" style="display:block;color:#fff;">注册</a></button>

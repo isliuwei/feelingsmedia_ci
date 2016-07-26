@@ -4,10 +4,11 @@ class Anchor extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
+		$this -> load-> library('email');
 		$this -> load -> helper('captcha');
 		$this -> load -> model('ader_model');
-    $this -> load -> model('anchor_model');
-    $this -> load -> model('company_model');
+	    $this -> load -> model('anchor_model');
+	    $this -> load -> model('company_model');
 	}
 
 	public function index()
@@ -40,14 +41,14 @@ class Anchor extends CI_Controller {
 
 	public function check_anchor_username()
 	{
-			$username = $this -> input -> get('username');
+		$username = $this -> input -> get('username');
 
-			$result = $this -> anchor_model -> get_by_username($username);
-			if($result){
-				echo "success";
-			}else{
-				echo "fail";
-			}
+		$result = $this -> anchor_model -> get_by_username($username);
+		if($result){
+			echo "success";
+		}else{
+			echo "fail";
+		}
 	}
 
 	public function check_anchor_email()
@@ -145,11 +146,8 @@ class Anchor extends CI_Controller {
 		if($row>0){
 			$data = array(
 				'info'=>'注册成功',
-				'url' => 'ader_reg'
+				'url' => 'anchor/anchor_reg'
 			);
-			// echo "<script>alert('注册成功！请点击登录按钮进行登录！')</script>";
-			// redirect('ader/ader_reg');
-			//$this -> load -> view('redirect-reg');
 			$this -> load -> view('redirect-null',$data);
 		}
 
@@ -170,6 +168,73 @@ class Anchor extends CI_Controller {
 		}
 	}
 
+
+
+	public function forget_password()
+	{
+		$this -> load -> view('anchor-forget-password');
+	}
+
+
+	public function find_password()
+	{
+		//生成随机密码
+		function getRandPwd($length){
+		   $str = null;
+		   $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+		   $max = strlen($strPol)-1;
+		   for($i=0;$i<$length;$i++){
+		    	$str.=$strPol[rand(0,$max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
+		   }
+		   	return $str;
+		}
+
+		$username = $this -> input -> post('username');
+		$email = $this -> input -> post('email');
+		$password = getRandPwd(12);
+
+		$row = $this -> anchor_model -> update_password_by_username($username,$password);
+		// var_dump($row);
+		// die();
+
+		if($row>0){
+			//以下设置Email参数
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'smtp.163.com';
+			$config['smtp_user'] = 'lw.588';
+			$config['smtp_pass'] = 'wyyx16220811';
+			$config['smtp_port'] = '25';
+			$config['charset'] = 'utf-8';
+			$config['wordwrap'] = TRUE;
+			$config['mailtype'] = 'html';
+			$this->email->initialize($config);
+
+			//以下设置Email内容
+			$this->email->from('lw.588@163.com', '北京慧灵思投资管理有限公司');
+			$this->email->to($email);
+			$this->email->subject('找回密码');
+			$this->email->message(
+				'亲爱的用户：您好！请您使用该密码进行登录
+				<font color=red>'.$password.'</font>,
+				为保证您的账户安全，请您尽快前往个人中心修改密码！
+				若不修改，请您牢记当前密码，您可以使用当前密码作为您的登录密码！
+				请勿直接回复该邮件！谢谢您的合作！from feelingsmedia.com'
+			);
+			$this -> email -> send();
+			$data = array(
+				'info'=>'密码修改成功',
+				'url' => 'anchor/anchor_reg'
+			);
+			$this -> load -> view('redirect-null',$data);
+
+		}else{
+			echo "fail";
+		}
+
+	}
+
+
+	
 
 
 

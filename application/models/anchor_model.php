@@ -97,7 +97,7 @@ class Anchor_model extends CI_Model{
 		  	$one_info = array();
 			$insert_data = array();
 			$one_info['anchor_id'] = $anchor_id;
-			
+
 			for($i = 0; $i < count($anchorCate); $i++) {
 	            $one_info['anchorCate_id'] = $anchorCate[$i];
 	            $insert_data[] = $one_info;
@@ -110,6 +110,18 @@ class Anchor_model extends CI_Model{
 
 
   }
+  	public function update_password_by_username($username,$password)
+	{
+		$data = array(
+        	'anchor_password' => $password
+    	);
+
+	    $this ->db -> where('anchor_username', $username);
+	    $this ->db -> update('t_anchor', $data);
+
+	    return $this -> db -> affected_rows();
+
+	}
 
 
 

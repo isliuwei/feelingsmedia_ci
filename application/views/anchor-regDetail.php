@@ -42,7 +42,7 @@
 
         <ul class='nav navbar-nav navbar-right'>
 
-        <a class="btn btn-success navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="#">登录</a>
+        <a class="btn btn-success navbar-btn login-btn" href="anchor/anchor_reg">返回</a>
 
         <a class="btn navbar-btn js-login-btn" href="#">Register</a>
 
