@@ -46,7 +46,7 @@ class Ader_model extends CI_Model{
 
     $this -> db -> insert('t_ader',$data);
 
-		return $this -> db -> affected_rows();
+	return $this -> db -> affected_rows();
 
 	}
 

@@ -118,6 +118,9 @@ class Anchor extends CI_Controller {
 		$fansNumber = htmlspecialchars($this -> input -> post('fansNumber'));
 		$gender = htmlspecialchars($this -> input -> post('gender'));
 		$country = htmlspecialchars($this -> input -> post('country'));
+		$city = htmlspecialchars($this -> input -> post('city'));
+		$anchorCate = $this -> input -> post('anchorCate');
+		$anchorAttr = $this -> input -> post('anchorAttr');
 
 
 		$config['upload_path'] = './uploads/';
@@ -127,14 +130,31 @@ class Anchor extends CI_Controller {
 		$this -> load -> library('upload', $config);
 		$this -> upload -> do_upload('anchor_photo');
 		$upload_data = $this -> upload -> data();
-
 		if ( $upload_data['file_size'] > 0 ) {
-				$anchor_photo_url = 'uploads/'.$upload_data['file_name'];
+			$anchorPhotoUrl = 'uploads/'.$upload_data['file_name'];
 		}else{
-				$anchor_photo_url = 'img/anchor.jpg';
+			$anchorPhotoUrl = 'img/anchor.jpg';
 		}
 
-		$row = $this -> anchor_model-> save_anchor($username, $pwd1, $tel, $email, $trueName, $qqNum, $bankAccount,$fansNumber,$country,$gender,$nickname,$photo_url,$platform,$platformId);
+
+		
+
+		$row = $this -> anchor_model-> save_anchor_by_all($username,$pwd1,$tel,$email,$trueName, $qqNum,$bankAccount,$fansNumber,$country,$city,$gender,$nickname,$anchorPhotoUrl,$platform,$platformId,$anchorCate,$anchorAttr);
+		
+
+		if($row>0){
+			$data = array(
+				'info'=>'注册成功',
+				'url' => 'ader_reg'
+			);
+			// echo "<script>alert('注册成功！请点击登录按钮进行登录！')</script>";
+			// redirect('ader/ader_reg');
+			//$this -> load -> view('redirect-reg');
+			$this -> load -> view('redirect-null',$data);
+		}
+
+		
+
 
 	}
 	//登录验证

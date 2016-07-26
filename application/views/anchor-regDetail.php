@@ -218,7 +218,7 @@
               <option value="中国台湾">中国台湾</option>
             </select>
 
-            <select name="country" id="country" class="form-control province-select">
+            <select name="city" id="city" class="form-control province-select">
               <option value="">请选择</option>
               <option value="北京市">北京市</option>
               <option value="天津市">天津市</option>
@@ -262,28 +262,27 @@
           <label for="accountCate" class="col-sm-2 control-label">账号分类</label>
           <div class="col-sm-10">
             <div class="checkbox">
-
-                <input type="checkbox" value="1" name="type[]">  体&nbsp;育
-                <input type="checkbox" value="2" name="type[]">  游&nbsp;戏
-                <input type="checkbox" value="3" name="type[]">  影&nbsp;视
-                <input type="checkbox" value="4" name="type[]">  搞&nbsp;笑
-                <input type="checkbox" value="5" name="type[]">  音&nbsp;乐
-                <input type="checkbox" value="6" name="type[]">  舞&nbsp;蹈
-                <input type="checkbox" value="7" name="type[]">  艺&nbsp;术
-                <input type="checkbox" value="8" name="type[]">  汽&nbsp;车
-                <input type="checkbox" value="9" name="type[]">  潮&nbsp;品
-                <input type="checkbox" value="10" name="type[]">  旅&nbsp;游
+                <input type="checkbox" value="1" name="anchorCate[]">  体&nbsp;育
+                <input type="checkbox" value="2" name="anchorCate[]">  游&nbsp;戏
+                <input type="checkbox" value="3" name="anchorCate[]">  影&nbsp;视
+                <input type="checkbox" value="4" name="anchorCate[]">  搞&nbsp;笑
+                <input type="checkbox" value="5" name="anchorCate[]">  音&nbsp;乐
+                <input type="checkbox" value="6" name="anchorCate[]">  舞&nbsp;蹈
+                <input type="checkbox" value="7" name="anchorCate[]">  艺&nbsp;术
+                <input type="checkbox" value="8" name="anchorCate[]">  汽&nbsp;车
+                <input type="checkbox" value="9" name="anchorCate[]">  潮&nbsp;品
+                <input type="checkbox" value="10" name="anchorCate[]">  旅&nbsp;游
                 <br>
-                <input type="checkbox" value="11" name="type[]">  数&nbsp;码
-                <input type="checkbox" value="12" name="type[]">  健&nbsp;康
-                <input type="checkbox" value="13" name="type[]">  美&nbsp;食
-                <input type="checkbox" value="14" name="type[]">  文&nbsp;学
-                <input type="checkbox" value="15" name="type[]">  军&nbsp;事
-                <input type="checkbox" value="16" name="type[]">  法&nbsp;律
-                <input type="checkbox" value="17" name="type[]">  萌&nbsp;宠
-                <input type="checkbox" value="18" name="type[]">  动&nbsp;漫
-                <input type="checkbox" value="19" name="type[]">  财&nbsp;务
-                <input type="checkbox" value="20" name="type[]">  秀&nbsp;场
+                <input type="checkbox" value="11" name="anchorCate[]">  数&nbsp;码
+                <input type="checkbox" value="12" name="anchorCate[]">  健&nbsp;康
+                <input type="checkbox" value="13" name="anchorCate[]">  美&nbsp;食
+                <input type="checkbox" value="14" name="anchorCate[]">  文&nbsp;学
+                <input type="checkbox" value="15" name="anchorCate[]">  军&nbsp;事
+                <input type="checkbox" value="16" name="anchorCate[]">  法&nbsp;律
+                <input type="checkbox" value="17" name="anchorCate[]">  萌&nbsp;宠
+                <input type="checkbox" value="18" name="anchorCate[]">  动&nbsp;漫
+                <input type="checkbox" value="19" name="anchorCate[]">  财&nbsp;务
+                <input type="checkbox" value="20" name="anchorCate[]">  秀&nbsp;场
 
             </div>
           </div>
@@ -293,10 +292,10 @@
           <div class="form-group">
           <label for="cate" class="col-sm-2 control-label">主播性质</label>
           <div class="col-sm-10">
-            <select name="gender" id="cate" class="form-control gender-select">
+            <select name="anchorAttr" id="cate" class="form-control gender-select">
               <option value="">请选择</option>
-              <option value="男">公会主播</option>
-              <option value="女">个人主播</option>
+              <option value="公会主播">公会主播</option>
+              <option value="个人主播">个人主播</option>
             </select>
           </div>
         </div>
