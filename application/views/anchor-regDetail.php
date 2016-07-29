@@ -262,27 +262,34 @@
           <label for="accountCate" class="col-sm-2 control-label">账号分类</label>
           <div class="col-sm-10">
             <div class="checkbox">
-                <input type="checkbox" value="1" name="anchorCate[]">  体&nbsp;育
-                <input type="checkbox" value="2" name="anchorCate[]">  游&nbsp;戏
-                <input type="checkbox" value="3" name="anchorCate[]">  影&nbsp;视
-                <input type="checkbox" value="4" name="anchorCate[]">  搞&nbsp;笑
-                <input type="checkbox" value="5" name="anchorCate[]">  音&nbsp;乐
-                <input type="checkbox" value="6" name="anchorCate[]">  舞&nbsp;蹈
-                <input type="checkbox" value="7" name="anchorCate[]">  艺&nbsp;术
-                <input type="checkbox" value="8" name="anchorCate[]">  汽&nbsp;车
-                <input type="checkbox" value="9" name="anchorCate[]">  潮&nbsp;品
-                <input type="checkbox" value="10" name="anchorCate[]">  旅&nbsp;游
+                <!-- <?php
+                    foreach($anchorCates as $cates){
+                ?>
+                  <input type="checkbox" value="<?php echo $cates -> anchorCate_id; ?>" name="anchorCate[]">&nbsp;&nbsp;<?php echo $cates -> anchorCate_name; ?>&nbsp;&nbsp;
+                <?php
+                  }
+                ?> -->
+                <input type="checkbox" value="1" name="anchorCate[]"  ng-model="userdata.cate">  体&nbsp;育
+                <input type="checkbox" value="2" name="anchorCate[]"  ng-model="userdata.cate">  游&nbsp;戏
+                <input type="checkbox" value="3" name="anchorCate[]"  ng-model="userdata.cate">  影&nbsp;视
+                <input type="checkbox" value="4" name="anchorCate[]"  ng-model="userdata.cate">  搞&nbsp;笑
+                <input type="checkbox" value="5" name="anchorCate[]"  ng-model="userdata.cate">  音&nbsp;乐
+                <input type="checkbox" value="6" name="anchorCate[]"  ng-model="userdata.cate">  舞&nbsp;蹈
+                <input type="checkbox" value="7" name="anchorCate[]"  ng-model="userdata.cate">  艺&nbsp;术
+                <input type="checkbox" value="8" name="anchorCate[]"  ng-model="userdata.cate">  汽&nbsp;车
+                <input type="checkbox" value="9" name="anchorCate[]"  ng-model="userdata.cate">  潮&nbsp;品
+                <input type="checkbox" value="10" name="anchorCate[]"  ng-model="userdata.cate">  旅&nbsp;游
                 <br>
-                <input type="checkbox" value="11" name="anchorCate[]">  数&nbsp;码
-                <input type="checkbox" value="12" name="anchorCate[]">  健&nbsp;康
-                <input type="checkbox" value="13" name="anchorCate[]">  美&nbsp;食
-                <input type="checkbox" value="14" name="anchorCate[]">  文&nbsp;学
-                <input type="checkbox" value="15" name="anchorCate[]">  军&nbsp;事
-                <input type="checkbox" value="16" name="anchorCate[]">  法&nbsp;律
-                <input type="checkbox" value="17" name="anchorCate[]">  萌&nbsp;宠
-                <input type="checkbox" value="18" name="anchorCate[]">  动&nbsp;漫
-                <input type="checkbox" value="19" name="anchorCate[]">  财&nbsp;务
-                <input type="checkbox" value="20" name="anchorCate[]">  秀&nbsp;场
+                <input type="checkbox" value="11" name="anchorCate[]"  ng-model="userdata.cate">  数&nbsp;码
+                <input type="checkbox" value="12" name="anchorCate[]"  ng-model="userdata.cate">  健&nbsp;康
+                <input type="checkbox" value="13" name="anchorCate[]"  ng-model="userdata.cate">  美&nbsp;食
+                <input type="checkbox" value="14" name="anchorCate[]"  ng-model="userdata.cate">  文&nbsp;学
+                <input type="checkbox" value="15" name="anchorCate[]"  ng-model="userdata.cate">  军&nbsp;事
+                <input type="checkbox" value="16" name="anchorCate[]"  ng-model="userdata.cate">  法&nbsp;律
+                <input type="checkbox" value="17" name="anchorCate[]"  ng-model="userdata.cate">  萌&nbsp;宠
+                <input type="checkbox" value="18" name="anchorCate[]"  ng-model="userdata.cate">  动&nbsp;漫
+                <input type="checkbox" value="19" name="anchorCate[]"  ng-model="userdata.cate">  财&nbsp;务
+                <input type="checkbox" value="20" name="anchorCate[]"  ng-model="userdata.cate">  秀&nbsp;场
 
             </div>
           </div>

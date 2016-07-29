@@ -113,7 +113,7 @@ body {
     <div id="js-alert-head" class="alert-head"></div>
     <div class="alert-concent">
       <p>请重新登录！</p>
-      <p>5s后将跳转至注册页面！</p>
+      <p>10s后将跳转至注册页面！</p>
     </div>
     <a id="js-alert-btn" class="alert-btn" href="ader/ader_reg">立即前往注册页面</a> </div>
   <div class="alert-footer clearfix"> <svg width="46px" height="42px" class="alert-footer-icon">

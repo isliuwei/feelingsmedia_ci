@@ -1,12 +1,17 @@
+<?php
+    $anchorInfo = $this -> session -> userdata('anchorInfo');
+    if(!$anchorInfo){
+        redirect('anchor/anchor_reg');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <base href="<?php echo site_url(); ?>">
-
-    <title>主播个人信息展示页面</title>
+  <base href="<?php echo site_url(); ?>">
+  <title>主播个人信息展示页面</title>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/font-awesome.min.css" />
   <link rel="stylesheet" href="css/anchor-setting.css" />
@@ -102,15 +107,15 @@
 			</div>
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
-			    <li><a href="index5.html" target="_blank">主播名称</a></li>
-			    <li class="active"><a href="#">账号管理</a></li>
+			    <li><a href="anchor/anchor_need_list"><?php echo $anchorInfo -> anchor_name ; ?></a></li>
+			    <li class="active"><a href="#">账号信息</a></li>
 			  </ul>
 
 
 
         <ul class='nav navbar-nav navbar-right'>
-        <a class="btn btn-primary navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="ader-setting.html">账号管理</a>
-        <a class="btn btn-default navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="#">退出登录</a>
+        <a class="btn btn-primary navbar-btn login-btn" href="anchor/anchor_setting/<?php echo $anchorInfo -> anchor_id; ?>">账号管理</a>
+        <a class="btn btn-default navbar-btn login-btn" href="anchor/logout">退出登录</a>
 
         <a class="btn navbar-btn js-login-btn" href="#">Register</a>
 
@@ -132,17 +137,17 @@
                     <div class="panel panel-info panel-no col-md-4 col-sx-4">
                       <div class="panel-body ">
                         <div class="thumbnail">
-                            <img class="img img-circle img-thumbnail" src="img/anchor.jpg" alt="...">
+                            <img class="img img-circle img-thumbnail" src="<?php echo $anchorProfile -> anchor_photo;?>" alt="...">
                             <div class="caption">
-                              <h3 class="name bg-info text-success">@皇甫小乔</h3>
+                              <h3 class="name bg-info text-success">@<?php echo $anchorProfile -> anchor_name; ?></h3>
                               <p class="desc text-info"></p>
                             </div>
                         </div>
 
 
 
-                          <span class="label label-primary"><i class="fa fa-phone"></i> <a data-toggle="tooltip" data-placement="bottom" title="15765505994" href="tel:15765505994"> 拨打电话</a></span>
-                          <span class="label label-info"><i class="fa fa-envelope"></i> <a data-toggle="tooltip" data-placement="bottom" title="lw.588@163.com" href="mailto:lw.588@163.com"> 发送邮件</a></span>
+                          <span class="label label-primary"><i class="fa fa-phone"></i> <a data-toggle="tooltip" data-placement="bottom" title="<?php echo $anchorProfile -> anchor_tel; ?>" href="tel:<?php echo $anchorProfile -> anchor_tel; ?>"> 拨打电话</a></span>
+                          <span class="label label-info"><i class="fa fa-envelope"></i> <a data-toggle="tooltip" data-placement="bottom" title="<?php echo $anchorProfile -> anchor_email; ?>" href="mailto:<?php echo $anchorProfile -> anchor_email; ?>"> 发送邮件</a></span>
                           <span class="label label-success"><i class="fa fa-wifi"></i> <a data-toggle="tooltip" data-placement="bottom" title="400-000-888" href="tel:400-000-888"> 联系我们</a></span>
 
 
@@ -158,18 +163,31 @@
 
   <ul class="list-group">
     <li class="list-group-item list-group-item-info"><span>账户名称</span><a href="#">主播账号</a></li>
-    <li class="list-group-item"><span>直播平台</span><a href="#">斗鱼TV</a></li>
-    <li class="list-group-item list-group-item-info"><span>直播ID</span><a href="#">098765</a></li>
-    <li class="list-group-item"><span>性别</span><a href="#">女</a></li>
-    <li class="list-group-item list-group-item-info"><span>真实姓名</span><a href="#">皇甫小乔</a></li>
-    <li class="list-group-item"><span>联系方式</span><a href="#">15765505994</a></li>
-    <li class="list-group-item list-group-item-info"><span>邮箱</span><a href="#">lw.588@163.com</a></li>
-    <li class="list-group-item"><span>地域</span><a href="#">安徽安庆</a></li>
-    <li class="list-group-item list-group-item-info"><span>账号分类</span><a href="#">体育/娱乐</a></li>
-    <li class="list-group-item"><span>粉丝</span><a href="#">56008</a></li>
-    <li class="list-group-item list-group-item-info"><span>主播性质</span><a href="#">公会主播</a></li>
-    <li class="list-group-item"><span>银行账号</span><a href="#">622201237487658</a></li>
-    <li class="list-group-item list-group-item-info"><span>QQ号码</span><a href="#">445913035</a></li>
+    <li class="list-group-item"><span>直播平台</span><a href="#"><?php echo $anchorProfile -> anchor_platformName; ?></a></li>
+    <li class="list-group-item list-group-item-info"><span>直播ID</span><a href="#"><?php echo $anchorProfile -> anchor_platformID; ?></a></li>
+    <li class="list-group-item"><span>直播ID昵称</span><a href="#"><?php echo $anchorProfile -> anchor_platformNickname; ?></a></li>
+    <li class="list-group-item list-group-item-info"><span>性别</span><a href="#"><?php echo $anchorProfile -> anchor_gender; ?></a></li>
+    <li class="list-group-item"><span>真实姓名</span><a href="#"><?php echo $anchorProfile -> anchor_name; ?></a></li>
+    <li class="list-group-item list-group-item-info"><span>联系方式</span><a href="tel:<?php echo $anchorProfile -> anchor_tel; ?>"><?php echo $anchorProfile -> anchor_tel; ?></a></li>
+    <li class="list-group-item"><span>邮箱</span><a href="mailto:<?php echo $anchorProfile -> anchor_email; ?>"><?php echo $anchorProfile -> anchor_email; ?></a></li>
+    <li class="list-group-item list-group-item-info"><span>地域</span><a href="#"><?php echo $anchorProfile -> anchor_region; ?>/<?php echo $anchorProfile -> anchor_province; ?></a></li>
+    <li class="list-group-item"><span>账号分类</span>
+      <a href="#">
+      <?php
+        if($anchorCates){
+        foreach($anchorCates as $cate){
+      ?>
+        <?php echo $cate -> anchorCate_name; ?>&nbsp;
+      <?php
+        }}
+      ?>
+        
+      </a>
+    </li>
+    <li class="list-group-item list-group-item-info"><span>粉丝</span><a href="#"><?php echo $anchorProfile -> anchor_fansNumber; ?></a></li>
+    <li class="list-group-item"><span>主播性质</span><a href="#"><?php echo $anchorProfile -> anchor_attr; ?></a></li>
+    <li class="list-group-item list-group-item-info"><span>银行账号</span><a href="#"><?php echo $anchorProfile -> anchor_bankAccount; ?></a></li>
+    <li class="list-group-item"><span>QQ号码</span><a href="#"><?php echo $anchorProfile -> anchor_qqNum; ?></a></li>
   </ul>
 
 

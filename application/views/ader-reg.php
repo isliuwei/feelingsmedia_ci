@@ -45,7 +45,7 @@
 			</div>
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
-			    <li><a href="index.html" target="_blank">首页</a></li>
+			    <li><a href="welcome/index" >首页</a></li>
 			    <li class="active"><a href="#">我是广告主 | 注册</a></li>
 			  </ul>
 
@@ -136,6 +136,7 @@
             class="form-control"
             id="email"
             placeholder="请输入联系人邮箱"
+            data-toggle="tooltip" data-placement="left" title="请填写正确邮箱,找回密码的凭证"
           >
           <i class="fa fa-check tip right" ng-if="signUpForm.email.$valid && signUpForm.email.$touched"></i>
           <i class="fa fa-remove tip wrong" ng-if="signUpForm.email.$invalid && signUpForm.email.$touched"></i>
@@ -454,7 +455,7 @@
                         <p><a href="ader/forget_password" tabindex="5" class=" pull-left btn-link text-muted">忘记密码?</a></p>
                         <br>
                         <button type="submit" tabindex="4" class="btn btn-primary" ng-disabled="loginForm.$invalid">登录</button>
-                        <button type="button" tabindex="4" class="btn btn-warning"><a href="ader-reg.html" style="display:block;color:#fff;">注册</a></button>
+                        <button type="button" tabindex="4" class="btn btn-warning"><a href="ader/ader_reg" style="display:block;color:#fff;">注册</a></button>
                     </div>
 
                 </form>
@@ -522,6 +523,11 @@
     }
   });
 
+</script>
+<script>
+  $(function () {
+     $('[data-toggle="tooltip"]').tooltip()
+  });
 </script>
 
 

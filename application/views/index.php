@@ -303,7 +303,6 @@
                   <br>
                   <h3>主播登录</h3>
                   <div class="pad">
-                      <input type="hidden" name="" value="">
                       <div class="control-group">
                           <div class="controls">
                               <label for="anchor-username" class="control-label fa fa-user"></label>
@@ -500,7 +499,7 @@
 
 <script>
   $(function() {
-      $('#login #password').focus(function() {
+      $('#login #ader-password').focus(function() {
           $('#owl-login').addClass('password');
       }).blur(function() {
           $('#owl-login').removeClass('password');
@@ -509,7 +508,13 @@
 
 
 
-      $('.login #password').focus(function() {
+      $('.login #anchor-password').focus(function() {
+          $('.owl-login').addClass('password');
+      }).blur(function() {
+          $('.owl-login').removeClass('password');
+      });
+
+      $('.login #company-password').focus(function() {
           $('.owl-login').addClass('password');
       }).blur(function() {
           $('.owl-login').removeClass('password');
