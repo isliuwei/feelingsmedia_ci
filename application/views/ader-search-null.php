@@ -172,7 +172,7 @@
 </head>
 <body>
 
-  
+
   <header class='navbar navbar-default navbar-fixed-top' id='main-navbar' role='banner'>
     <div class='container-fluid'>
       <div class='navbar-header'>
@@ -209,7 +209,7 @@
       <div class="row">
         <div class="form-group">
             <label for="region" class="col-sm-2 control-label label-success tag">广告主行业分类</label>
-              
+
             <div id="link">
               <a href="anchor/anchor_need_list" class="label label-danger">全部</a>
               <a href="anchor/search_needs?aderCate_id=1" class="label label-primary">快消</a>
@@ -231,7 +231,7 @@
               <a href="anchor/search_needs?aderCate_id=17"  class="label label-primary">教育</a>
               <a href="anchor/search_needs?aderCate_id=18"  class="label label-primary">餐饮</a>
             </div>
-              
+
         </div>
     </div>
 </div>
@@ -252,20 +252,23 @@
       <img class="rotating" src="img/404.svg" />
 
 
-    
-      
-    
+
+
+
     </div>
 
     <div class="panel-footer">
+
       <kbd><i class="fa fa-exclamation"></i> 无对应的筛选结果</kbd>
+
+
     </div>
 
   </div>
 
 
 
-    
+
 
 
 

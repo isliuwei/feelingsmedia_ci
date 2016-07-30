@@ -206,8 +206,10 @@ class Anchor extends CI_Controller {
 		$result = $this -> anchor_model -> get_anchorNeed_by_page($config['per_page'],$offset);
 
 		$data = array(
+
 			'anchorNeeds' => $result,
 			'total' => $anchorNeeds_count
+
 		);
 
 		
@@ -672,8 +674,12 @@ class Anchor extends CI_Controller {
 
 		if($result){
 			$data = array(
+<<<<<<< HEAD
 				'anchorNeeds' => $result,
 				'total' => $searchNeeds_count
+=======
+				'anchorNeeds' => $result
+>>>>>>> origin/master
 			);
 		    $this -> load -> view('anchor-need-search-list',$data);
 		}else{
