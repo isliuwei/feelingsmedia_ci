@@ -76,7 +76,9 @@
               id="username"
               placeholder="请输入正确的用户名"
               ng-model="userdata.username"
-              required>
+              required
+              data-toggle="tooltip" data-placement="top" title="请填写您注册的用户名"
+              >
           </div>
         </div>
 
@@ -93,7 +95,9 @@
               id="email"
               placeholder="请输入正确的邮箱地址"
               ng-model="userdata.email"
-              required>
+              required
+              data-toggle="tooltip" data-placement="top" title="请填写用户名对应的邮箱接收随机密码，你也可以填写其他邮箱接收验证邮件"
+              >
           </div>
         </div>
         <div class="form-group">
@@ -149,6 +153,13 @@
 
 
   </script>
+
+
+  <script>
+  $(function () {
+     $('[data-toggle="tooltip"]').tooltip()
+  });
+</script>
 
 </body>
 </html>

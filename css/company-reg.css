@@ -7,6 +7,11 @@
  *
  */
 
+ .main-wrap{
+   margin: 0 auto;
+   /*width: 1000px;*/
+ }
+
  .container{
    margin-top: 100px;
    border: 1px solid #aaa;
@@ -100,16 +105,21 @@
  .js-login-btn{
    visibility: hidden;
  }
-
-
-
  .login-bg{
+   background: rgba(255, 255, 255, 0);
+ }
+
+
+#captcha_login{
+   width: 120px;
+ }
+ /*.login-bg{
    background: rgba(255, 255, 255, 0);
  }
 
  #captcha1{
    width: 120px;
- }
+ }*/
  /*去掉html5 input number默认样式*/
  input[type="number"]{
    -moz-appearance: textfield;
@@ -120,7 +130,7 @@
    margin: 0;
  }
 
- .form-actions{
+ /*.form-actions{
    padding:5px 20px;
  }
  .close-btn{
@@ -141,5 +151,31 @@
  }
  .a-btn{
    text-decoration: none;
+   color: #fff;
+ }*/
+
+
+ .modal-btn{
+   padding: 0;
+   width: 65%;
+   margin-bottom: 10px;
+ }
+ .form-actions{
+   padding:5px 20px;
+ }
+ #close-btn{
+   float: right;
+   font-size: 50px;
+   font-weight: 900;
+   line-height: 1;
+   color: #fff;
+   text-shadow: 0 1px 0 #fff;
+   filter: alpha(opacity=50);
+   opacity: .5;
+   transition: all 0.1 liner;
+ }
+ #close-btn:hover{
+   transform: rotate(360deg);
+   opacity: 1;
    color: #fff;
  }

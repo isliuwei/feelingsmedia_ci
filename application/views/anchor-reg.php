@@ -45,7 +45,7 @@
 			</div>
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
-			    <li><a href="index.html" target="_blank">首页</a></li>
+			    <li><a href="welcome/index">首页</a></li>
 			    <li class="active"><a href="#">我是主播 | 注册</a></li>
 			  </ul>
 
@@ -433,7 +433,7 @@
                                   <label for="username" class="control-label fa fa-user"></label>
                                   <input ng-model="logindata.username" ng-class="{
                                     'error': loginForm.username.$invalid && loginForm.username.$touched,
-                                    'success':loginForm.username.$valid }" required id="username" type="text" name="username" placeholder="用户名" tabindex="1"  class="form-control input-medium">
+                                    'success':loginForm.username.$valid }" required id="username" type="text" name="anchorUsername" placeholder="用户名" tabindex="1"  class="form-control input-medium">
                               </div>
                           </div>
 
@@ -442,7 +442,7 @@
                                   <label for="password" class="control-label fa fa-key"></label>
                                   <input ng-model="logindata.password" ng-class="{
                                     'error': loginForm.password.$invalid && loginForm.password.$touched,
-                                    'success':loginForm.password.$valid }" required id="password" type="password" name="password" placeholder="密码" tabindex="2" class="form-control input-medium">
+                                    'success':loginForm.password.$valid }" required id="password" type="password" name="anchorPassword" placeholder="密码" tabindex="2" class="form-control input-medium">
                               </div>
                           </div>
                           <div class="control-group">
@@ -485,7 +485,7 @@
                         <p><a href="anchor/forget_password" tabindex="5" class=" pull-left btn-link text-muted">忘记密码?</a></p>
                         <br>
                         <button type="submit" tabindex="4" class="btn btn-primary" ng-disabled="loginForm.$invalid">登录</button>
-                        <button type="button" tabindex="4" class="btn btn-warning"><a href="anchor/anchor-reg" style="display:block;color:#fff;">注册</a></button>
+                        <button type="button" tabindex="4" class="btn btn-warning"><a href="anchor/anchor_reg" style="display:block;color:#fff;">注册</a></button>
                     </div>
 
                 </form>

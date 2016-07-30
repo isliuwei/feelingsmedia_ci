@@ -31,6 +31,20 @@ class Ader_model extends CI_Model{
 
 	}
 
+	public function get_ader_by_username_email($username,$email)
+	{
+
+		$data = array(
+            'ader_username' => $username,
+            'ader_email' => $email
+        );
+
+        $query = $this -> db -> get_where('t_ader',$data);
+
+        return $query -> row();
+
+	}
+
 
   public function save_by_all($username,$password,$email,$tel,$company,$website)
 	{
@@ -76,12 +90,23 @@ class Ader_model extends CI_Model{
 
   }
 
+  public function get_email_by_username($username)
+  {
+
+  	$sql = "select t_ader.ader_email from t_ader where t_ader.ader_username = '$username'";
+
+  	return $this -> db -> query($sql) -> row() ;
+
+  	
+
+  }
+
 	public function update_by_email_tel($id,$email,$tel)
 	{
 		$data = array(
           'ader_email' => $email,
-					'ader_tel' => $tel
-    );
+		  'ader_tel' => $tel
+    	);
 
     $this->db->where('ader_id', $id);
     $this->db->update('t_ader', $data);
@@ -135,7 +160,26 @@ class Ader_model extends CI_Model{
 
 			$this -> db -> insert('t_anchorNeed',$data);
 
-			return $this -> db -> affected_rows();
+			$row = $this -> db -> affected_rows();
+
+			$anchorNeed_id = $this -> db -> insert_id();
+		
+  		if($row>0)
+  		{	
+  			
+		  	$one_info = array();
+			$insert_data = array();
+			$one_info['anchorNeed_id'] = $anchorNeed_id;
+
+			for($i = 0; $i < count($aderCate); $i++) {
+	            $one_info['aderCate_id'] = $aderCate[$i];
+	            $insert_data[] = $one_info;
+			}
+
+  			$this -> db -> insert_batch("t_r_anchorNeed_aderCate",$insert_data); 
+  			return $this -> db -> affected_rows();
+  		}
+
 	}
 
 	public function get_anchorNeed_by_aderId($ader_id)
@@ -157,6 +201,25 @@ class Ader_model extends CI_Model{
 			//$this -> db -> order_by('add_time','desc');
 			$query = $this -> db -> query( 'select * from t_anchorNeed need where need.ader_id = '.$ader_id.' order by add_time desc limit '.$offset.','.$per_page );
 			return $query -> result();
+	}
+
+
+	public function get_aderCate_by_idArr($aderCate)
+	{	
+
+		$str = "";
+	    while(list($key,$val)= each($aderCate)) { 
+	      $str.=$val."," ;
+	    } 
+	    $ids = substr($str,0,-1);
+		$sql = 'select * from t_aderCate where aderCate_id in'.'('.$ids.')';
+		$cateNames =  $this -> db -> query($sql) -> result();
+		$str1 = "";
+		while(list($key,$val)= each($cateNames)) { 
+	      $str1.=($val->aderCate_name)."、" ;
+	    }
+	    $cates =  substr($str1,0,-1);
+		return $cates;
 	}
 
 

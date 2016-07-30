@@ -135,24 +135,24 @@
           <span class="input-group-addon" id="aderCate"><i class="fa fa-connectdevelop"></i> 广告主行业 <i class="fa fa-asterisk"></i></span>
           <div class="col-md-12 input-border0">
             <div class="checkbox">
-                <input type="checkbox" name="aderCate[]" value="快消">&nbsp;快&nbsp;消
-                <input type="checkbox" name="aderCate[]" value="日化">&nbsp;日&nbsp;化
-                <input type="checkbox" name="aderCate[]" value="电商">&nbsp;电&nbsp;商
-                <input type="checkbox" name="aderCate[]" value="影视">&nbsp;影&nbsp;视
-                <input type="checkbox" name="aderCate[]" value="汽车">&nbsp;汽&nbsp;车
-                <input type="checkbox" name="aderCate[]" value="金融">&nbsp;金&nbsp;融
-                <input type="checkbox" name="aderCate[]" value="医疗">&nbsp;医&nbsp;疗
-                <input type="checkbox" name="aderCate[]" value="服装">&nbsp;服&nbsp;装
-                <input type="checkbox" name="aderCate[]" value="珠宝">&nbsp;珠&nbsp;宝
-                <input type="checkbox" name="aderCate[]" value="数码">&nbsp;数&nbsp;码
-                <input type="checkbox" name="aderCate[]" value="电脑">&nbsp;电&nbsp;脑
-                <input type="checkbox" name="aderCate[]" value="地产">&nbsp;地&nbsp;产
-                <input type="checkbox" name="aderCate[]" value="旅行">&nbsp;旅&nbsp;行
-                <input type="checkbox" name="aderCate[]" value="教育">&nbsp;教&nbsp;育
-                <input type="checkbox" name="aderCate[]" value="餐饮">&nbsp;餐&nbsp;饮
-                <input type="checkbox" name="aderCate[]" value="App">&nbsp;A&nbsp;p&nbsp;p
-                <input type="checkbox" name="aderCate[]" value="互联网">互联网
-                <input type="checkbox" name="aderCate[]" value="文化艺术">&nbsp;文&nbsp;化&nbsp;艺&nbsp;术
+                <input type="checkbox" value="1" name="aderCate[]" value1="快消">&nbsp;快&nbsp;消
+                <input type="checkbox" value="2" name="aderCate[]" value1="日化">&nbsp;日&nbsp;化
+                <input type="checkbox" value="3" name="aderCate[]" value1="电商">&nbsp;电&nbsp;商
+                <input type="checkbox" value="4" name="aderCate[]" value1="影视">&nbsp;影&nbsp;视
+                <input type="checkbox" value="5" name="aderCate[]" value1="汽车">&nbsp;汽&nbsp;车
+                <input type="checkbox" value="6" name="aderCate[]" value1="金融">&nbsp;金&nbsp;融
+                <input type="checkbox" value="7" name="aderCate[]" value1="医疗">&nbsp;医&nbsp;疗
+                <input type="checkbox" value="8" name="aderCate[]" value1="服装">&nbsp;服&nbsp;装
+                <input type="checkbox" value="9" name="aderCate[]" value1="珠宝">&nbsp;珠&nbsp;宝
+                <input type="checkbox" value="10" name="aderCate[]" value1="数码">&nbsp;数&nbsp;码
+                <input type="checkbox" value="11" name="aderCate[]" value1="电脑">&nbsp;电&nbsp;脑
+                <input type="checkbox" value="12" name="aderCate[]" value1="地产">&nbsp;地&nbsp;产
+                <input type="checkbox" value="13" name="aderCate[]" value1="旅行">&nbsp;旅&nbsp;行
+                <input type="checkbox" value="14" name="aderCate[]" value1="教育">&nbsp;教&nbsp;育
+                <input type="checkbox" value="15" name="aderCate[]" value1="餐饮">&nbsp;餐&nbsp;饮
+                <input type="checkbox" value="16" name="aderCate[]" value1="App">&nbsp;A&nbsp;p&nbsp;p
+                <input type="checkbox" value="17" name="aderCate[]" value1="互联网">互联网
+                <input type="checkbox" value="18" name="aderCate[]" value1="文化艺术">&nbsp;文&nbsp;化&nbsp;艺&nbsp;术
             </div>
           </div>
         </div>
@@ -193,7 +193,7 @@
       <div class="form-group">
         <div class="input-group col-md-11">
           <span class="input-group-addon" id="anchorNum"><i class="fa fa-users"></i> 需要主播数量</span>
-          <input name="anchorNum" type="text" class="form-control" placeholder="需要主播数量" aria-describedby="anchorNum">
+          <input name="anchorNum" type="number" class="form-control" placeholder="需要主播数量" aria-describedby="anchorNum">
         </div>
       </div>
 
@@ -205,7 +205,7 @@
           <input
             name="fansNum"
             ng-model="anchorNeed.fansNum"
-            type="text"
+            type="number"
             class="form-control"
             placeholder="要求主播粉丝量"
             aria-describedby="fansNum"

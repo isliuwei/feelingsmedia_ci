@@ -13,7 +13,7 @@
   <base href="<?php echo site_url(); ?>">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/ader-index.css">
+  <link rel="stylesheet" href="css/ader-index.css">
   <title>广告主主页</title>
 
 </head>
@@ -60,7 +60,7 @@
 	</div>
 	<div class="content">
 		<div class="left">
-			<div class="list source">平台主播资源</div>
+			<div class="list source"><a href="ader/anchor">平台主播资源</a></div>
 			<div class="list service">直播内容策划服务</div>
 			<div class="list need"><a href="ader/anchor_need">发布主播需求</a></div>
 		</div>

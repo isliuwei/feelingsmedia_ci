@@ -4,22 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>广告主账号信息管理</title>
   <base href="<?php echo site_url(); ?>">
+  <title>媒体资源公司账号信息管理</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/ader-setting.css">
+  <link rel="stylesheet" href="css/company-setting.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/blue.css">
   <style>
-    .a-tel{
-      color: #337ab7;
-      text-decoration: none;
-    }
-    .fa-exclamation-circle{
+      .a-tel{
+        text-decoration: none;
+        color: #337ab7;
+
+      }
+      .fa-exclamation-circle{
       color: #f00;
     }
-
   </style>
 
 </head>
@@ -32,7 +32,10 @@
         <span><a href="#">登&nbsp;&nbsp;&nbsp;&nbsp;录</a></span>
         <span><a href="#">注&nbsp;&nbsp;&nbsp;&nbsp;册</a></span>
       </div>
+
+
   </div> -->
+
   <header class='navbar navbar-default navbar-fixed-top' id='main-navbar' role='banner'>
 		<div class='container-fluid'>
 			<div class='navbar-header'>
@@ -46,18 +49,20 @@
 			</div>
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
-			    <li><a href="ader/ader_index"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
-			    <li class="active"><a href="#">账号管理</a></li>
+<!--			    <li><a href="index5.html" target="_blank">媒体咨询公司名称</a></li>-->
+
+
+                  <li><a href="index5.html" target="_blank"><?php echo $companyInfo -> company_name;?></a></li>
+			      <li class="active"><a href="#">账号管理</a></li>
 			  </ul>
 
         <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
 
         <ul class='nav navbar-nav navbar-right'>
-        <a class="btn btn-success navbar-btn login-btn"  href="ader/anchor_need_profile">账号信息</a>
+        <a class="btn btn-success navbar-btn login-btn"  href="company/company_need_profile">账号信息</a>
         <a class="btn btn-danger navbar-btn login-btn" data-toggle="modal" data-target="#newPassword">修改密码</a>
-        <!-- <a class="btn btn-primary navbar-btn login-btn" href="ader/ader_setting?ader_id=<?php echo  $aderInfo -> ader_id ;?>">账号管理</a> -->
-        <!-- <a class="btn btn-primary navbar-btn login-btn">账号管理</a> -->
-        <a class="btn btn-default navbar-btn login-btn" href="ader/logout">退出登录</a>
+        <a class="btn btn-default navbar-btn login-btn"  href="company/login_out">退出登录</a>
+
         <a class="btn navbar-btn js-login-btn" href="#">Register</a>
 
         </ul>
@@ -65,17 +70,29 @@
 		</div>
 	</header>
 
-  <div class="container">
-    <h2 class="title">广告主账号信息管理</h2>
+  <div class="container main-wrap">
+    <h2 class="title">媒体咨询公司信息管理</h2>
     <div class="row" ng-controller="updateFormController">
 
-      <form action="ader/update_ader_info" method="post" class="form-horizontal col-md-9 col-md-offset-1" name="updateForm">
+
+      <form action="company/update_company_info" class="form-horizontal col-md-9 col-md-offset-1" name="updateForm"  method="post">
+      <input type="hidden" name="company_id" value="<?php echo $this -> uri -> segment(3); ?>">
+
+
+
         <div class="form-group">
-          <!-- ng-submit="updateInfo() -->
-          <input type="hidden" name="ader_id" value="<?php echo $this -> input -> get('ader_id') ?>">
+          <blockquote>
+          <p>如果需要更改资源信息，请与客服联系</p>
+          <footer>客服电话：<a href="tel:400-8800-8800">400-8800-8800</a> <cite title="Source Title">feelingsmedie.com</cite></footer>
+          </blockquote>
+
+        </div>
+
+
+        <div class="form-group">
           <label for="tel" class="col-sm-2 control-label">联系方式</label>
           <div class="col-sm-10">
-            <input type="text" name="tel"  class="form-control" id="tel" placeholder="请输入联系人手机号" value="<?php echo $aderInfo -> ader_tel ?>">
+            <input type="number" class="form-control" name="tel" id="tel" placeholder="请输入联系人手机号" value="<?php echo $companyInfo -> company_tel ;?>">
           </div>
         </div>
 
@@ -83,7 +100,7 @@
         <div class="form-group">
           <label for="email" class="col-sm-2 control-label">邮箱</label>
           <div class="col-sm-10">
-            <input type="email" name="email"  class="form-control" id="email" placeholder="请输入邮箱地址" value="<?php echo $aderInfo -> ader_email ?>">
+            <input type="email" class="form-control" id="email" name="email" placeholder="请输入邮箱地址" value="<?php echo $companyInfo -> company_email ;?>">
           </div>
         </div>
 
@@ -136,9 +153,7 @@
   </div>
 
 
-
-
-  <div class="modal fade" id="newPassword" tabindex="-1" role="dialog" aria-labelledby="newPasswordLabel" ng-controller="passwordFormController">
+<div class="modal fade" id="newPassword" tabindex="-1" role="dialog" aria-labelledby="newPasswordLabel" ng-controller="passwordFormController">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -146,8 +161,8 @@
           <h4 class="modal-title" id="newPasswordLabel"><i class="fa fa-exclamation-circle"></i> 修改密码</h4>
         </div>
         <div class="modal-body">
-          <form action="ader/update_password" method="post" name="passwordForm">
-            <input type="hidden" name="ader_id" value="<?php echo $this->input->get('ader_id'); ?>">
+          <form action="company/update_password" method="post" name="passwordForm">
+            <input type="hidden" name="company_id" value="<?php echo $this -> uri -> segment(3); ?>">
             <div class="form-group">
               <label for="old-password" class="control-label"><i class="fa fa-key"></i>请输入当前密码</label>
               <input
@@ -240,43 +255,51 @@
   </div>
 
 
-
-
-
-
-
-  <script src="js/jquery-1.11.3.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/angular.js"></script>
-  <script src="js/icheck.js"></script>
-  <script src="js/ader-setting.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/icheck.js"></script>
+<script src="js/company-setting.js"></script>
 <script>
-  $('input').iCheck({ checkboxClass: 'icheckbox_square-blue', radioClass: 'iradio_square-blue', increaseArea: '20%'  });
-</script>
-<!-- <script src="js/animitter.js"></script>
-<script src="js/dat-gui.js"></script>
-<script src="js/toxiclibs.js"></script>
-<script src="js/slogan-4.js"></script> -->
-<script>
-var $pwdInput = $('#old-password');
-$pwdInput.on('blur',function(){
-  var $oldPwd = $pwdInput.val().trim();
-    if($oldPwd==""){
-        return;
-    }else{
-      $.get('ader/check_password',{'oldPassword':$oldPwd},function(res){
-        if(res=='true'){
-          alert('密码验证成功！');
-        }else{
-          $pwdInput.after("<p class='error-info'>密码验证失败！请重新输入！</p>");
-          setTimeout(function(){location.reload()},2000);
-        }
-      },'text');
+      $emailInput = $('#email');
+      $emailInput.on('blur',function(){
+          $email = $(this).val().trim();
+          if($email == ""){
+              return ;
+          }else {
+              $.get("company/check_email",{'email':$email},function(res){
+                  if(res == 'true'){
+                      //$emailInput.after("<p class='error-info'>邮箱重复，请重新输入！</p>");
+                      alert("邮箱重复，请重新输入！");
+                      $emailInput.val("");
+                      //location.reload();
+                  }
+              },"text");
+          }
+      })
+  </script>
+  <script>
+    var $pwdInput = $('#old-password');
+      $pwdInput.on('blur',function(){
+        var $oldPwd = $pwdInput.val().trim();
+          if($oldPwd==""){
+              return;
+          }else{
+            $.get('company/check_password',{'oldPassword':$oldPwd},function(res){
+              if(res=='true'){
+                alert('密码验证成功！');
+              }else{
+                $pwdInput.after("<p class='error-info'>密码验证失败！请重新输入！</p>");
+                setTimeout(function(){location.reload()},2000);
+              }
+            },'text');
 
-    }
+          }
 
-});
+  });
+  </script>
 
-</script>
+
+
 </body>
 </html>

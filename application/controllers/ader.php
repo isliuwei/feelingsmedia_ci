@@ -13,6 +13,13 @@ class Ader extends CI_Controller {
 
 	}
 
+	public function pre($data)
+	{
+		echo "<pre>";
+		var_dump($data);
+		echo "</pre>";
+	}
+
 
 	public function index()
 	{
@@ -112,6 +119,23 @@ class Ader extends CI_Controller {
 			echo "fail";
 		}
 	}
+
+	// public function check_ader_by_username_and_email()
+	// {
+	// 	$username = $this -> input -> get('username');
+	// 	$email = $this -> input -> get('email');
+
+	// 	$row = $this -> ader_model -> get_ader_by_username_email($username,$email);
+
+	// 	if($row){
+	// 		echo "success";
+	// 	}
+
+
+
+
+
+	// }
 
 	public function save_ader()
 	{
@@ -253,15 +277,104 @@ class Ader extends CI_Controller {
 	  }
 
 		$username = $this -> input -> post('username');
+
 		$email = $this -> input -> post('email');
-		$password = getRandPwd(12);
 
-		$row = $this -> ader_model -> update_password_by_username($username,$password);
-		// var_dump($row);
-		// die();
+		$email_obj = $this -> ader_model -> get_email_by_username($username);
 
-		if($row>0){
-			//以下设置Email参数
+		$email_reg = $email_obj -> ader_email;
+		
+		$row0 = $this -> ader_model -> get_ader_by_username_email($username,$email);
+
+		
+
+		if($row0){
+
+			$myEmail =  $row0 -> ader_email;
+
+			$password = getRandPwd(12);
+
+			$row = $this -> ader_model -> update_password_by_username($username,$password);
+			
+
+			if($row>0){
+				//以下设置Email参数
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'smtp.163.com';
+				$config['smtp_user'] = 'lw.588';
+				$config['smtp_pass'] = 'wyyx16220811';
+				$config['smtp_port'] = '25';
+				$config['charset'] = 'utf-8';
+				$config['wordwrap'] = TRUE;
+				$config['mailtype'] = 'html';
+				$this->email->initialize($config);
+
+				//以下设置Email内容
+				$this->email->from('lw.588@163.com', '北京慧灵思投资管理有限公司');
+				$this->email->to($myEmail);
+				$this->email->subject('找回密码');
+				$this->email->message(
+					'亲爱的用户：您好！请您使用该密码进行登录
+					<font color=red>'.$password.'</font>,
+					为保证您的账户安全，请您尽快前往个人中心修改密码！
+					若不修改，请您牢记当前密码，您可以使用当前密码作为您的登录密码！
+					请勿直接回复该邮件！谢谢您的合作！from feelingsmedia.com'
+				);
+				$this->email->send();
+				$this -> load -> view('redirect-pwd');
+
+			}
+
+			
+		}else{
+			$username = $this -> input -> post('username');
+
+			$email = $this -> input -> post('email');
+
+
+
+			$email_obj = $this -> ader_model -> get_email_by_username($username);
+
+			$email_reg = $email_obj -> ader_email;
+
+			//$myEmail =  $info -> ader_email;
+
+
+			$password = getRandPwd(12);
+
+			$row = $this -> ader_model -> update_password_by_username($username,$password);
+			
+
+			if($row>0){
+				//以下设置Email参数
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'smtp.163.com';
+				$config['smtp_user'] = 'lw.588';
+				$config['smtp_pass'] = 'wyyx16220811';
+				$config['smtp_port'] = '25';
+				$config['charset'] = 'utf-8';
+				$config['wordwrap'] = TRUE;
+				$config['mailtype'] = 'html';
+				$this->email->initialize($config);
+
+				//以下设置Email内容
+				$this->email->from('lw.588@163.com', '北京慧灵思投资管理有限公司');
+				$this->email->to($email_reg);
+				$this->email->subject('找回密码');
+				$this->email->message(
+					'亲爱的用户：您好！请您使用该密码进行登录
+					<font color=red>'.$password.'</font>,
+					为保证您的账户安全，请您尽快前往个人中心修改密码！
+					若不修改，请您牢记当前密码，您可以使用当前密码作为您的登录密码！
+					若未收到邮件,请您拨打我们的客服电话:400-0000-0000,与我们取得联系。
+					我们将第一时间为您提供服务。
+					请勿直接回复该邮件！谢谢您的合作！from feelingsmedia.com'
+				);
+				$this->email->send();
+				$this -> load -> view('redirect-pwd');
+
+			}
+
 			$config['protocol'] = 'smtp';
 			$config['smtp_host'] = 'smtp.163.com';
 			$config['smtp_user'] = 'lw.588';
@@ -277,18 +390,25 @@ class Ader extends CI_Controller {
 			$this->email->to($email);
 			$this->email->subject('找回密码');
 			$this->email->message(
-				'亲爱的用户：您好！请您使用该密码进行登录
-				<font color=red>'.$password.'</font>,
-				为保证您的账户安全，请您尽快前往个人中心修改密码！
+				'亲爱的用户：您好！我们已经将动态密码发送至您注册的邮箱:
+				<font color=red>'.$email_reg.'</font>,请您登录该邮箱,
+				查看我们发送的动态密码邮件,使用动态密码进行登录。
+				为保证您的账户安全，请您在登录成功后,尽快前往个人中心修改密码！
 				若不修改，请您牢记当前密码，您可以使用当前密码作为您的登录密码！
-				请勿直接回复该邮件！谢谢您的合作！from feelingsmedia.com'
+				如果您无法登录您的注册邮箱,或者未收到验证邮件,
+				请您拨打我们的客服电话:400-0000-0000,与我们取得联系。
+				我们将第一时间为您提供服务。
+				请勿直接回复该邮件！谢谢您的合作！from isliuwei.com'
 			);
 			$this->email->send();
 			$this -> load -> view('redirect-pwd');
 
-		}else{
-			echo "fail";
+
 		}
+		
+		
+
+		
 
 
 
@@ -366,18 +486,16 @@ class Ader extends CI_Controller {
 			$otherNeed = $this -> input -> post('otherNeed');
 			$anchorCate = $this -> input -> post('anchorCate');
 			$aderCate = $this -> input -> post('aderCate');
+
+			$aderCates = $this -> ader_model -> get_aderCate_by_idArr($aderCate);
+
 			$anchorCateStr = "";
-			$aderCateStr = "";
+			
 			for($i=0;$i<count($anchorCate);$i++){
 					$anchorCateStr=$anchorCateStr.$anchorCate[$i]."、";
 			}
+
 			$anchorCates =  substr($anchorCateStr,0,-1);
-
-			for($i=0;$i<count($aderCate);$i++){
-					$aderCateStr=$aderCateStr.$aderCate[$i]."、";
-			}
-			$aderCates =  substr($aderCateStr,0,-1);
-
 
 			$row = $this -> ader_model -> save_anchorNeed_by_all($aderBrand,$aderPro,$aderTime,$aderCycle,$anchorNum,$fansNum,$anchorCoop,$aderLogo_url,$otherNeed,$anchorCate,$aderCate,$anchorCates,$aderCates,$ader_id);
 
@@ -393,23 +511,23 @@ class Ader extends CI_Controller {
 	public function anchor_need_profile()
 	{
 
-				$aderNeeds_count = $this -> ader_model -> get_anchorNeed_count();
+		$aderNeeds_count = $this -> ader_model -> get_anchorNeed_count();
 
-				$aderInfo = $this -> session -> userdata('aderInfo');
+		$aderInfo = $this -> session -> userdata('aderInfo');
 
-				$ader_id = $aderInfo -> ader_id;
+		$ader_id = $aderInfo -> ader_id;
 
-				$offset = $this -> uri -> segment(3)==NULL?0 : $this -> uri ->segment(3);
+		$offset = $this -> uri -> segment(3)==NULL?0 : $this -> uri ->segment(3);
 
         $this->load->library('pagination');
 
         $config['base_url'] = 'ader/anchor_need_profile';
         $config['total_rows'] = $aderNeeds_count;
         $config['per_page'] = 3;
-				$config['full_tag_open'] = '<ul class="pagination">';
-			  $config['full_tag_close'] = '</ul>';
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
         $config['last_link'] = FALSE;
-				$config['first_link'] = FALSE;
+		$config['first_link'] = FALSE;
         $config['prev_link'] = '«';//上一页
         $config['prev_tag_open'] = '<li>';
         $config['prev_tag_close'] = '</li>';
@@ -423,17 +541,266 @@ class Ader extends CI_Controller {
 
         $this -> pagination -> initialize($config);
 
-				$result = $this -> ader_model -> get_anchorNeed_by_aderId_and_page($ader_id,$config['per_page'],$offset);
+		$result = $this -> ader_model -> get_anchorNeed_by_aderId_and_page($ader_id,$config['per_page'],$offset);
 
-				$data = array(
-					'anchorNeeds' => $result
-				);
+		$data = array(
+			'anchorNeeds' => $result
+		);
 
-				if($result){
-		        $this -> load -> view('anchor-need-profile',$data);
-		    }
+		if($result){
+		    $this -> load -> view('anchor-need-profile',$data);
+		}
 
 	}
+
+	public function anchor()
+	{	
+		$anchorCount = $this -> anchor_model -> get_anchor_count();
+		$offset = $this -> uri -> segment(3) == NULL?0 : $this -> uri -> segment(3);
+        $this->load->library('pagination');
+        $config['base_url'] = 'ader/anchor';
+        $config['total_rows'] = $anchorCount;
+        $config['per_page'] = 6;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+        $result = $this -> anchor_model -> get_anchor_by_page($config['per_page'],$offset);
+
+		$data = array(
+			'anchors' => $result,
+			'count' => $anchorCount
+		);
+
+		if($result){
+		    $this -> load -> view('anchor',$data);
+		}
+
+	}
+
+
+	public function search_by_fansNumber()
+	{
+		$range = $this -> input -> get('numRange');
+		switch ($range) {
+			case '0':
+				$condition = '> 0';
+				break;
+			case '1':
+				$condition = 'between 0 and 10000';
+				break;
+			case '2':
+				$condition = 'between 10001 and 50000';
+				break;
+			case '3':
+				$condition = 'between 50001 and 100000';
+				break;
+			case '4':
+				$condition = 'between 100001 and 150000';
+				break;
+			case '5':
+				$condition = 'between 150001 and 250000';
+				break;
+			case '6':
+				$condition = 'between 250001 and 400000';
+				break;	
+			case '7':
+				$condition = 'between 400001 and 600000';
+				break;	
+			case '8':
+				$condition = 'between 600001 and 1000000';
+				break;
+			case '9':
+				$condition = '> 1000000';
+				break;		
+			
+			default:
+				$condition = '> 0';
+				break;
+		}
+
+
+
+		$result = $this -> anchor_model -> get_anchor_count_by_range($condition);
+		
+		$anchorCount = $result[0] -> {'count(*)'};
+	
+		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
+        $this->load->library('pagination');
+        $config['base_url'] = 'ader/search_by_fansNumber?numRange='.$range;
+        $config['total_rows'] = $anchorCount;
+        $config['per_page'] = 3;
+        $config['page_query_string'] = TRUE;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+
+
+        $result = $this -> anchor_model -> get_anchor_by_range_and_page($condition,$config['per_page'],$offset);
+		
+		//$result = $this -> anchor_model -> search_anchor_by_range($condition);
+
+		
+
+
+		if($result){
+
+			$data = array(
+				'anchors' => $result,
+				'count' => $anchorCount
+			);
+			
+			$this -> load -> view('anchor-by-fansNumber',$data);
+		   
+		}else{
+			$this -> load -> view('anchor-search-null');
+		}
+
+
+	}
+
+	public function search_by_anchorCate()
+	{
+		
+		$anchorCate_id = $this -> input -> get('anchorCate_id');
+
+		$count = $this -> anchor_model -> get_anchor_count_by_anchorCate($anchorCate_id);
+		
+		$anchorCount = $count[0] -> {'count(*)'};
+
+		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
+        $this->load->library('pagination');
+        $config['base_url'] = 'ader/search_by_anchorCate?anchorCate_id='.$anchorCate_id;
+        $config['total_rows'] = $anchorCount;
+        $config['per_page'] = 3;
+        $config['page_query_string'] = TRUE;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+
+        $result = $this -> anchor_model -> get_anchor_by_anchorCate($anchorCate_id,$config['per_page'],$offset);
+
+		// $this -> pre($result);
+		// die();
+
+
+
+        if($result){
+
+			$data = array(
+				'anchors' => $result,
+				'count' => $anchorCount
+			);
+			
+			$this -> load -> view('anchor-by-fansNumber',$data);
+		   
+		}else{
+			$this -> load -> view('anchor-search-null');
+		}
+
+
+		
+	}
+
+	public function search_by_anchor_province()
+	{
+		$province = $this -> input -> get('province');
+		$count = $this -> anchor_model -> get_anchor_count_by_province($province);
+		$anchorCount = $count[0] -> {'count(*)'};
+
+		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
+        $this->load->library('pagination');
+        $config['base_url'] = 'ader/search_by_anchor_province?anchor_province='.$province;
+        $config['total_rows'] = $anchorCount;
+        $config['per_page'] = 3;
+        $config['page_query_string'] = TRUE;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+
+        $result = $this -> anchor_model -> get_anchor_by_province($province,$config['per_page'],$offset);
+
+
+        if($result){
+
+			$data = array(
+				'anchors' => $result,
+				'count' => $anchorCount
+			);
+			
+			$this -> load -> view('anchor-by-fansNumber',$data);
+		   
+		}else{
+			$this -> load -> view('anchor-search-null');
+		}
+
+
+
+
+
+
+
+
+
+		
+	}
+
+
 
 
 

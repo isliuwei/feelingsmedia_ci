@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <base href="<?php echo site_url(); ?>">
+  <title>媒体咨询公司注册页面</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/ader-reg.css">
+  <link rel="stylesheet" href="css/company-reg.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blue.css">
   <link rel="stylesheet" href="css/lrtk.css" />
   <link rel="stylesheet" href="css/lrtk1.css" />
-  <title>广告主注册页面</title>
+
+
   <style>
     #captcha-tip{
       cursor: pointer;
@@ -28,11 +31,15 @@
     a:hover{
       text-decoration: none;
     }
+    .icheckbox_square-blue{
+      width: 25px;
+      height: 25px;
+      margin-bottom: 10px;
+    }
   </style>
 
 </head>
 <body>
-
   <header class='navbar navbar-default navbar-fixed-top' id='main-navbar' role='banner'>
 		<div class='container-fluid'>
 			<div class='navbar-header'>
@@ -45,13 +52,13 @@
 			</div>
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
-			    <li><a href="welcome/index" >首页</a></li>
-			    <li class="active"><a href="#">我是广告主 | 注册</a></li>
+			    <li><a href="index.html" target="_blank">首页</a></li>
+			    <li class="active"><a href="#">我是媒体咨询公司 | 注册</a></li>
 			  </ul>
 
         <ul class='nav navbar-nav navbar-right'>
 
-        <a class="btn btn-primary navbar-btn login-btn" data-toggle="modal" data-target="#ader-reg" href="#">登录</a>
+        <a class="btn btn-success navbar-btn login-btn" data-toggle="modal" data-target="#company-reg" href="#">登录</a>
 
         <a class="btn navbar-btn js-login-btn" href="#">Register</a>
 
@@ -60,17 +67,19 @@
 		</div>
 	</header>
 
+  <div class="container">
+    <h2 class="title">媒体咨询公司注册</h2>
+    <div class="row">
 
-  <div class="container col-sx-10">
-    <h2 class="title">广告主注册</h2>
-    <div class="row" >
-
-      <form method="post" action="ader/save_ader" class="form col-md-8 col-md-offset-2" name="signUpForm" >
+      <form class="form col-md-8 col-md-offset-2" name="signUpForm" ng-submit="submitForm()"
+        method="post" action="company/save_company" 
+      >
 
 
-        <!-- 登录名验证逻辑 -->
+
+          <!-- 登录名验证逻辑 -->
         <div class="form-group">
-          <label for="username"><i class="fa fa-asterisk"></i> 登录名</label>
+          <label for="username"><i class="fa fa-asterisk"></i>登录名</label>
           <div class="wrap">
             <input
               type="text"
@@ -86,13 +95,10 @@
               ng-minlength="6"
               ng-maxlength="22"
               required
-
             >
-
             <i class="fa fa-check tip right" ng-if="signUpForm.username.$valid && signUpForm.username.$touched"></i>
             <i class="fa fa-remove tip wrong" ng-if="signUpForm.username.$invalid && signUpForm.username.$touched"></i>
           </div>
-
 
 
 
@@ -122,7 +128,7 @@
 
 
         <div class="form-group">
-          <label for="email"><i class="fa fa-asterisk"></i> 邮箱</label>
+          <label for="email">邮箱</label>
           <div class="wrap">
           <input
             name="email"
@@ -136,7 +142,6 @@
             class="form-control"
             id="email"
             placeholder="请输入联系人邮箱"
-            data-toggle="tooltip" data-placement="left" title="请填写正确邮箱,找回密码的凭证"
           >
           <i class="fa fa-check tip right" ng-if="signUpForm.email.$valid && signUpForm.email.$touched"></i>
           <i class="fa fa-remove tip wrong" ng-if="signUpForm.email.$invalid && signUpForm.email.$touched"></i>
@@ -156,9 +161,8 @@
 
 
 
-
         <div class="form-group">
-            <label for="pwd1"><i class="fa fa-asterisk"></i> 密码</label>
+            <label for="pwd1">密码</label>
             <div class="wrap">
               <input
                 type="password"
@@ -193,7 +197,7 @@
             密码含有非法字符，密码由数字或字母组成</p>
         </div>
         <div class="form-group">
-          <label for="pwd2"><i class="fa fa-asterisk"></i> 确认密码</label>
+          <label for="pwd2">确认密码</label>
           <div class="wrap">
             <input
               type="password"
@@ -238,16 +242,16 @@
 
 
         <div class="form-group">
-          <label for="tel"><i class="fa fa-asterisk"></i> 公司联系电话</label>
+          <label for="tel">公司联系电话</label>
           <div class="wrap">
             <input
               type="number"
               class="form-control"
               id="tel"
-              placeholder="请输入联系人手机号"
+              placeholder="请输入公司联系电话"
               ng-model="userdata.tel"
               name="tel"
-              ng-pattern="/^1[3|4|5|7|8][0-9]{9}$/"
+              ng-pattern ="/^1[3|4|5|7|8][0-9]{9}$/"
               ng-class="{
                 'error': signUpForm.tel.$invalid && signUpForm.tel.$touched,
                 'success':signUpForm.tel.$valid }"
@@ -261,23 +265,16 @@
             <P
               class="error-info"
               ng-if="signUpForm.tel.$touched && signUpForm.tel.$error.required"
-            >手机号不能为空</P>
-
-
-            <!-- 验证必填 $error.required -->
-            <P
-              class="error-info"
-              ng-if="signUpForm.tel.$touched && signUpForm.tel.$error.pattern"
-            >手机号格式不正确</P>
+            >联系电话不能为空</P>
 
           </div>
 
         </div>
 
-
+        
 
         <div class="form-group">
-          <label for="company"><i class="fa fa-asterisk"></i> 公司名称</label>
+          <label for="company">公司名称</label>
           <div class="wrap">
             <input
               type="text"
@@ -302,7 +299,7 @@
 
         </div>
         <div class="form-group">
-          <label for="website"><i class="fa fa-asterisk"></i> 公司网址</label>
+          <label for="website">公司网址</label>
           <div class="wrap">
             <input
               name="website"
@@ -335,12 +332,71 @@
 
 
 
+        <div class="form-group">
+          <label for="resourceCate" class="col-sm-3 control-label">公司资源类型</label>
+          <br>
+          <div class="col-sm-9">
+            <div class="checkbox">
+                <input type="checkbox" name="resourceCate[]" value="1">  楼&nbsp;宇
+                <input type="checkbox" name="resourceCate[]" value="2">  公&nbsp;交
+                <input type="checkbox" name="resourceCate[]" value="3">  机&nbsp;场
+                <input type="checkbox" name="resourceCate[]" value="4">  校&nbsp;园
+                <input type="checkbox" name="resourceCate[]" value="5">  地&nbsp;铁
+                <input type="checkbox" name="resourceCate[]" value="6">  院&nbsp;线
+                <input type="checkbox" name="resourceCate[]" value="7">  擎&nbsp;天&nbsp;柱
+                <br>
+                <input type="checkbox" name="resourceCate[]" value="8">  自&nbsp;媒&nbsp;体
+                <input type="checkbox" name="resourceCate[]" value="9">  户外楼梯LED大屏
+            </div>
+          </div>
+        </div>
 
 
         <div class="form-group">
-          <label for="captcha"><i class="fa fa-asterisk"></i> 验证码</label>
+          <label for="resourceCity" class="col-sm-3 control-label">公司资源分布城市</label>
+          <br>
+          <div class="col-sm-9">
+            <div class="checkbox">
+                <input type="checkbox" name="resourceCity[]" value="1">  北&nbsp;京
+                <input type="checkbox" name="resourceCity[]" value="2">  上&nbsp;海
+                <input type="checkbox" name="resourceCity[]" value="3">  广&nbsp;州
+                <input type="checkbox" name="resourceCity[]" value="4">  深&nbsp;圳
+                <input type="checkbox" name="resourceCity[]" value="5">  天&nbsp;津
+                <input type="checkbox" name="resourceCity[]" value="6">  重&nbsp;庆
+                <input type="checkbox" name="resourceCity[]" value="7">  太&nbsp;原
+                <input type="checkbox" name="resourceCity[]" value="8">  沈&nbsp;阳
+                <input type="checkbox" name="resourceCity[]" value="9">  长&nbsp;春
+                <input type="checkbox" name="resourceCity[]" value="10">  南&nbsp;京
+                <input type="checkbox" name="resourceCity[]" value="11">  杭&nbsp;州
+                <input type="checkbox" name="resourceCity[]" value="12">  合&nbsp;肥
+                <input type="checkbox" name="resourceCity[]" value="13">  福&nbsp;州
+                <input type="checkbox" name="resourceCity[]" value="14">  南&nbsp;昌
+                <input type="checkbox" name="resourceCity[]" value="15">  济&nbsp;南
+                <input type="checkbox" name="resourceCity[]" value="16">  郑&nbsp;州
+                <input type="checkbox" name="resourceCity[]" value="17">  武&nbsp;汉
+                <input type="checkbox" name="resourceCity[]" value="18">  长&nbsp;沙
+                <input type="checkbox" name="resourceCity[]" value="19">  成&nbsp;都
+                <input type="checkbox" name="resourceCity[]" value="20">  贵&nbsp;阳
+                <input type="checkbox" name="resourceCity[]" value="21">  昆&nbsp;明
+                <input type="checkbox" name="resourceCity[]" value="22">  西&nbsp;安
+                <input type="checkbox" name="resourceCity[]" value="23">  南&nbsp;宁
+                <input type="checkbox" name="resourceCity[]" value="24">  大&nbsp;连
+                <input type="checkbox" name="resourceCity[]" value="25">  青&nbsp;岛
+                <input type="checkbox" name="resourceCity[]" value="26">  石&nbsp;家&nbsp;庄
+                <input type="checkbox" name="resourceCity[]" value="27">  哈&nbsp;尔&nbsp;滨
+                <input type="checkbox" name="resourceCity[]" value="28"> 乌&nbsp;鲁&nbsp;木&nbsp;齐
+                <input type="checkbox" name="resourceCity[]" value="29"> 呼&nbsp;和&nbsp;浩&nbsp;特
+                <input type="checkbox" name="resourceCity[]" value="30">  其&nbsp;它
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="captcha">验证码</label>
           <input
-            type="number"
+            type="text"
             class="form-control"
             id="captcha"
             placeholder="请输验证码"
@@ -351,6 +407,7 @@
               'error': signUpForm.captcha.$invalid && signUpForm.captcha.$touched,
               'success':signUpForm.captcha.$valid }"
             compare="userdata.captcha_ci"
+
           >
 
           <input
@@ -359,11 +416,6 @@
             name="captcha_ci"
             id="captcha_ci"
           >
-
-
-
-
-
 
 
           <img id="captcha-img" src="captcha/<?php echo $codeinfo['time']; ?>.jpg" alt="">
@@ -375,19 +427,18 @@
         </div>
 
 
-        <button id="sub-btn" type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-primary btn-lg">完成注册</button>
+        <button id="sub-btn" type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-lg btn-success">完成注册</button>
       </form>
     </div>
   </div>
 
 
-
-  <div class="modal fade" id="ader-reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal fade" id="company-reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
       <button type="button" id="close-btn" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <div id="login">
-                <form  action="ader/check_login" name="loginForm" method="post" class="container offset1 loginform">
-                    <div id="owl-login">
+          <div class="login">
+                <form action="company/check_login" name="loginForm" method="post" class="container offset1 loginform" >
+                    <div class="owl-login">
                         <div class="hand"></div>
                         <div class="hand hand-r"></div>
                         <div class="arms">
@@ -396,9 +447,8 @@
                         </div>
                     </div>
                     <br>
-                    <h3>广告主登录</h3>
+                    <h3>媒体资源公司登录</h3>
                     <div class="pad">
-
                         <div class="control-group">
                             <div class="controls">
                                 <label for="username" class="control-label fa fa-user"></label>
@@ -416,9 +466,10 @@
                                   'success':loginForm.password.$valid }" required id="password" type="password" name="password" placeholder="密码" tabindex="2" class="form-control input-medium">
                             </div>
                         </div>
+
                         <div class="control-group">
                             <div class="controls">
-                              <label for="captcha" class="control-label fa fa-qrcode"></label>
+                                <label for="captcha" class="control-label fa fa-qrcode"></label>
                                 <input
                                   id="captcha_login"
                                   type="number"
@@ -446,16 +497,15 @@
                                 <img id="captcha-img-login" src="captcha/<?php echo $codeinfo['time']; ?>.jpg" alt="">
                                 <span id="captcha-tip-login"><a href="javascript:;"> &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-refresh"></i>换一换</a></span>
                             </div>
-
-                        </div>
-
-
+                          </div>
                     </div>
                     <div class="form-actions">
-                        <p><a href="ader/forget_password" tabindex="5" class=" pull-left btn-link text-muted">忘记密码?</a></p>
+                        <p><a href="company/forget_password" tabindex="5" class=" pull-left btn-link text-muted">忘记密码?</a></p>
                         <br>
+
                         <button type="submit" tabindex="4" class="btn btn-primary" ng-disabled="loginForm.$invalid">登录</button>
-                        <button type="button" tabindex="4" class="btn btn-warning"><a href="ader/ader_reg" style="display:block;color:#fff;">注册</a></button>
+                        <button type="button" tabindex="4" class="btn btn-warning"><a style="display:block;color:#fff;">注册</a></button>
+                    
                     </div>
 
                 </form>
@@ -464,77 +514,65 @@
   </div>
 
 
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/angular.js"></script>
+  <script src="js/company-reg.js"></script>
+
+  <script src="js/icheck.js"></script>
+  <script>
+    $('input').iCheck({ checkboxClass: 'icheckbox_square-blue', radioClass: 'iradio_square-blue', increaseArea: '20%'  });
+  </script>
 
 
+  <script>
+    $(function() {
+
+        $('.login #password').focus(function() {
+            $('.owl-login').addClass('password');
+        }).blur(function() {
+            $('.owl-login').removeClass('password');
+        });
 
 
+    });
+  </script>
 
+  <script>
+      $userInput = $('#username');
+          $userInput.on('blur',function(){
+              $username = $(this).val().trim();
+              if($username==""){
+                  return;
+              }else{
+                  $.get('company/check_username',{'user':$username},function(res){
+                      if(res == 'true'){
+                          //$userInput.after("<p class='error-info'>用户名重复，请重新输入！</p>");
+                          alert("用户名重复，请重新输入！");
+                          $userInput.empty();
+                          location.reload();
+                      }
+                  },'text');
+              }
+         });
+  </script>
 
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/angular.js"></script>
-<script src="js/ader-reg.js"></script>
-<script>
-  $(function() {
-      $('#login #password').focus(function() {
-          $('#owl-login').addClass('password');
-      }).blur(function() {
-          $('#owl-login').removeClass('password');
-      });
-
-
-  });
-
-
-</script>
-<script type="text/javascript">
-  var $userInput = $('#username');
-  $userInput.on('blur',function(){
-    var $username = $userInput.val().trim();
-      if($username==""){
-          return;
-      }else{
-        $.get('ader/check_ader_username',{username:$username},function(result){
-            if(result=='success'){
-                $userInput.val('');
-                alert("用户名重复");
-                location.reload();
-            }
-        },'text');
-
-      }
-
-  });
-
-
-  var $emailInput = $('#email');
-  $emailInput.on('blur',function(){
-    var $email = $emailInput.val().trim();
-    if($email==""){
-        return;
-    }else{
-        $.get('ader/check_ader_email',{email:$email},function(result){
-            if(result=='success'){
-                $emailInput.val('');
-                alert("邮箱重复");
-                location.reload();
-            }
-        },'text');
-    }
-  });
-
-</script>
-<script>
-  $(function () {
-     $('[data-toggle="tooltip"]').tooltip()
-  });
-</script>
-
-
-
-
-
-
-
+  <script>
+      $emailInput = $('#email');
+      $emailInput.on('blur',function(){
+          $email = $(this).val().trim();
+          if($email == ""){
+              return ;
+          }else {
+              $.get("company/check_email",{'email':$email},function(res){
+                  if(res == 'true'){
+                      //$emailInput.after("<p class='error-info'>邮箱重复，请重新输入！</p>");
+                      alert("邮箱重复，请重新输入！");
+                      location.reload();
+                  }
+              },"text");
+          }
+      })
+  </script>
 </body>
 </html>

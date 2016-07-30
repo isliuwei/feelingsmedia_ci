@@ -97,7 +97,9 @@
 
   <div class="container">
     <div class="row">
-      <?php foreach($anchorNeeds as $anchorNeed){ ?>
+      <?php
+        foreach($anchorNeeds as $anchorNeed){ 
+      ?>
         <div class="panel panel-success col-md-3 col-md-offset-1">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-paint-brush"></i> 发布需求 </h3>
