@@ -192,9 +192,9 @@ class Ader_model extends CI_Model{
 			return $query -> result();
 	}
 
-	public function get_anchorNeed_count(){
-		return $this->db->count_all('t_anchorNeed');
-	}
+	// public function get_anchorNeed_count(){
+	// 	return $this->db->count_all('t_anchorNeed');
+	// }
 
 	public function get_anchorNeed_by_aderId_and_page($ader_id,$per_page,$offset)
 	{
@@ -220,6 +220,34 @@ class Ader_model extends CI_Model{
 	    }
 	    $cates =  substr($str1,0,-1);
 		return $cates;
+	}
+
+
+	
+
+	public function get_anchorNeed_count($ader_id)
+	{
+		$sql = 'select count(*) from t_anchorNeed as tb where tb.ader_id = '.$ader_id;
+
+		return $this -> db -> query($sql) -> result();
+	}
+
+
+	public function get_companyNeed_count($ader_id)
+	{
+		$sql = 'select count(*) from t_companyNeed as tb where tb.ader_id = '.$ader_id;
+
+		return $this -> db -> query($sql) -> result();
+	
+	}
+
+
+	public function get_companyNeed_by_aderId_and_page($ader_id,$per_page,$offset)
+	{		
+			
+			//$this -> db -> order_by('add_time','desc');
+			$query = $this -> db -> query( 'select * from t_companyNeed need where need.ader_id = '.$ader_id.' order by add_time desc limit '.$offset.','.$per_page );
+			return $query -> result();
 	}
 
 

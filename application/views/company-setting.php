@@ -52,8 +52,8 @@
 <!--			    <li><a href="index5.html" target="_blank">媒体咨询公司名称</a></li>-->
 
 
-                  <li><a href="index5.html" target="_blank"><?php echo $companyInfo -> company_name;?></a></li>
-			      <li class="active"><a href="#">账号管理</a></li>
+            <li><a href="company/company_need_list"><?php echo $companyInfo -> company_name;?></a></li>
+			      <li class="active"><a href="javascript:;">账号管理</a></li>
 			  </ul>
 
         <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>

@@ -32,7 +32,7 @@
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
 			    <li><a href="ader/ader_index"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
-			    <li class="active"><a href="#">账号信息</a></li>
+			    <li class="active"><a href="javascript:;">Dashboard</a></li>
 			  </ul>
 
         <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
@@ -65,9 +65,9 @@
 			<div class="list need"><a href="ader/anchor_need">发布主播需求</a></div>
 		</div>
 		<div class="right">
-			<div class="list source">媒体资源服务</div>
+			<div class="list source"><a href="company/company_list">媒体资源服务</a></div>
 			<div class="list service">媒体资源投放策略服务</div>
-			<div class="list need">发布媒体资源需求</div>
+			<div class="list need"><a href="ader/company_need">发布媒体资源需求</a></div>
 		</div>
 	</div>
 </div>

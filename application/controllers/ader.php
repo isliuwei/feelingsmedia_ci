@@ -152,7 +152,7 @@ class Ader extends CI_Controller {
 			if($result>0){
 				$data = array(
 					'info'=>'注册成功',
-					'url' => 'ader_reg'
+					'url' => 'ader/ader_reg'
 				);
 				// echo "<script>alert('注册成功！请点击登录按钮进行登录！')</script>";
 				// redirect('ader/ader_reg');
@@ -509,21 +509,34 @@ class Ader extends CI_Controller {
 	}
 
 	public function anchor_need_profile()
-	{
-
-		$aderNeeds_count = $this -> ader_model -> get_anchorNeed_count();
+	{/*增加判断*/
 
 		$aderInfo = $this -> session -> userdata('aderInfo');
 
+		// var_dump($aderInfo);
+		// die();
+
 		$ader_id = $aderInfo -> ader_id;
 
-		$offset = $this -> uri -> segment(3)==NULL?0 : $this -> uri ->segment(3);
+		$count = $this -> ader_model -> get_anchorNeed_count($ader_id);
 
-        $this->load->library('pagination');
+		$aderNeeds_count = (int)($count[0] -> {'count(*)'});
 
-        $config['base_url'] = 'ader/anchor_need_profile';
+		if($aderNeeds_count==0){
+			$this -> load -> view('aderNeed-404');
+		}
+
+
+		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
+		//$offset = $this -> uri -> segment(3) == NULL?0 : $this -> uri -> segment(3);
+		//$config['base_url'] = 'ader/company_need_profile';
+		//$offset = $this -> uri -> segment(3)==NULL?0 : $this -> uri ->segment(3);
+		$this -> load -> library('pagination');
+        //$config['base_url'] = 'ader/anchor_need_profile';
+        $config['base_url'] = 'ader/anchor_need_profile?ader_id='.$ader_id;
         $config['total_rows'] = $aderNeeds_count;
         $config['per_page'] = 3;
+        $config['page_query_string'] = TRUE;
 		$config['full_tag_open'] = '<ul class="pagination">';
 		$config['full_tag_close'] = '</ul>';
         $config['last_link'] = FALSE;
@@ -544,7 +557,8 @@ class Ader extends CI_Controller {
 		$result = $this -> ader_model -> get_anchorNeed_by_aderId_and_page($ader_id,$config['per_page'],$offset);
 
 		$data = array(
-			'anchorNeeds' => $result
+			'anchorNeeds' => $result,
+			'count' => $aderNeeds_count
 		);
 
 		if($result){
@@ -695,6 +709,7 @@ class Ader extends CI_Controller {
 		
 		$anchorCount = $count[0] -> {'count(*)'};
 
+
 		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
         $this->load->library('pagination');
         $config['base_url'] = 'ader/search_by_anchorCate?anchorCate_id='.$anchorCate_id;
@@ -799,6 +814,223 @@ class Ader extends CI_Controller {
 
 		
 	}
+
+	public function company_need()
+	{
+		$this -> load -> view('company-need');
+	}
+
+	public function save_company_need()
+	{
+
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = '3072';
+		$config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+
+		$this -> load -> library('upload', $config);
+		$this -> upload -> do_upload('aderLogo');
+
+		$upload_data = $this -> upload -> data();
+
+		if($upload_data['file_size'] > 0)
+		{
+		  $aderLogoUrl = 'uploads/'.$upload_data['file_name'];
+		}
+		else
+		{
+		  $aderLogoUrl = 'img/anchorLogo.jpg';
+		}
+
+		$aderId = $this -> input -> post('aderId',true);
+		$aderBrand = $this -> input -> post('aderBrand',true);
+		$aderPro = $this -> input -> post('aderPro',true);
+		$aderCate = $this -> input -> post('aderCate',true);
+		$aderTime = $this -> input -> post('aderTime',true);
+		$aderCycle = $this -> input -> post('aderCycle',true);
+		$aderBud = $this -> input -> post('aderBud',true);
+		$resourceCate = $this -> input -> post('resourceCate',true);
+		$city = $this -> input -> post('city',true);
+		$otherNeed = $this -> input -> post('otherNeed',true);
+
+
+		function createStr($array,$attr)
+		{
+			$string = "";
+			for($i=0;$i<count($array);$i++){
+				$string.=$array[$i]->$attr.',';
+			};
+			return substr($string,0,-1);
+
+		}
+
+		$companyNeedInfo = array(
+			'aderId' => $aderId,
+			'aderBrand' => $aderBrand,
+			'aderPro' => $aderPro,
+			'aderLogoUrl' => $aderLogoUrl,
+			'aderCate' => $aderCate,
+			'aderTime' => $aderTime,
+			'aderCycle' => $aderCycle,
+			'aderBud' => $aderBud,
+			'resourceCate' => $resourceCate,
+			'city' => $city,
+			'otherNeed' => $otherNeed
+		);
+
+
+		$aderCateArr = $companyNeedInfo['aderCate'];
+		$resourceCateArr = $companyNeedInfo['resourceCate'];
+		$resourceCityArr = $companyNeedInfo['city'];
+
+
+
+
+
+		if($aderCateArr)
+		{
+			$catesql = implode(',',$aderCateArr);
+			$cates = $this -> company_model -> getAderCates($catesql);
+			$catesString = createStr($cates,'aderCate_name');
+		}
+		else
+		{
+			$catesString="";
+		}
+
+
+
+		if($resourceCateArr)
+		{
+			$resourcesql = implode(',',$resourceCateArr); 
+			$resource = $this -> company_model -> getCates($resourcesql);
+			$resourceString = createStr($resource,'aderResourceName');
+		}
+		else
+		{
+			$resourceString="";
+		}
+
+		if($resourceCityArr)
+		{
+			$citysql = implode(',',$resourceCityArr);
+			$citys = $this -> company_model -> getCitys($citysql);
+			$citysString = createStr($citys,'aderCity_name');
+		}
+		else
+		{
+			$citysString="";
+		}
+
+		$companyNeedInfo['aderCateString'] = $catesString;
+		$companyNeedInfo['aderResourceCateString'] = $resourceString;
+		$companyNeedInfo['aderCityString'] = $citysString;
+
+
+		//$companyNeedInfo.push($catesString,$resourceString,$citysString);
+
+		//$this -> pre($companyNeedInfo);
+		//die();
+
+		$row = $this -> company_model -> save_company_need_by_all($companyNeedInfo);
+		// if($row>0)
+		// {
+		// 	$data = array(
+		// 		'info'=>'需求发布成功',
+		// 		'url' => 'company/company_reg'
+		// 	);
+		// 	$this -> load -> view('redirect-null',$data);
+		// }
+		// else
+		// {
+		// 	$data = array(
+		// 		'info'=>'需求发布失败',
+		// 		'url' => 'company/company_reg'
+		// 	);
+		// 	$this -> load -> view('redirect-null',$data);
+		// }
+
+		if($row>0)
+		{
+			$data = array(
+				'ader_id' => $aderId
+			);
+			$this -> load -> view('redirect-add',$data);
+		}
+
+
+
+
+
+
+
+
+	}
+
+
+	public function company_need_profile()
+	{
+		$aderInfo = $this -> session -> userdata('aderInfo');
+		$ader_id = $aderInfo -> ader_id;
+
+
+		$aderNeeds_count = $this -> ader_model -> get_companyNeed_count($ader_id);
+
+		$count = (int)($aderNeeds_count[0] -> {'count(*)'});
+
+		if($count==0){
+			$this -> load -> view('aderNeed-404');
+		}
+
+
+		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
+		//$offset = $this -> uri -> segment(3) == NULL?0 : $this -> uri -> segment(3);
+		$this -> load -> library('pagination');
+		//$config['base_url'] = 'ader/company_need_profile';
+        $config['base_url'] = 'ader/company_need_profile?ader_id='.$ader_id;
+        $config['total_rows'] = $count;
+        $config['page_query_string'] = TRUE;
+        $config['per_page'] = 3;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+        $result = $this -> ader_model -> get_companyNeed_by_aderId_and_page($ader_id,$config['per_page'],$offset);
+
+		$data = array(
+			'companyNeeds' => $result,
+			'count' => $count
+		);
+		// var_dump($data);
+		// die();
+
+		if($result){
+		    $this -> load -> view('company-needlist-profile',$data);
+		}
+
+		// $this -> pre($data);
+		// die();
+
+
+
+		
+
+	}
+
+	
 
 
 

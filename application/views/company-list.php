@@ -1,3 +1,9 @@
+<?php
+    $aderInfo = $this -> session -> userdata('aderInfo');
+    if(!$aderInfo){
+        redirect('ader/ader_reg');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,16 +49,24 @@
 			</div>
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
-			    <li><a href="index5.html" target="_blank">广告主公司名称</a></li>
+			    <!-- <li><a href="company/company_need_list">广告主公司</a></li> -->
+          <li><a href="ader/ader_index"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
 			    <li class="active"><a href="#">媒体资源服务</a></li>
 			  </ul>
 
         <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
 
-        <ul class='nav navbar-nav navbar-right'>
+        <!-- <ul class='nav navbar-nav navbar-right'>
         <a class="btn btn-success navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="anchor-need-profile.html">账号信息</a>
-        <a class="btn btn-primary navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="ader-setting.html">账号管理</a>
-        <a class="btn btn-default navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="#">退出登录</a>
+        <a class="btn btn-primary navbar-btn login-btn"  href="company/company_setting/<?php echo $companyInfo -> company_id; ?>">账号管理</a>
+        <a class="btn btn-default navbar-btn login-btn"  href="company/login_out">退出登录</a>
+
+        <a class="btn navbar-btn js-login-btn" href="#">Register</a> -->
+
+        <ul class='nav navbar-nav navbar-right'>
+        <a class="btn btn-success navbar-btn login-btn"  href="ader/anchor_need_profile">账号信息</a>
+        <a class="btn btn-primary navbar-btn login-btn"  href="ader/ader_setting?ader_id=<?php echo  $aderInfo -> ader_id ;?>">账号管理</a>
+        <a class="btn btn-default navbar-btn login-btn" href="ader/logout">退出登录</a>
 
         <a class="btn navbar-btn js-login-btn" href="#">Register</a>
 

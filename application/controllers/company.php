@@ -150,8 +150,8 @@ class Company extends CI_Controller {
 	public function check_login()
 	{
 
-		$username = $this -> input -> post('username');
-		$password = $this -> input -> post('password');
+		$username = $this -> input -> post('companyUsername');
+		$password = $this -> input -> post('companyPassword');
 
 		$row = $this -> company_model -> get_by_username_password($username,$password);
 
@@ -321,6 +321,191 @@ class Company extends CI_Controller {
 		}
 
 	}
+
+	public function forget_password()
+	{
+		$this -> load -> view('company-forget-password');
+	}
+
+
+	public function find_password()
+	{
+		//生成随机密码
+	  function getRandPwd($length){
+		   $str = null;
+		   $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+		   $max = strlen($strPol)-1;
+		   for($i=0;$i<$length;$i++){
+		    	$str.=$strPol[rand(0,$max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
+		   }
+	   	return $str;
+	  }
+
+		$username = $this -> input -> post('username');
+
+		$email = $this -> input -> post('email');
+
+
+
+		$email_obj = $this -> company_model -> get_email_by_username($username);
+
+		
+
+		$email_reg = $email_obj -> company_email;
+
+
+		
+		$row0 = $this -> company_model -> get_company_by_username_email($username,$email);
+
+
+		if($row0){
+
+			$myEmail =  $row0 -> company_email;
+
+			$password = getRandPwd(12);
+
+			$row = $this -> company_model -> update_password_by_username($username,$password);
+			
+
+			if($row>0){
+				//以下设置Email参数
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'smtp.163.com';
+				$config['smtp_user'] = 'lw.588';
+				$config['smtp_pass'] = 'wyyx16220811';
+				$config['smtp_port'] = '25';
+				$config['charset'] = 'utf-8';
+				$config['wordwrap'] = TRUE;
+				$config['mailtype'] = 'html';
+				$this->email->initialize($config);
+
+				//以下设置Email内容
+				$this->email->from('lw.588@163.com', '北京慧灵思投资管理有限公司');
+				$this->email->to($myEmail);
+				$this->email->subject('找回密码');
+				$this->email->message(
+					'亲爱的用户：您好！请您使用该密码进行登录
+					<font color=red>'.$password.'</font>,
+					为保证您的账户安全，请您尽快前往个人中心修改密码！
+					若不修改，请您牢记当前密码，您可以使用当前密码作为您的登录密码！
+					请勿直接回复该邮件！谢谢您的合作！from feelingsmedia.com'
+				);
+				$data = array(
+					'info'=>'密码修改成功',
+					'url' => 'company/company_reg'
+				);
+				$this -> load -> view('redirect-null',$data);
+
+			}
+
+			
+		}else{
+			$username = $this -> input -> post('username');
+
+			$email = $this -> input -> post('email');
+
+
+
+			$email_obj = $this -> company_model -> get_email_by_username($username);
+
+			$email_reg = $email_obj -> company_email;
+
+			//$myEmail =  $info -> anchor_email;
+
+
+			$password = getRandPwd(12);
+
+			$row = $this -> company_model -> update_password_by_username($username,$password);
+			
+
+			if($row>0){
+				//以下设置Email参数
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'smtp.163.com';
+				$config['smtp_user'] = 'lw.588';
+				$config['smtp_pass'] = 'wyyx16220811';
+				$config['smtp_port'] = '25';
+				$config['charset'] = 'utf-8';
+				$config['wordwrap'] = TRUE;
+				$config['mailtype'] = 'html';
+				$this->email->initialize($config);
+
+				//以下设置Email内容
+				$this->email->from('lw.588@163.com', '北京慧灵思投资管理有限公司');
+				$this->email->to($email_reg);
+				$this->email->subject('找回密码');
+				$this->email->message(
+					'亲爱的用户：您好！请您使用该密码进行登录
+					<font color=red>'.$password.'</font>,
+					为保证您的账户安全，请您尽快前往个人中心修改密码！
+					若不修改，请您牢记当前密码，您可以使用当前密码作为您的登录密码！
+					若未收到邮件,请您拨打我们的客服电话:400-0000-0000,与我们取得联系。
+					我们将第一时间为您提供服务。
+					请勿直接回复该邮件！谢谢您的合作！from feelingsmedia.com'
+				);
+				$this->email->send();
+				
+				// $data = array(
+				// 	'info'=>'密码修改成功',
+				// 	'url' => 'anchor/anchor_reg'
+				// );
+				// $this -> load -> view('redirect-null',$data);
+
+			}
+
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'smtp.163.com';
+			$config['smtp_user'] = 'lw.588';
+			$config['smtp_pass'] = 'wyyx16220811';
+			$config['smtp_port'] = '25';
+			$config['charset'] = 'utf-8';
+			$config['wordwrap'] = TRUE;
+			$config['mailtype'] = 'html';
+			$this -> email -> initialize($config);
+
+			//以下设置Email内容
+			$this->email->from('lw.588@163.com', '北京慧灵思投资管理有限公司');
+			$this->email->to($email);
+			$this->email->subject('找回密码');
+			$this->email->message(
+				'亲爱的用户：您好！我们已经将动态密码发送至您注册的邮箱:
+				<font color=red>'.$email_reg.'</font>,请您登录该邮箱,
+				查看我们发送的动态密码邮件,使用动态密码进行登录。
+				为保证您的账户安全，请您在登录成功后,尽快前往个人中心修改密码！
+				若不修改，请您牢记当前密码，您可以使用当前密码作为您的登录密码！
+				如果您无法登录您的注册邮箱,或者未收到验证邮件,
+				请您拨打我们的客服电话:400-0000-0000,与我们取得联系。
+				我们将第一时间为您提供服务。
+				请勿直接回复该邮件！谢谢您的合作！from isliuwei.com'
+			);
+			$this->email->send();
+			$data = array(
+				'info' => '密码已经修改！',
+				'tip'=>'密码验证邮件已经发送!请注意查收',
+				'url' => 'company/company_reg'
+			);
+			$this -> load -> view('redirect-null',$data);
+
+
+		}
+
+
+	}
+
+	public function check_company_username()
+	{
+		$username = $this -> input -> get('username');
+
+
+		$result = $this -> company_model -> get_by_username($username);
+		if($result){
+			echo "success";
+		}else{
+			echo "fail";
+		}
+	}
+
+
 
 
 

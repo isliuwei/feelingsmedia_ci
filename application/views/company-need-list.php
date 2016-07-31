@@ -62,9 +62,9 @@
 			  <ul class='nav navbar-nav navbar-left'>
 <!--		  <li><a href="index5.html" target="_blank">媒体咨询公司名称</a></li>-->
 
-          <li><a href="index5.html" target="_blank"><?php echo  $companyInfo -> company_name;?></a></li>
+          <li><a href="javascript:;"><?php echo  $companyInfo -> company_name;?></a></li>
 
-			    <li class="active"><a href="#">媒体咨询公司需求列表</a></li>
+			    <li class="active"><a href="javascript:;">媒体咨询公司需求列表</a></li>
 			  </ul>
 
         <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
@@ -74,7 +74,7 @@
 <!--        <a class="btn btn-primary navbar-btn login-btn" href="ader-setting.html">账号管理</a>-->
 <!--        <a class="btn btn-default navbar-btn login-btn"  href="#">退出登录</a>-->
 
-            <a class="btn btn-success navbar-btn login-btn" href="company/company_list">账号信息</a>
+            <a class="btn btn-success navbar-btn login-btn" href="company/company_need_profile">账号信息</a>
             <a class="btn btn-primary navbar-btn login-btn" href="company/company_setting/<?php echo $companyInfo -> company_id; ?>">账号管理</a>
             <a class="btn btn-default navbar-btn login-btn"  href="company/login_out">退出登录</a>
 

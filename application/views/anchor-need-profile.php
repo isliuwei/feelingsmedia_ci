@@ -51,6 +51,10 @@
   .search{
     cursor: pointer;
   }
+  p.kbd{
+    margin-left: 15px;
+  }
+
 
   </style>
 
@@ -75,7 +79,9 @@
       <nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
 			    <li><a href="ader/ader_index"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
-			    <li class="active"><a href="#">账号信息</a></li>
+			    <!-- <li class="active"><a href="#">账号信息</a></li> -->
+          <li class="active"><a href="ader/anchor_need_profile?ader_id=<?php echo $aderInfo -> ader_id ?>">主播需求</a></li>
+          <li><a href="ader/company_need_profile?ader_id=<?php echo $aderInfo -> ader_id ?>">媒体公司需求</a></li>
 			  </ul>
 
         <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
@@ -205,11 +211,12 @@
 
       <?php }?>
 
-
+    <p class="kbd"><kbd>共有<?php echo $count;?>条记录</kbd></p>
     </div>
 
 
     <nav>
+
         <!-- <ul class="pagination">
             <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
             <li class="active"><a href="#">1 </a></li>

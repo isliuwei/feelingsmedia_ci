@@ -97,10 +97,10 @@
               'success': needForm.aderBrand.$valid }"
             >
         </div>
-        <P
+        <p
           class="error-info"
           ng-if="needForm.aderBrand.$touched && needForm.aderBrand.$error.required"
-        ><i class="fa fa-exclamation"></i> 广告主品牌名不能为空</P>
+        ><i class="fa fa-exclamation"></i> 广告主品牌名不能为空</p>
       </div>
 
 

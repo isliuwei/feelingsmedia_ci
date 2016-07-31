@@ -430,19 +430,19 @@
 
                           <div class="control-group">
                               <div class="controls">
-                                  <label for="username" class="control-label fa fa-user"></label>
-                                  <input ng-model="logindata.username" ng-class="{
-                                    'error': loginForm.username.$invalid && loginForm.username.$touched,
-                                    'success':loginForm.username.$valid }" required id="username" type="text" name="anchorUsername" placeholder="用户名" tabindex="1"  class="form-control input-medium">
+                                  <label for="anchorUsername" class="control-label fa fa-user"></label>
+                                  <input ng-model="logindata.anchorUsername" ng-class="{
+                                    'error': loginForm.anchorUsername.$invalid && loginForm.anchorUsername.$touched,
+                                    'success':loginForm.anchorUsername.$valid }" required id="anchorUsername" type="text" name="anchorUsername" placeholder="用户名" tabindex="1"  class="form-control input-medium">
                               </div>
                           </div>
 
                           <div class="control-group">
                               <div class="controls">
-                                  <label for="password" class="control-label fa fa-key"></label>
-                                  <input ng-model="logindata.password" ng-class="{
-                                    'error': loginForm.password.$invalid && loginForm.password.$touched,
-                                    'success':loginForm.password.$valid }" required id="password" type="password" name="anchorPassword" placeholder="密码" tabindex="2" class="form-control input-medium">
+                                  <label for="anchorPassword" class="control-label fa fa-key"></label>
+                                  <input ng-model="logindata.anchorPassword" ng-class="{
+                                    'error': loginForm.anchorPassword.$invalid && loginForm.anchorPassword.$touched,
+                                    'success':loginForm.anchorPassword.$valid }" required id="anchorPassword" type="password" name="anchorPassword" placeholder="密码" tabindex="2" class="form-control input-medium">
                               </div>
                           </div>
                           <div class="control-group">

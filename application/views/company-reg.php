@@ -52,7 +52,7 @@
 			</div>
 			<nav class='collapse navbar-collapse' role='navigation'>
 			  <ul class='nav navbar-nav navbar-left'>
-			    <li><a href="index.html" target="_blank">首页</a></li>
+			    <li><a href="welcome/index" >首页</a></li>
 			    <li class="active"><a href="#">我是媒体咨询公司 | 注册</a></li>
 			  </ul>
 
@@ -451,19 +451,19 @@
                     <div class="pad">
                         <div class="control-group">
                             <div class="controls">
-                                <label for="username" class="control-label fa fa-user"></label>
-                                <input ng-model="logindata.username" ng-class="{
-                                  'error': loginForm.username.$invalid && loginForm.username.$touched,
-                                  'success':loginForm.username.$valid }" required id="username" type="text" name="username" placeholder="用户名" tabindex="1"  class="form-control input-medium">
+                                <label for="companyUsername" class="control-label fa fa-user"></label>
+                                <input ng-model="logindata.companyUsername" ng-class="{
+                                  'error': loginForm.companyUsername.$invalid && loginForm.companyUsername.$touched,
+                                  'success':loginForm.companyUsername.$valid }" required id="companyUsername" type="text" name="companyUsername" placeholder="用户名" tabindex="1"  class="form-control input-medium">
                             </div>
                         </div>
 
                         <div class="control-group">
                             <div class="controls">
-                                <label for="password" class="control-label fa fa-key"></label>
-                                <input ng-model="logindata.password" ng-class="{
-                                  'error': loginForm.password.$invalid && loginForm.password.$touched,
-                                  'success':loginForm.password.$valid }" required id="password" type="password" name="password" placeholder="密码" tabindex="2" class="form-control input-medium">
+                                <label for="companyPassword" class="control-label fa fa-key"></label>
+                                <input ng-model="logindata.companyPassword" ng-class="{
+                                  'error': loginForm.companyPassword.$invalid && loginForm.companyPassword.$touched,
+                                  'success':loginForm.companyPassword.$valid }" required id="companyPassword" type="password" name="companyPassword" placeholder="密码" tabindex="2" class="form-control input-medium">
                             </div>
                         </div>
 
