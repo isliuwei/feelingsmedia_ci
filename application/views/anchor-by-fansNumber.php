@@ -95,7 +95,7 @@
   			</div>
   			<nav class='collapse navbar-collapse' role='navigation'>
   			  <ul class='nav navbar-nav navbar-left'>
-  			    <li><a href="ader/ader_index" target="_blank"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
+  			    <li><a href="ader/ader_index"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
   			    <li class="active"><a href="#">主播资源合作</a></li>
   			  </ul>
 
@@ -174,11 +174,7 @@
                   <option value="教育">教育</option>
                   <option value="餐饮">餐饮</option>
                 </select> -->
-
                 <a class="label label-danger" href="ader/anchor">全部</a>
-
-
-
                 <a class="label label-danger" href="ader/search_by_fansNumber?numRange=1">1万以下</a>
                 <a class="label label-danger" href="ader/search_by_fansNumber?numRange=2">1万-5万</a>
                 <a class="label label-danger" href="ader/search_by_fansNumber?numRange=3">5万-10万</a>
@@ -211,7 +207,7 @@
                   <option value="擎天柱">擎天柱</option>
                   <option value="自媒体">自媒体</option>
                 </select> -->
-
+                
               <a class="label label-success" href="ader/anchor">全部</a>
               <a class="label label-success" href="ader/search_by_anchorCate?anchorCate_id=1">体育</a>
               <a class="label label-success" href="ader/search_by_anchorCate?anchorCate_id=2">游戏</a>
@@ -457,7 +453,7 @@
 
     <div class="row active-with-click">
     <?php
-        if($anchors){
+        if($anchors){ 
 
           foreach($anchors as $anchor){
     ?>
@@ -480,8 +476,8 @@
               <p class="bg-primary">性别：<?php echo $anchor -> anchor_gender ;?></p>
               <p class="bg-primary">昵称：<?php echo $anchor -> anchor_platformNickname ;?></p>
               <p class="bg-primary">性质：<?php echo $anchor -> anchor_attr ;?></p>
-
-
+             
+              
             </div>
           </div>
           <a class="mc-btn-action">
@@ -608,8 +604,8 @@
 
     </div>
   </div>
-</div>
-<?php
+</div> 
+<?php 
   }
     }
 ?>
@@ -774,12 +770,12 @@
 
 
            <?php echo $this -> pagination -> create_links();?>
-
+           
            <!-- <code><span class="label label-primary"><?php echo $count; ;?></span></code>
 
            <kbd><?php echo $count; ;?></kbd> -->
 
-
+           
       </nav>
     </div>
 
@@ -920,7 +916,7 @@
 
     </div>
   </div>
-</div>
+</div> 
 
 
 

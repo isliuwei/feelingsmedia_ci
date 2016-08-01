@@ -116,10 +116,10 @@ class Company extends CI_Controller {
 	}
 
 
-	public function company_need_list()
-	{
-		$this -> load -> view('company-need-list');
-	}
+	// public function company_need_list()
+	// {
+	// 	$this -> load -> view('company-need-list');
+	// }
 
 	public function check_username()
 	{
@@ -232,10 +232,10 @@ class Company extends CI_Controller {
 		}
 	}
 
-	public function company_list()
-	{
-		$this -> load -> view('company-list');
-	}
+	// public function company_list()
+	// {
+	// 	$this -> load -> view('company-list');
+	// }
 
 	public function login_out()
 	{
@@ -504,6 +504,238 @@ class Company extends CI_Controller {
 			echo "fail";
 		}
 	}
+
+	public function company_need_list()
+	{
+
+
+		$count = $this -> company_model -> get_company_count();
+		
+		$offset = $this -> uri -> segment(3) == NULL?0 : $this -> uri -> segment(3);
+        $this->load->library('pagination');
+
+        $config['base_url'] = 'company/company_need_list';
+        $config['total_rows'] = $count;
+        $config['per_page'] = 6;
+        
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+        $result = $this -> company_model -> get_company_by_page($config['per_page'],$offset);
+
+        if($result)
+        {
+
+			$data = array(
+				'companys' => $result,
+				'count' => $count
+			);
+			
+			$this -> load -> view('company-need-list',$data);
+		   
+		}
+		else
+		{
+			$this -> load -> view('company-search-null');
+		}
+
+	}
+
+	public function search_needs_by_aderCate()
+	{
+		$aderCate_id = $this -> input -> get('aderCate_id');
+		$count = $this -> company_model -> get_company_count_by_aderCate($aderCate_id);
+		$companyCount = $count[0] -> {'count(*)'};
+
+		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
+        $this->load->library('pagination');
+
+        $config['base_url'] = 'company/search_needs_by_aderCate?aderCate_id='.$aderCate_id;
+        $config['total_rows'] = $companyCount;
+        $config['per_page'] = 3;
+        $config['page_query_string'] = TRUE;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+        $result = $this -> company_model -> get_company_by_aderCate($aderCate_id,$config['per_page'],$offset);
+
+        // $this -> pre($result);
+        // die();
+
+        if($result)
+        {
+
+			$data = array(
+				'companys' => $result,
+				'count' => $companyCount
+			);
+			
+			$this -> load -> view('company-search-sheet',$data);
+		   
+		}
+		else
+		{
+			$this -> load -> view('company-search-null');
+		}
+
+
+	}
+
+	public function search_needs_by_resource()
+	{
+		$resourceCate_id = $this -> input -> get('resourceCate_id');
+		$count = $this -> company_model -> get_company_count_by_resourceCate($resourceCate_id);
+		$companyCount = $count[0] -> {'count(*)'};
+
+		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
+        $this->load->library('pagination');
+
+        $config['base_url'] = 'company/search_needs_by_resource?resourceCate_id='.$resourceCate_id;
+        $config['total_rows'] = $companyCount;
+        $config['per_page'] = 3;
+        $config['page_query_string'] = TRUE;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+
+       	$this -> pagination -> initialize($config);
+
+        $result = $this -> company_model -> get_company_by_resourceCate($resourceCate_id,$config['per_page'],$offset);
+
+        // $this -> pre($result);
+        // die();
+
+        if($result)
+        {
+
+			$data = array(
+				'companys' => $result,
+				'count' => $companyCount
+			);
+			
+			$this -> load -> view('company-search-sheet',$data);
+		   
+		}
+		else
+		{
+			$this -> load -> view('company-search-null');
+		}
+
+
+
+	}
+
+
+	public function search_needs_by_city()
+	{
+		$city_id = $this -> input -> get('city_id');
+		$count = $this -> company_model -> get_company_count_by_city($city_id);
+		$companyCount = $count[0] -> {'count(*)'};
+
+		$offset = $this -> input -> get('per_page') == NULL?0 : $this -> input -> get('per_page');
+		// echo $offset;
+		// die();
+        $this->load->library('pagination');
+
+        $config['base_url'] = 'company/search_needs_by_city?city_id='.$city_id;
+        $config['total_rows'] = $companyCount;
+        $config['per_page'] = 3;
+        $config['page_query_string'] = TRUE;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+
+       	$this -> pagination -> initialize($config);
+
+        $result = $this -> company_model -> get_company_by_city($city_id,$config['per_page'],$offset);
+
+        // $this -> pre($result);
+        // die();
+
+        if($result)
+        {
+
+			$data = array(
+				'companys' => $result,
+				'count' => $companyCount
+			);
+			
+			$this -> load -> view('company-search-sheet',$data);
+		   
+		}
+		else
+		{
+			$this -> load -> view('company-search-null');
+		}
+
+
+
+	}
+
+	public function company_list()
+	{
+		$result = $this -> company_model -> get_all();
+
+		$data = array(
+			'companyInfo' => $result 
+		);
+
+		$this -> load -> view('company-list',$data);
+	}
+
+
 
 
 

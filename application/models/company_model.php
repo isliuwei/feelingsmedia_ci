@@ -15,7 +15,7 @@ class Company_model extends CI_Model{
 			'company_name' => $company,
 			'company_website' => $website,
 			'company_resourceCate' => $catesString,
-			'compnay_resourceCity' => $citysString
+			'company_resourceCity' => $citysString
 		);
 
 
@@ -324,6 +324,126 @@ class Company_model extends CI_Model{
 		return $this -> db -> affected_rows();
 
 	}
+
+	public function get_company_count()
+	{
+		return $this->db->count_all('t_companyNeed');
+	}
+
+	public function get_company_by_page($per_page,$offset)
+    {
+        $query = $this -> db -> query( 'select * from t_companyNeed order by add_time desc limit '.$offset.','.$per_page );
+        return $query -> result();
+    }
+
+	public function get_company_count_by_aderCate($aderCate_id)
+    {
+        $sql = 'SELECT
+					count(*)
+				FROM
+					t_r_companyNeed_aderCate
+				LEFT JOIN t_companyNeed ON t_companyNeed.companyNeed_id = t_r_companyNeed_aderCate.companyNeed_id
+				JOIN t_aderCate ON t_aderCate.aderCate_id = t_r_companyNeed_aderCate.aderCate_id
+				WHERE
+					t_r_companyNeed_aderCate.aderCate_id = '.$aderCate_id;
+
+
+        return $this -> db -> query($sql) -> result();
+
+    }
+
+
+    public function get_company_by_aderCate($aderCate_id,$per_page,$offset)
+    {
+    	$sql = 'SELECT
+					t_companyNeed.*
+				FROM
+					t_r_companyNeed_aderCate
+				LEFT JOIN t_companyNeed ON t_companyNeed.companyNeed_id = t_r_companyNeed_aderCate.companyNeed_id
+				JOIN t_aderCate ON t_aderCate.aderCate_id = t_r_companyNeed_aderCate.aderCate_id
+				WHERE
+					t_r_companyNeed_aderCate.aderCate_id = '.$aderCate_id.
+				' LIMIT '.$offset.','.$per_page;
+
+        return $this -> db -> query($sql) -> result();
+
+    }
+
+    public function get_company_count_by_resourceCate($resourceCate_id)
+    {
+
+    	$sql = 'SELECT
+					count(*)
+				FROM
+					t_r_companyNeed_aderResourceCate
+				LEFT JOIN t_companyNeed ON t_companyNeed.companyNeed_id = t_r_companyNeed_aderResourceCate.companyNeed_id
+				JOIN t_aderResourceCate ON t_aderResourceCate.aderResourceCate_id = t_r_companyNeed_aderResourceCate.aderResourceCate_id
+				WHERE
+					t_r_companyNeed_aderResourceCate.aderResourceCate_id = '.$resourceCate_id;
+					
+        return $this -> db -> query($sql) -> result();
+
+    }
+
+    public function get_company_by_resourceCate($resourceCate_id,$per_page,$offset)
+    {
+
+    	$sql = 'SELECT
+					t_companyNeed.*
+				FROM
+					t_r_companyNeed_aderResourceCate
+				LEFT JOIN t_companyNeed ON t_companyNeed.companyNeed_id = t_r_companyNeed_aderResourceCate.companyNeed_id
+				JOIN t_aderResourceCate ON t_aderResourceCate.aderResourceCate_id = t_r_companyNeed_aderResourceCate.aderResourceCate_id
+				WHERE
+					t_r_companyNeed_aderResourceCate.aderResourceCate_id = '.$resourceCate_id.
+				' LIMIT '.$offset.','.$per_page;
+					
+        return $this -> db -> query($sql) -> result();
+
+    }
+
+    public function get_company_count_by_city($city_id)
+    {
+
+    	$sql = 'SELECT
+					count(*)
+				FROM
+					t_r_companyNeed_aderCity
+				LEFT JOIN t_companyNeed ON t_companyNeed.companyNeed_id = t_r_companyNeed_aderCity.companyNeed_id
+				JOIN t_aderCity ON t_aderCity.aderCity_id = t_r_companyNeed_aderCity.aderCity_id
+				WHERE
+					t_r_companyNeed_aderCity.aderCity_id = '.$city_id;
+
+					
+        return $this -> db -> query($sql) -> result();
+
+    }
+
+    public function get_company_by_city($city_id,$per_page,$offset)
+    {
+
+    	$sql = 'SELECT
+					t_companyNeed.*
+				FROM
+					t_r_companyNeed_aderCity
+				LEFT JOIN t_companyNeed ON t_companyNeed.companyNeed_id = t_r_companyNeed_aderCity.companyNeed_id
+				JOIN t_aderCity ON t_aderCity.aderCity_id = t_r_companyNeed_aderCity.aderCity_id
+				WHERE
+					t_r_companyNeed_aderCity.aderCity_id = '.$city_id.
+				' LIMIT '.$offset.','.$per_page;
+		
+					
+        return $this -> db -> query($sql) -> result();
+
+    }
+
+    public function get_all()
+    {
+    	//return $this -> db -> get('t_company') -> result(); 
+    	$sql = 'select * from t_company order by add_time desc';
+    	return $this -> db -> query($sql) -> result();
+    	
+    }
 	
 
 

@@ -100,7 +100,7 @@
   			</div>
   			<nav class='collapse navbar-collapse' role='navigation'>
   			  <ul class='nav navbar-nav navbar-left'>
-  			    <li><a href="index5.html" target="_blank"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
+  			    <li><a href="ader/ader_index"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
   			    <li class="active"><a href="#">主播资源合作</a></li>
   			  </ul>
 

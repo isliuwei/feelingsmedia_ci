@@ -51,7 +51,7 @@ class Anchor extends CI_Controller {
 
 	}
 
-
+	
 	public function check_anchor_username()
 	{
 		$username = $this -> input -> get('username');
@@ -141,7 +141,7 @@ class Anchor extends CI_Controller {
 		$anchorAttr = $this -> input -> post('anchorAttr');
 
 
-
+		
 
 		$anchorAccountCates = $this -> anchor_model -> get_anchorCate_by_idArr($anchorCate);
 
@@ -160,10 +160,10 @@ class Anchor extends CI_Controller {
 		}
 
 
-
+		
 
 		$row = $this -> anchor_model-> save_anchor_by_all($username,$pwd1,$tel,$email,$trueName, $qqNum,$bankAccount,$fansNumber,$country,$city,$gender,$nickname,$anchorPhotoUrl,$platform,$platformId,$anchorCate,$anchorAttr,$anchorAccountCates);
-
+		
 
 		if($row>0){
 			$data = array(
@@ -173,7 +173,7 @@ class Anchor extends CI_Controller {
 			$this -> load -> view('redirect-null',$data);
 		}
 
-
+		
 
 
 	}
@@ -206,22 +206,18 @@ class Anchor extends CI_Controller {
 		$result = $this -> anchor_model -> get_anchorNeed_by_page($config['per_page'],$offset);
 
 		$data = array(
-
-
 			'anchorNeeds' => $result,
 			'total' => $anchorNeeds_count
-
-
 		);
 
-
+		
 
 		if($result){
 		    $this -> load -> view('anchor-need-list',$data);
 		}
-
+		
 	}
-
+	
 
 
 	/**
@@ -238,16 +234,16 @@ class Anchor extends CI_Controller {
 
 		$row = $this -> anchor_model -> get_by_username_and_password($username,$password);
 
-
+		
 		$data = array(
 			'anchorInfo' => $row
 		);
 
-
+		
 		if($row){
 			$this -> session -> set_userdata($data);
 			redirect('anchor/anchor_need_list');
-
+			
 		}else{
 			$data = array(
 				'info'=>'登录失败!',
@@ -256,7 +252,7 @@ class Anchor extends CI_Controller {
 			);
 			$this -> load -> view('redirect-null',$data);
 		}
-	}
+	} 
 
 
 	public function logout()
@@ -273,7 +269,7 @@ class Anchor extends CI_Controller {
 
       	$anchorCates = $this -> anchor_model -> get_anchorCates_by_id($anchor_id);
 
-
+      	
 
       	$data =  array(
       		'anchorProfile' => $row,
@@ -398,10 +394,10 @@ class Anchor extends CI_Controller {
 		$email_obj = $this -> anchor_model -> get_email_by_username($username);
 
 		$email_reg = $email_obj -> anchor_email;
-
+		
 		$row0 = $this -> anchor_model -> get_anchor_by_username_email($username,$email);
 
-
+		
 
 		if($row0){
 
@@ -410,7 +406,7 @@ class Anchor extends CI_Controller {
 			$password = getRandPwd(12);
 
 			$row = $this -> anchor_model -> update_password_by_username($username,$password);
-
+			
 
 			if($row>0){
 				//以下设置Email参数
@@ -443,7 +439,7 @@ class Anchor extends CI_Controller {
 
 			}
 
-
+			
 		}else{
 			$username = $this -> input -> post('username');
 
@@ -461,7 +457,7 @@ class Anchor extends CI_Controller {
 			$password = getRandPwd(12);
 
 			$row = $this -> anchor_model -> update_password_by_username($username,$password);
-
+			
 
 			if($row>0){
 				//以下设置Email参数
@@ -489,7 +485,7 @@ class Anchor extends CI_Controller {
 					请勿直接回复该邮件！谢谢您的合作！from feelingsmedia.com'
 				);
 				$this->email->send();
-
+				
 				// $data = array(
 				// 	'info'=>'密码修改成功',
 				// 	'url' => 'anchor/anchor_reg'
@@ -558,7 +554,7 @@ class Anchor extends CI_Controller {
 		// var_dump($cate);
 		// die();
 
-
+		
 
 
 		$config['upload_path'] = './uploads/';
@@ -587,7 +583,7 @@ class Anchor extends CI_Controller {
 				'url' => 'anchor/anchor_reg'
 			);
 			$this -> load -> view('redirect-null',$data);
-
+			
 		}else{
 			$data = array(
 				'info'=>'信息未修改！',
@@ -599,7 +595,7 @@ class Anchor extends CI_Controller {
 
 
 
-
+		
 
 	}
 
@@ -668,18 +664,16 @@ class Anchor extends CI_Controller {
         $this -> pagination -> initialize($config);
 
         $result = $this -> anchor_model -> get_anchorNeed_by_aderCateId_and_page($aderCate_id,$config['per_page'],$offset);
+	    
 
+		
 
-
-
-
+		
 
 		if($result){
 			$data = array(
-
 				'anchorNeeds' => $result,
 				'total' => $searchNeeds_count
-
 			);
 		    $this -> load -> view('anchor-need-search-list',$data);
 		}else{
@@ -691,7 +685,7 @@ class Anchor extends CI_Controller {
 
 
 
-
+	
 
 
 

@@ -23,6 +23,9 @@
       color: #337ab7;
       text-decoration: none;
     }
+    .center{
+      text-align: center;
+    }
   </style>
 
 
@@ -89,52 +92,33 @@
       					<th class="center">资源类型</th>
       					<th class="center">资源地域</th>
       					<th class="center">刊例价</th>
-                <th class="center"></th>
-      					<th class="center"></th>
+                <th class="center">联系方式</th>
+      					<th class="center">注册时间</th>
       				</tr>
       			</thead>
       			<tbody>
+            <?php
+              $i=0;
+              foreach($companyInfo as $companys){
+            ?>
       				<tr>
-      					<td class="center">1</td>
-      					<td>奥巴马</a></td>
-      					<td>区</td>
-      					<td>137990</td>
-      					<td>lwdgzyx@gmail.com</td>
-      					<td></td>
-      					<td></td>
+      					<td class="center"><?php echo ++$i; ?></td>
+      					<td class="center"><?php echo $companys -> company_name; ?></td>
+      					<td><?php echo $companys -> company_resourceCate; ?></td>
+      					<td><?php echo $companys -> company_resourceCity; ?></td>
+      					<td class="center">待定</td>
+      					<td>
+                  <i class="fa fa-phone"></i> <a href="tel:<?php echo $companys -> company_tel; ?>"><?php echo $companys -> company_tel; ?></a>
+                  <br>
+                  <i class="fa fa-envelope-o"></i> <a href="mailto:<?php echo $companys -> company_email; ?>"><?php echo $companys -> company_email; ?></a>
+                </td>
+      					<td class="center"><?php echo $companys -> add_time; ?></td>
       				</tr>
-              <tr>
-      					<td class="center">1</td>
-      					<td>奥巴马</a></td>
-      					<td>浙江省杭州市西湖区</td>
-      					<td>13799002332</td>
-      					<td>lwdgzyx@gmail.com</td>
-                <td></td>
-      					<td></td>
-      				</tr>
-              <tr>
-      					<td class="center">1</td>
-      					<td>奥巴马</a></td>
-      					<td>浙江省杭州市西湖区</td>
-      					<td>12</td>
-      					<td>lwdgzyx@gmail.com</td>
-                <td></td>
-      					<td></td>
-      				</tr>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td><tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-<tr><td class="center">1</td><td>奥巴马</a></td><td>区</td><td>137990</td><td>lwdgzyx@gmail.com</td><td></td><td></td>
-      				</tr>
+              <?php
+                }
+              ?>
+              
+
       			</tbody>
       		</table>
       </div>

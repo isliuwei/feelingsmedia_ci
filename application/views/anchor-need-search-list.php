@@ -239,7 +239,7 @@
               <a href="anchor/search_needs?aderCate_id=17"  class="label label-primary">教育</a>
               <a href="anchor/search_needs?aderCate_id=18"  class="label label-primary">餐饮</a>
             </div>
-
+              
         </div>
     </div>
 </div>
@@ -260,7 +260,7 @@
     <div class="row active-with-click">
       <?php
           if($anchorNeeds){
-          foreach($anchorNeeds as $needs){
+          foreach($anchorNeeds as $needs){ 
       ?>
 
 			<div class="col-md-4 col-sm-6 col-xs-12" data-toggle="modal" data-target="#anchorNeed<?php echo $needs -> anchorNeed_id ?>">
@@ -378,7 +378,7 @@
   </div>
 </div>
       <?php
-        }
+        } 
       }
       ?>
 			<!-- <div class="col-md-4 col-sm-6 col-xs-12">
@@ -527,9 +527,7 @@
     </div>
 
     <div class="panel-footer">
-
      <kbd>共有<?php echo $total;?>条记录</kbd>
-
       <!-- <nav>
           <ul class="pagination">
               <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>

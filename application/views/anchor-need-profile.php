@@ -114,7 +114,7 @@
             <ul class="list-group">
               <li class="list-group-item list-group-item-info">品牌：<?php echo $anchorNeed -> anchorNeed_brand;?></li>
               <li class="list-group-item">产品：<?php echo $anchorNeed -> anchorNeed_pro;?></li>
-              <li class="list-group-item list-group-item-info">行业：<?php echo $anchorNeed -> anchorNeed_aderCates;?></li>
+              <li class="list-group-item list-group-item-info">行业：<?php echo mb_substr($anchorNeed -> anchorNeed_anchorCates,0,10).".....";?></li>
               <li class="list-group-item">投放时间：<?php echo $anchorNeed -> anchorNeed_time;?></li>
               <li class="list-group-item list-group-item-info">主播粉丝量：<?php echo $anchorNeed -> anchorNeed_fansNumber;?></li>
             </ul>

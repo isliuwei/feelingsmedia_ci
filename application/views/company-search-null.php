@@ -16,9 +16,8 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/font-awesome.min.css" />
   <link rel="stylesheet" href="css/company-need-list.css" />
-  <link rel="stylesheet" href="css/material-cards.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/blue.css" />
+  <link rel="stylesheet" href="css/404.css" />
 
   <style>
 
@@ -39,12 +38,24 @@
       .tag-bottom{
         margin-bottom: 70px;
       }
-      .text{
-        margin: 0;
+      h2{
+        cursor: pointer;
       }
-      p.bg-primary{
-        margin-bottom: 18px;
+      .marqueer{
+        -webkit-animation: show 10s ease infinite;
+        padding: 10px 20px;
       }
+
+
+    @-webkit-keyframes show{
+      from{
+        margin-left: 0;
+      }
+      to{
+        margin-left: 72%;
+      }
+    }
+
 
 
   </style>
@@ -250,272 +261,36 @@
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">需求列表</h3>
-
     </div>
     <div class="panel-body">
-      <blockquote>
-      <p>如需了解详情,请拨打客服电话</p>
-      <footer>客服电话：<i class="fa fa-phone"></i> <a class="tel" href="tel:400-8800-8800">400-8800-8800</a> <cite title="Source Title">feelingsmedie.com</cite></footer>
-      </blockquote>
-
-
-      <div class="row active-with-click">
-    <?php
-      foreach($companys as $company){
-    ?>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <article class="material-card Red">
-          <h2>
-            <span><?php echo $company -> companyNeed_brand;?></span>
-            <strong>
-              <i class="fa fa-fw fa-star"></i>
-              <?php echo $company -> companyNeed_pro;?>
-            </strong>
-          </h2>
-          <div class="mc-content">
-            <div class="img-container">
-              <img 
-              data-toggle="modal" 
-              data-target="#companyNeed<?php echo $company -> companyNeed_id;?>" 
-              class="img-responsive" 
-              src="<?php echo $company -> companyNeed_photo;?>">
-            </div>
-            <div class="mc-description">
-                    <p class="bg-primary">投放时间：<?php echo $company -> companyNeed_time;?></p>
-                    <p class="bg-primary">投放周期：<?php echo $company -> companyNeed_cycle;?></p>
-                    <p class="bg-primary">投放预算：<?php echo $company -> companyNeed_bud;?></p>
-                    <p class="bg-primary">广告主行业：<?php echo mb_substr($company -> aderCateString,0,12)."......"?></span></p>
-            </div>
-          </div>
-          <a class="mc-btn-action">
-            <i class="fa fa-bars"></i>
-          </a>
-          <div class="mc-footer">
-            <p class="text text-sucess">投放渠道： <span class="label label-info"><?php echo mb_substr($company -> aderResourceCateString,0,20)."......";?></span></p>
-            <p class="text text-sucess">投放城市：<span class="label label-warning"><?php echo mb_substr($company -> aderCityString,0,20)."......";?></span></p>
-                  
-          </div>
-        </article>
-      </div>
-   
-
-    <!-- Modal -->
-<div class="modal fade" id="companyNeed<?php echo $company -> companyNeed_id;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">媒体公司需求</h4>
-      </div>
-      <div class="modal-body">
         <blockquote>
         <p>如需了解详情,请拨打客服电话</p>
         <footer>客服电话：<i class="fa fa-phone"></i> <a class="tel" href="tel:400-8800-8800">400-8800-8800</a> <cite title="Source Title">feelingsmedie.com</cite></footer>
         </blockquote>
-        <fieldset disabled>
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span  class="input-group-addon" id="aderBrand"><i class="fa fa-copyright"></i> 广告主品牌 <i class="fa fa-asterisk"></i></span>
-              <input type="text"  class="form-control" aria-describedby="aderBrand" value="<?php echo $company -> companyNeed_brand;?>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderPro"><i class="fa fa-briefcase"></i> 广告主宣传产品 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="aderPro" value="<?php echo $company -> companyNeed_pro;?>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderInd"><i class="fa fa-building"></i> 广告主产品行业 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="aderInd" value="<?php echo $company -> aderCateString;?>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderTime"><i class="fa fa-clock-o"></i> 预计投放时间 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="aderTime" value="<?php echo $company -> companyNeed_time;?>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderCycle"><i class="fa fa-calendar-check-o"></i> 预计投放周期</span>
-              <input type="text" class="form-control" aria-describedby="aderCycle" value="<?php echo $company -> companyNeed_cycle;?>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderBud"><i class="fa fa-cny"></i> 投放预算</span>
-              <input type="text" class="form-control" aria-describedby="aderBud" value="<?php echo $company -> companyNeed_bud;?>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="anchorCate"><i class="fa fa-navicon"></i> 需要资源渠道类型 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="anchorCate" value="<?php echo $company -> aderResourceCateString;?>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderCity"><i class="fa fa-plane"></i> 投放城市 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="aderCity" value="<?php echo $company -> aderCityString;?>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="otherNeed"><i class="fa fa-file-text-o"></i> 其他需求</span>
-              <textarea class="form-control" rows="5" aria-describedby="otherNeed"><?php echo $company -> companyNeed_others;?></textarea>
-            </div>
-          </div>
-      </fieldset>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-
+        <h1 class="bg-primary marqueer"> <i class="fa fa-exclamation-circle"> NOT FOUND!</i></h1>
+        <img class="rotating" src="img/404.svg" />
     </div>
-  </div>
-</div>
-<?php
-  }
-?>
-</div>
-    </div>
+
+
+    
+
+
+
 
 
     <div class="panel-footer">
-    <kbd>共有<?php echo $count;?>条记录</kbd>
-      <nav>
-      <?php echo $this -> pagination -> create_links();?>
-          <!-- <ul class="pagination">
-              <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">...</a></li>
-              <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-           </ul> -->
-      </nav>
+      <kbd><i class="fa fa-exclamation"></i> 无对应的筛选结果</kbd>
     </div>
 
   </div>
-
-
-
-    <!-- <nav>
-        <ul class="pagination">
-            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">...</a></li>
-            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-         </ul>
-    </nav> -->
-
 </div>
 
 
+    
 
-<!-- Modal -->
-<div class="modal fade" id="companyNeed1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">熊猫TV媒体公司需求</h4>
-      </div>
-      <div class="modal-body">
-        <blockquote>
-        <p>如需了解详情,请拨打客服电话</p>
-        <footer>客服电话：<i class="fa fa-phone"></i> <a class="tel" href="tel:400-8800-8800">400-8800-8800</a> <cite title="Source Title">feelingsmedie.com</cite></footer>
-        </blockquote>
-        <fieldset disabled>
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span  class="input-group-addon" id="aderBrand"><i class="fa fa-copyright"></i> 广告主品牌 <i class="fa fa-asterisk"></i></span>
-              <input type="text"  class="form-control" aria-describedby="aderBrand" value="熊猫TV">
-            </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderPro"><i class="fa fa-briefcase"></i> 广告主宣传产品 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="aderPro" value="自媒体">
-            </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderInd"><i class="fa fa-building"></i> 广告主产品行业 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="aderInd" value="快消、数码、电商">
-            </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderTime"><i class="fa fa-clock-o"></i> 预计投放时间 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="aderTime" value="2016年9月">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderCycle"><i class="fa fa-calendar-check-o"></i> 预计投放周期</span>
-              <input type="text" class="form-control" aria-describedby="aderCycle" value="9个月">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderBud"><i class="fa fa-cny"></i> 投放预算</span>
-              <input type="text" class="form-control" aria-describedby="aderBud" value="50000元">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="anchorCate"><i class="fa fa-navicon"></i> 需要资源渠道类型 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="anchorCate" value="地铁、学校、擎天柱">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="aderCity"><i class="fa fa-plane"></i> 投放城市 <i class="fa fa-asterisk"></i></span>
-              <input type="text" class="form-control" aria-describedby="aderCity" value="广州、上海、深圳、杭州、乌鲁木齐、北京、哈尔滨、贵阳、天津、呼和浩特、成都、福州、昆明、太原、郑州、沈阳">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="input-group col-md-11">
-              <span class="input-group-addon" id="otherNeed"><i class="fa fa-file-text-o"></i> 其他需求</span>
-              <textarea class="form-control" rows="5" aria-describedby="otherNeed">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus odio vitae, velit modi facere. Minus nulla saepe nobis eius consequuntur nisi perferendis ex. Esse, magni eligendi libero ullam est beatae.</textarea>
-            </div>
-          </div>
-      </fieldset>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 
 
@@ -547,53 +322,5 @@
 
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.material-cards.min.js"></script>
-<script>
-	$(function() {
-
-
-    function getRandom(n){
-        return Math.floor(Math.random()*n+1);
-    }
-
-
-
-
-
-		$('.material-card').materialCard({
-			icon_close: 'fa-chevron-left',
-			icon_open: 'fa-search',
-			icon_spin: 'fa-spin-fast',
-			card_activator: 'click'
-		});
-
-//        $('.active-with-click .material-card').materialCard();
-		window.setTimeout(function() {
-			$('.material-card:eq('+getRandom(6)+')').materialCard('open');
-		}, 2000);
-
-    window.setTimeout(function() {
-			$('.material-card:eq('+getRandom(6)+')').materialCard('open');
-		}, 2000);
-
-    window.setTimeout(function() {
-			$('.material-card:eq('+getRandom(6)+')').materialCard('open');
-		}, 2000);
-
-
-		// $('.material-card').on('shown.material-card show.material-card hide.material-card hidden.material-card', function (event) {
-		// 	console.log(event.type, event.namespace, $(this));
-		// });
-	});
-</script>
-<!-- <script src="js/animitter.js"></script>
-<script src="js/dat-gui.js"></script>
-<script src="js/toxiclibs.js"></script>
-<script src="js/slogan-4.js"></script> -->
-
-
-
-
-
 </body>
 </html>

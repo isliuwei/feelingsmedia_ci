@@ -114,10 +114,10 @@
             <ul class="list-group">
               <li class="list-group-item list-group-item-warning">品牌：<?php echo $need -> companyNeed_brand;?></li>
               <li class="list-group-item">产品：<?php echo $need -> companyNeed_pro;?></li>
-              <li class="list-group-item list-group-item-warning">行业：<?php echo $need -> aderCateString;?></li>
+              <li class="list-group-item list-group-item-warning">行业：<?php echo mb_substr($need -> aderCateString,0,10)."......";?></li>
               <li class="list-group-item">投放时间：<?php echo $need -> companyNeed_time;?></li>
-              <li class="list-group-item list-group-item-warning">资源投放类型：<?php echo $need -> aderResourceCateString;?></li>
-              <li class="list-group-item">资源投放城市：<?php echo $need -> aderCityString;?></li>
+              <li class="list-group-item list-group-item-warning">资源投放类型：<?php echo mb_substr($need -> aderResourceCateString,0,8)."......";?></li>
+              <li class="list-group-item">资源投放城市：<?php echo mb_substr($need -> aderCityString,0,8)."......";?></li>
             </ul>
             <p class="search" data-toggle="modal" data-target="#companyNeed<?php echo $need -> companyNeed_id; ?>">
               <i class="fa fa-search"></i> 查看详情
