@@ -162,7 +162,7 @@
 
 
   <ul class="list-group">
-    <li class="list-group-item list-group-item-info"><span>账户名称</span><a href="#">主播账号</a></li>
+    <li class="list-group-item list-group-item-info"><span>账户名称</span><a href="#"><?php echo $anchorProfile -> anchor_username; ?></a></li>
     <li class="list-group-item"><span>直播平台</span><a href="#"><?php echo $anchorProfile -> anchor_platformName; ?></a></li>
     <li class="list-group-item list-group-item-info"><span>直播ID</span><a href="#"><?php echo $anchorProfile -> anchor_platformID; ?></a></li>
     <li class="list-group-item"><span>直播ID昵称</span><a href="#"><?php echo $anchorProfile -> anchor_platformNickname; ?></a></li>

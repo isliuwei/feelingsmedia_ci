@@ -1030,6 +1030,17 @@ class Ader extends CI_Controller {
 
 	}
 
+
+	public function company_slogan()
+	{
+		$this -> load -> view('slogan-4');
+	}
+
+	public function slogan()
+	{
+		$this -> load -> view('slogan');
+	}
+
 	
 
 

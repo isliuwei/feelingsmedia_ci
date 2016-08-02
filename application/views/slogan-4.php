@@ -1,9 +1,16 @@
+<?php
+    $aderInfo = $this -> session -> userdata('aderInfo');
+    if(!$aderInfo){
+        redirect('ader/ader_reg');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>feelngsmedia 慧灵思</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <base href="<?php echo site_url(); ?>">
   <link rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" media="screen" href="css/slogan-btn.css" />
   <!-- <link rel="stylesheet" type="text/css" href="css/slogan-default.css" /> -->
@@ -31,21 +38,20 @@
         <!-- <img class="logo" alt="" src="img/favicon.ico"> -->
       </div>
       <nav class='collapse navbar-collapse' role='navigation'>
-        <ul class='nav navbar-nav navbar-left'>
-          <li><a href="index5.html" target="_blank">广告主公司名称</a></li>
-          <li class="active"><a href="#">主播需求填写</a></li>
-        </ul>
+          <ul class='nav navbar-nav navbar-left'>
+            <li><a href="ader/ader_index"><?php echo $aderInfo -> ader_companyName ; ?></a></li>
+            <li class="active"><a href="#">媒体资源投放策略服务</a></li>
+          </ul>
 
-        <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
+          <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
 
-        <ul class='nav navbar-nav navbar-right'>
-        <a class="btn btn-success navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="anchor-need-profile.html">账号信息</a>
-        <a class="btn btn-primary navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="ader-setting.html">账号管理</a>
-        <a class="btn btn-default navbar-btn login-btn" data-toggle="modal" data-target="#anchor-reg" href="#">退出登录</a>
+          <ul class='nav navbar-nav navbar-right'>
+            <a class="btn btn-success navbar-btn login-btn" href="ader/anchor_need_profile">账号信息</a>
+            <a class="btn btn-primary navbar-btn login-btn" href="ader/ader_setting?ader_id=<?php echo  $aderInfo -> ader_id ;?>">账号管理</a>
+            <a class="btn btn-default navbar-btn login-btn" href="ader/logout">退出登录</a>
+            <a class="btn navbar-btn js-login-btn" href="#">Register</a>
 
-        <a class="btn navbar-btn js-login-btn" href="#">Register</a>
-
-        </ul>
+          </ul>
       </nav>
     </div>
   </header>
@@ -190,10 +196,12 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script src="js/jquery.adaptive-modal.js"></script>
-<!-- <script src="js/animitter.js"></script>
+<script src="js/animitter.js"></script>
 <script src="js/dat-gui.js"></script>
-<script src="js/toxiclibs.js"></script> -->
+<script src="js/toxiclibs.js"></script>
 <script src="js/slogan-4.js"></script>
+
+</script>
 
 
 

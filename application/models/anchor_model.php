@@ -454,6 +454,9 @@ class Anchor_model extends CI_Model{
       return $this -> db -> query($sql) -> result();
     }
 
+
+    
+
     
 
 

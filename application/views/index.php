@@ -22,19 +22,32 @@
 </head>
 <body>
 
-<header class='navbar navbar-top navbar-fixed-top' id='main-navbar' role='banner'>
+<header class='navbar navbar-fixed-top' id='main-navbar' role='banner'>
+    <div>
+      <div class='navbar-header'>
+        <button type="button" class="navbar-toggle navbar-default collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+        </button>
+        <!-- <a href="index5.html" target="_blank">广告主公司名称</a> -->
+        <img class="logo" style="width: 50px;" alt="" src="img/favicon.ico">
+      </div>
+      <nav class='collapse navbar-collapse' role='navigation'>
+        <ul class='nav navbar-nav navbar-left'>
+          <li><a href="ader/ader_index">首页</a></li>
+          <li class="active"><a href="#">关于我们</a></li>
+          <li><a href="ader/ader_index">联系我们</a></li>
+        </ul>
 
-    <nav class='collapse navbar-collapse' role='navigation'>
+        <div class="label labe-tel"><i class="fa fa-phone"></i> <a class="a-tel" href="tel:4006668800">合作咨询：400-666-8800</a></div>
 
-      <!-- <img class="logo" alt="" src="/images/favicon.ico"> -->
-      <ul class='nav navbar-nav navbar-left'>
-        <li  class="active"><a href="#">首页</a></li>
-        <li><a href="#">联系我们</a></li>
-        <li><a href="#">关于我们</a></li>
-      </ul>
-    </nav>
+        
 
-</header>
+        
+      </nav>
+    </div>
+  </header>
 
 
 

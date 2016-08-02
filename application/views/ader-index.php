@@ -61,12 +61,12 @@
 	<div class="content">
 		<div class="left">
 			<div class="list source"><a href="ader/anchor">平台主播资源</a></div>
-			<div class="list service">直播内容策划服务</div>
+			<div class="list service"><a href="ader/slogan">直播内容策划服务</a></div>
 			<div class="list need"><a href="ader/anchor_need">发布主播需求</a></div>
 		</div>
 		<div class="right">
 			<div class="list source"><a href="company/company_list">媒体资源服务</a></div>
-			<div class="list service">媒体资源投放策略服务</div>
+			<div class="list service"><a href="ader/company_slogan">媒体资源投放策略服务</a></div>
 			<div class="list need"><a href="ader/company_need">发布媒体资源需求</a></div>
 		</div>
 	</div>

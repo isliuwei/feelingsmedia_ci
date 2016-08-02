@@ -87,3 +87,86 @@
   .captcha-tip{
     cursor: pointer;
   }
+
+.a-tel{
+ color: #fff;
+}
+.a-tel:hover{
+  background: #fff;
+  color: #337ab7;
+  text-decoration: none;
+}
+
+  .labe-tel{
+   /*display: inline-block;
+   width: 200px;
+   height: 40px;
+   margin-left: 150px;
+   line-height: 40px;*/
+   font-size: 18px;
+   color: #fff;
+ }
+ @media (min-width: 1100px){
+   .labe-tel{
+     display: inline-block;
+     width: 200px;
+     height: 40px;
+     margin-left: 200px;
+     line-height: 40px;
+   }
+ }
+
+ @media (max-width: 1099px){
+   .labe-tel{
+     display: inline-block;
+     width: 200px;
+     height: 40px;
+     line-height: 40px;
+     /*margin-left: 100px;*/
+   }
+ }
+
+
+
+ @media (max-width: 1000px){
+   .labe-tel{
+     display: none;
+   }
+ }
+
+ /*@media (max-width: 840px){
+
+ }*/
+
+ @media (max-width: 750px){
+   .labe-tel{
+     display: inline-block;
+     width: 100px;
+     height: 20px;
+     line-height: 20px;
+   }
+ }
+
+
+ .navbar-toggle .icon-bar {
+    
+    background: #000;
+}
+
+
+.navbar-header {
+    background: rgba(41, 171, 246, 0.3);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.8);
+}
+
+
+.nav>li {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.nav>li a:hover{
+  color: #337ab7;
+  text-decoration: none;
+}
+

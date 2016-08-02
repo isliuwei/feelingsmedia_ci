@@ -245,6 +245,16 @@ class Company_model extends CI_Model{
 		$companyNeed_id = $this -> db -> insert_id();
 		//echo $save_row."------".$company_id;
 		//die();
+		// $x = $companyNeedInfo['aderCate'];
+
+
+		// for($i=0;$i<count($x);$i++){
+		// 	$sql = 'insert into t_r_companyNeed_aderResourceCate (companyNeed_id, aderCate_id) value('.$companyNeed_id.','.$x[$i].')';
+			
+		// }
+		// $this -> db -> query()
+
+		// die();
 
 		if($save_row > 0)
 		{
@@ -278,6 +288,9 @@ class Company_model extends CI_Model{
 	            $two_info['aderResourceCate_id'] = (int)($companyNeedInfo['resourceCate'][$i]);
 	            $insert_resource_data[] = $two_info;
 			}
+
+			// print_r($insert_resource_data);
+			// die();
 			
 			if( $companyNeedInfo['resourceCate'] )
 			{
