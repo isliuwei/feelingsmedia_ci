@@ -454,6 +454,158 @@ class Anchor_model extends CI_Model{
       return $this -> db -> query($sql) -> result();
     }
 
+    public function delete_by_id($anchor_id)
+    {
+
+      $this -> db -> delete('t_anchor', array('anchor_id' => $anchor_id));
+
+      return $this -> db -> affected_rows();
+
+    }
+
+
+    public function get_by_id($anchor_id)
+    {
+      return $this -> db -> get_where('t_anchor',$data=array('anchor_id'=> $anchor_id))-> result();
+    }
+
+
+    public function update_anchor_info_by_admin($info)
+    {
+      $data = array(
+        'anchor_name' => $info['name'],
+        'anchor_gender' => $info['sex'],
+        'anchor_username' => $info['username'],
+        'anchor_password' => $info['password'],
+        'anchor_platformName' => $info['platform'],
+        'anchor_platformID' => $info['platformId'],
+        'anchor_platformNickname' => $info['nickname'],
+        'anchor_tel' => $info['tel'],
+        'anchor_email' => $info['email'],
+        'anchor_fansNumber' => $info['fansNumber'],
+        'anchor_qqNum' => $info['qq'],
+        'anchor_bankAccount' => $info['bank'],
+        'anchor_attr' => $info['attr'],
+        'anchor_region' => $info['region'],
+        'anchor_province' => $info['province'],
+        'anchor_photo' => $info['url'],
+      );
+
+
+      $this ->db -> where('anchor_id', $info['id']);
+      $this ->db -> update('t_anchor', $data);
+
+
+       
+
+
+
+      if($info['cate'])
+      {
+
+        $cateStr = $this -> get_anchorCate_by_idArr($info['cate']);
+
+        $data = array(
+          'anchor_accountCate' =>  $cateStr
+        );
+
+        $this -> db -> where('anchor_id', $info['id']);
+        $this -> db -> update('t_anchor', $data);
+
+
+      
+
+          
+
+
+          /*删除原有的主播分类信息*/
+          $this -> db -> delete('t_r_anchor_anchorCate', array('anchor_id' => $info['id']));
+          //die();
+
+          /*insert_batch新的主播分类信息*/
+          $one_info = array();
+          $insert_data = array();
+          $one_info['anchor_id'] = $info['id'];
+
+          for($i = 0; $i < count($info['cate']); $i++) {
+            $one_info['anchorCate_id'] = $info['cate'][$i];
+            $insert_data[] = $one_info;
+          }
+
+          $this -> db -> insert_batch("t_r_anchor_anchorCate",$insert_data); 
+          
+
+        }
+
+        return $this -> db -> affected_rows(); 
+    }
+
+
+    public function save_anchor_by_admin($info)
+    {
+
+      $cateStr = $this -> get_anchorCate_by_idArr($info['cate']);
+
+      $data = array(
+        'isEnter' => $info['isEnter'],
+        'anchor_name' => $info['name'],
+        'anchor_gender' => $info['sex'],
+        'anchor_username' => $info['username'],
+        'anchor_password' => $info['password'],
+        'anchor_platformName' => $info['platform'],
+        'anchor_platformID' => $info['platformId'],
+        'anchor_platformNickname' => $info['nickname'],
+        'anchor_tel' => $info['tel'],
+        'anchor_email' => $info['email'],
+        'anchor_fansNumber' => $info['fansNumber'],
+        'anchor_qqNum' => $info['qq'],
+        'anchor_bankAccount' => $info['bank'],
+        'anchor_attr' => $info['attr'],
+        'anchor_region' => $info['region'],
+        'anchor_province' => $info['province'],
+        'anchor_photo' => $info['url'],
+        'anchor_accountCate' => $cateStr
+      );
+      
+
+      $this -> db -> insert("t_anchor",$data);
+
+      $row = $this -> db -> affected_rows();
+
+      $anchor_id =  $this -> db -> insert_id();
+    
+      if($row>0)
+      { 
+        
+        $one_info = array();
+        $insert_data = array();
+        $one_info['anchor_id'] = $anchor_id;
+
+        for($i = 0; $i < count($info['cate']); $i++) {
+          $one_info['anchorCate_id'] = $info['cate'][$i];
+          $insert_data[] = $one_info;
+        }
+
+          $this -> db -> insert_batch("t_r_anchor_anchorCate",$insert_data); 
+          return $this -> db -> affected_rows();
+      }
+
+
+
+
+
+
+
+
+      
+    }
+
+
+    public function get_by_enter()
+    {
+      $sql = "select * from t_anchor where isEnter = 1";
+      return $this -> db -> query($sql) -> result();
+    }
 
     
 

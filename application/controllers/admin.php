@@ -222,9 +222,230 @@ class Admin extends CI_Controller {
     		'anchors' => $result
     	);
 
-    	$this -> load -> view('admin/anchor-list',$data);
+    	$this -> load -> view('admin/anchor-enter-list',$data);
 
     }
+
+
+    public function enter_anchor_mgr()
+    {
+        $result = $this -> anchor_model -> get_by_enter();
+
+        $data = array(
+            'anchors' => $result
+        );
+
+        $this -> load -> view('admin/anchor-list',$data);
+
+    }
+
+    public function admin_delete()
+    {
+    	$anchor_id = $this -> input -> get('anchor_id');
+    	$row = $this -> anchor_model -> delete_by_id($anchor_id);
+    	if( $row > 0 )
+    	{
+    		echo "success";
+    	}
+    	else
+    	{
+    		echo "fail";
+    	}
+    }
+
+
+    public function anchor_edit()
+    {
+    	$anchor_id = $this -> uri -> segment(3);
+    	
+    	$row = $this -> anchor_model -> get_anchor_by_id($anchor_id);
+
+      	$anchorCates = $this -> anchor_model -> get_anchorCates_by_id($anchor_id);
+
+      	$data =  array(
+      		'anchor' => $row,
+      		'anchorCates' => $anchorCates
+      	);
+
+    	$this -> load -> view('admin/anchor-edit',$data);
+
+
+    	
+    }
+
+
+    public function update_anchor_info()
+    {
+        $id = $this -> input -> post('anchor_id',true);
+        $name = $this -> input -> post('anchor_name',true);
+        $sex = $this -> input -> post('anchor_gender',true);
+        $username = $this -> input -> post('anchor_username',true);
+        $password = $this -> input -> post('anchor_password',true);
+        $platform = $this -> input -> post('anchor_platformName',true);
+        $platformId = $this -> input ->post('anchor_platformID',true);
+        $nickname = $this -> input ->post('anchor_platformNickname',true);
+        $tel = $this -> input -> post('anchor_tel',true);
+        $email = $this -> input -> post('anchor_email',true);
+        $fansNumber = $this -> input -> post('anchor_fansNumber',true);
+        $qq = $this -> input -> post('anchor_qqNum',true);
+        $bank = $this -> input -> post('anchor_bankAccount',true);
+        $attr = $this -> input -> post('anchor_attr',true);
+        $region = $this -> input -> post('anchor_region',true);
+        $province = $this -> input -> post('anchor_province',true);
+        $cate = $this -> input -> post('cate',true);
+        //$verify = $this -> input -> post('verify',true);
+        $photo_old_url = $this -> input -> post('photo_old_url');
+        $this -> upload('anchor_photo',$photo_old_url);
+        $url = $this -> upload('anchor_photo',$photo_old_url);
+
+
+
+
+
+
+        $info = array(
+            'id' => $id,
+            'name' => $name,
+            'sex' => $sex,
+            'username' => $username,
+            'password' => $password,
+            'platform' => $platform,
+            'platformId' => $platformId,
+            'nickname' => $nickname,
+            'tel' => $tel,
+            'email' => $email,
+            'fansNumber' => $fansNumber,
+            'qq' => $qq,
+            'bank' => $bank,
+            'attr' => $attr,
+            'region' => $region,
+            'province' => $province,
+            'cate' => $cate,
+            'url' => $url
+        );
+
+       
+
+        $row = $this -> anchor_model -> update_anchor_info_by_admin($info);
+
+
+        if( $row > 0 )
+        {
+
+            $data = array(
+                'info'=>'信息更新成功！',
+                'tip' => '请重新登录！',
+                'page' => '登录页面',
+                'url' => 'admin/anchor_reg'
+            );
+            $this -> load -> view('redirect-null',$data);
+            
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/anchor_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+
+        
+    }
+
+    public function enter_anchor()
+    {
+        $this -> load -> view('admin/enter-anchor-sheet');
+    }
+
+    public function save_enter_anchor_info()
+    {
+        $isEnter = $this -> input -> post('isEnter',true);
+        $name = $this -> input -> post('anchor_name',true);
+        $sex = $this -> input -> post('anchor_gender',true);
+        $username = $this -> input -> post('anchor_username',true);
+        $password = $this -> input -> post('anchor_password',true);
+        $platform = $this -> input -> post('anchor_platformName',true);
+        $platformId = $this -> input ->post('anchor_platformID',true);
+        $nickname = $this -> input ->post('anchor_platformNickname',true);
+        $tel = $this -> input -> post('anchor_tel',true);
+        $email = $this -> input -> post('anchor_email',true);
+        $fansNumber = $this -> input -> post('anchor_fansNumber',true);
+        $qq = $this -> input -> post('anchor_qqNum',true);
+        $bank = $this -> input -> post('anchor_bankAccount',true);
+        $attr = $this -> input -> post('anchor_attr',true);
+        $region = $this -> input -> post('anchor_region',true);
+        $province = $this -> input -> post('anchor_province',true);
+        $cate = $this -> input -> post('cate',true);
+        $this -> upload('anchor_photo',"");
+        $url = $this -> upload('anchor_photo',"");
+
+
+        $info = array(
+            'isEnter' => $isEnter,
+            'name' => $name,
+            'sex' => $sex,
+            'username' => $username,
+            'password' => $password,
+            'platform' => $platform,
+            'platformId' => $platformId,
+            'nickname' => $nickname,
+            'tel' => $tel,
+            'email' => $email,
+            'fansNumber' => $fansNumber,
+            'qq' => $qq,
+            'bank' => $bank,
+            'attr' => $attr,
+            'region' => $region,
+            'province' => $province,
+            'cate' => $cate,
+            'url' => $url
+        );
+
+        
+        $row = $this -> anchor_model -> save_anchor_by_admin($info);
+
+        if( $row > 0 )
+        {
+            $data = array(
+                'info'=>'信息更新成功！',
+                'tip' => '请重新登录！',
+                'page' => '登录页面',
+                'url' => 'admin/anchor_reg'
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/anchor_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+
+        }
+
+    }
+
+    public function ader_reg()
+    {
+        $result = $this -> ader_model -> get_all();
+
+        $data = array(
+            'aders' => $result
+        );
+
+        //$this -> pre($data);
+
+
+        $this -> load -> view('admin/ader-list',$data);
+
+
+
+    }
+
 
 
 	

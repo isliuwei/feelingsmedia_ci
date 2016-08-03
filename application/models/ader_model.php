@@ -3,6 +3,11 @@
 
 class Ader_model extends CI_Model{
 
+	public function get_all()
+	{
+		return $this -> db -> get('t_ader') -> result();
+	}
+
 
 	public function get_by_username($username)
 	{

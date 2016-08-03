@@ -71,7 +71,7 @@
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">平台主播注册信息列表</strong> / <small>anchor register list</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">平台广告主注册信息列表</strong> / <small>ader register list</small></div>
         </div>
 
 
@@ -93,13 +93,19 @@
 <tbody id="tbody">
 <?php
 	$num = 0;
-	foreach($anchors as $anchor){
+	foreach($aders as $ader){
 	$num++;
 ?>
 
   <tr class="<?php echo $num%2==0?'odd' : 'even' ;?>">
     <td><?php echo $anchor -> add_time; ?></td>
-    <td>
+    <td><?php echo $anchor -> add_time; ?></td>
+    <td><?php echo $anchor -> add_time; ?></td>
+    <td><?php echo $anchor -> add_time; ?></td>
+    <td><?php echo $anchor -> add_time; ?></td>
+    <td><?php echo $anchor -> add_time; ?></td>
+
+    <!-- <td>
     	<p class="am-text-success">
     		<span class="am-icon-copyright"></span>
     		<?php echo $anchor -> anchor_username; ?>
@@ -172,17 +178,17 @@
     	</p>
 
     	
-    </td>
+    </td> -->
     
-<td selector="<?php echo $anchor -> anchor_id; ?>">
+<td selector="<?php echo $ader -> ader_id; ?>">
     <div class="am-btn-toolbar" >
         <div class="am-btn-group am-btn-group-xs">
-        	<button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block" data-am-offcanvas="{target: '#doc-oc-demo<?php echo $anchor -> anchor_id ;?>'}"><span class="am-icon-search"></span> 查&nbsp;&nbsp;&nbsp;&nbsp;看</button>
+        	<button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block" data-am-offcanvas="{target: '#doc-oc-demo<?php echo $ader -> ader_id; ?>'}"><span class="am-icon-search"></span> 查&nbsp;&nbsp;&nbsp;&nbsp;看</button>
             
 
-            <button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/anchor_edit/<?php echo $anchor -> anchor_id ;?>"> <span class="am-icon-pencil"></span> 编辑审核</a></button>
+            <button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/anchor_edit/<?php echo $ader -> ader_id; ?>"> <span class="am-icon-pencil"></span> 编辑审核</a></button>
 
-            <button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block am-btn-delete"><span class="am-icon-trash-o"></span> 删&nbsp;&nbsp;&nbsp;&nbsp;除</button>
+            <button data-id="<?php echo $ader -> ader_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block am-btn-delete"><span class="am-icon-trash-o"></span> 删&nbsp;&nbsp;&nbsp;&nbsp;除</button>
 
            
 
@@ -198,7 +204,7 @@
 			    <img class="am-circle" src="<?php echo $anchor -> anchor_photo ;?>" width="100" height="100"/>
 			</div>
 
-		  	<ul class="am-list am-list-border">
+		  	<!-- <ul class="am-list am-list-border">
 			  <li>
 			  	<a href="javascript:;">
 			  		注册账号：<?php echo $anchor -> anchor_username; ?>
@@ -271,7 +277,7 @@
 			  	</a>
 			  </li>
 			  
-			</ul>
+			</ul> -->
 		  <div class="am-panel-footer"><small>注册时间：</small><?php echo $anchor -> add_time; ?></div>
 		</div>
     </div>

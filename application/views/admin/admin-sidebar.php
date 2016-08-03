@@ -9,6 +9,7 @@
               <a class="am-cf" data-am-collapse="{target:'#anchor-nav' }"><span class="am-icon-female"></span> 主播管理模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
               <ul class="am-list am-collapse admin-sidebar-sub" id="anchor-nav">
                 <li><a href="admin/anchor_reg" class="am-cf"><span class="am-icon-check"></span>注册管理</span></a></li>
+                <li><a href="admin/enter_anchor_mgr"><span class="am-icon-pencil"></span> 录入管理</a></li>
                 <li><a href="admin/enter_anchor"><span class="am-icon-pencil"></span> 信息录入</a></li>
               </ul>
             </li>
@@ -18,8 +19,9 @@
             <li class="admin-parent">
               <a class="am-cf" data-am-collapse="{target:'#ader-nav' }"><span class="am-icon-edit"></span> 广告主管理模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
               <ul class="am-list am-collapse admin-sidebar-sub" id="ader-nav">
-                <li><a href="admin/write_service"><span class="am-icon-leaf"></span> 注册管理</a></li>
-                <li><a href="admin/write_product"><span class="am-icon-briefcase"></span> 信息录入</a></li>
+                <li><a href="admin/ader_reg" class="am-cf"><span class="am-icon-leaf"></span> 注册管理</a></li>
+                <li><a href="admin/enter_ader_mgr"><span class="am-icon-pencil"></span> 录入管理</a></li>
+                <li><a href="admin/enter_anchor"><span class="am-icon-briefcase"></span> 信息录入</a></li>
                 
               </ul>
             </li>

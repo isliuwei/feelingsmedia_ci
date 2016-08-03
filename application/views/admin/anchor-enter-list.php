@@ -71,7 +71,7 @@
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">平台主播注册信息列表</strong> / <small>anchor register list</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">平台主播录入信息列表</strong> / <small>anchor entering list</small></div>
         </div>
 
 
