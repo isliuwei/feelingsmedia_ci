@@ -82,7 +82,7 @@
 <table class="am-table am-table-striped am-table-bordered am-table-compact" id="example">
 <thead>
   	<tr>
-    	<th class="table-type">注册时间</th>
+    	<th class="table-type">录入时间</th>
         <th class="table-type">个人信息</th>
         <th class="table-type">平台信息</th>
         <th class="table-type">联系方式</th>
@@ -370,7 +370,7 @@
             
 
             
-            $.get('admin/admin_delete',{'anchor_id':$anchor_id},function(res){
+            $.get('admin/anchor_delete',{'anchor_id':$anchor_id},function(res){
                 if(res=='success'){
                     $tr.remove();
                     $('#alert').trigger('click');

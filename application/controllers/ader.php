@@ -569,6 +569,7 @@ class Ader extends CI_Controller {
 
 	public function anchor()
 	{	
+		$material = $this -> anchor_model -> get_all_material();
 		$anchorCount = $this -> anchor_model -> get_anchor_count();
 		$offset = $this -> uri -> segment(3) == NULL?0 : $this -> uri -> segment(3);
         $this->load->library('pagination');
@@ -596,7 +597,8 @@ class Ader extends CI_Controller {
 
 		$data = array(
 			'anchors' => $result,
-			'count' => $anchorCount
+			'count' => $anchorCount,
+			'material' => $material
 		);
 
 		if($result){

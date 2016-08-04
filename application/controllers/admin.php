@@ -235,11 +235,11 @@ class Admin extends CI_Controller {
             'anchors' => $result
         );
 
-        $this -> load -> view('admin/anchor-list',$data);
+        $this -> load -> view('admin/anchor-enter-list',$data);
 
     }
 
-    public function admin_delete()
+    public function anchor_delete()
     {
     	$anchor_id = $this -> input -> get('anchor_id');
     	$row = $this -> anchor_model -> delete_by_id($anchor_id);
@@ -409,23 +409,13 @@ class Admin extends CI_Controller {
         if( $row > 0 )
         {
             $data = array(
-                'info'=>'信息更新成功！',
-                'tip' => '请重新登录！',
-                'page' => '登录页面',
-                'url' => 'admin/anchor_reg'
+                'info'=>'信息添加成功！',
+                'page' => '列表页面',
+                'url' => 'admin/enter_anchor_mgr'
             );
             $this -> load -> view('redirect-null',$data);
         }
-        else
-        {
-            $data = array(
-                'info'=>'信息未修改！',
-                'page' => '信息编辑页面',
-                'url' => 'admin/anchor_edit/'.$id
-            );
-            $this -> load -> view('redirect-null',$data);
-
-        }
+        
 
     }
 
@@ -437,14 +427,348 @@ class Admin extends CI_Controller {
             'aders' => $result
         );
 
-        //$this -> pre($data);
-
-
         $this -> load -> view('admin/ader-list',$data);
+
+    }
+
+
+    public function ader_delete()
+    {
+
+        $ader_id = $this -> input -> get('ader_id');
+        $row = $this -> ader_model -> delete_by_id($ader_id);
+        if( $row > 0 )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "fail";
+        }
+
+    }
+
+
+    public function ader_edit()
+    {
+        $ader_id = $this -> uri -> segment(3);
+        
+        $row = $this -> ader_model -> get_ader_by_id($ader_id);
+
+        
+        $data =  array(
+            'ader' => $row
+        );
+
+        $this -> load -> view('admin/ader-edit',$data);
+   
+    }
+
+
+    public function update_ader_info()
+    {
+
+        $id = $this -> input -> post('ader_id');
+        $username = $this -> input -> post('ader_username');
+        $password = $this -> input -> post('ader_password');
+        $email = $this -> input -> post('ader_email');
+        $tel = $this -> input -> post('ader_tel');
+        $company = $this -> input -> post('ader_companyName');
+        $website = $this -> input -> post('ader_website');
+
+        $row = $this -> ader_model -> update_ader_by_all($id,$username,$password,$email,$tel,$company,$website);
+
+
+        if( $row > 0 )
+        {
+
+            $data = array(
+                'info'=>'信息更新成功！',
+                'page' => '信息页面',
+                'url' => 'admin/ader_reg'
+            );
+            $this -> load -> view('redirect-null',$data);
+            
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/ader_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+
 
 
 
     }
+
+    public function enter_ader()
+    {
+        $this -> load -> view('admin/enter-ader-sheet');
+    }
+
+
+    public function save_enter_ader_info()
+    {
+       $isEnter = $this -> input -> post('isEnter');
+       $username = $this -> input -> post('ader_username');
+       $password = $this -> input -> post('ader_password');
+       $email = $this -> input -> post('ader_email');
+       $tel = $this -> input -> post('ader_tel');
+       $company = $this -> input -> post('ader_companyName');
+       $website = $this -> input -> post('ader_website');
+
+       $row = $this -> ader_model -> save_ader_by_admin($isEnter,$username,$password,$email,$tel,$company,$website);
+       if( $row > 0)
+       {
+            $data = array(
+                'info'=>'信息添加成功！',
+                'page' => '列表页面',
+                'url' => 'admin/enter_ader_mgr'
+            );
+            $this -> load -> view('redirect-null',$data);
+       }
+
+    }
+
+
+
+    public function enter_ader_mgr()
+    {
+
+        $result = $this -> ader_model -> get_by_enter();
+
+        $data = array(
+            'aders' => $result
+        );
+
+        $this -> load -> view('admin/ader-enter-list',$data);
+
+    }
+
+    public function anchor_need()
+    {
+        $result = $this -> anchor_model -> get_all_anchor_need();
+        $data = array(
+            'anchorNeeds' => $result
+        );
+        $this -> load -> view('admin/anchor-need-list',$data);
+    }
+
+    public function anchorNeed_delete()
+    {
+        $anchorNeed_id = $this -> input -> get('anchorNeed_id');
+        $row = $this -> anchor_model -> delete_need_by_id($anchorNeed_id);
+        if( $row > 0 )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "fail";
+        }
+    }
+
+    public function anchorNeed_edit()
+    {
+        $anchorNeed_id = $this -> uri -> segment(3);
+        $row = $this -> anchor_model -> get_need_by_id($anchorNeed_id);
+
+
+        
+        $data = array(
+            'anchorNeed' => $row
+        );
+        $this -> load -> view('admin/anchorNeed-edit',$data);
+       
+    }
+
+
+    public function update_anchorNeed_info()
+    {
+        $id = $this -> input -> post('anchorNeed_id');
+        $brand = $this -> input -> post('anchorNeed_brand');
+        $pro = $this -> input -> post('anchorNeed_pro');
+        $time = $this -> input -> post('anchorNeed_time');
+        $cycle = $this -> input -> post('anchorNeed_cycle');
+        $number = $this -> input -> post('anchorNeed_number');
+        $fansNumber = $this -> input -> post('anchorNeed_fansNumber');
+        $coop = $this -> input -> post('anchorNeed_coopCate');
+        $other = $this -> input -> post('anchorNeed_otherNeed');
+
+        $photo_old_url = $this -> input -> post('photo_old_url');
+        $this -> upload('anchorNeed_logo',$photo_old_url);
+        $logo = $this -> upload('anchorNeed_logo',$photo_old_url);
+
+
+        $row = $this -> anchor_model -> update_anchorNeed_by_admin($id,$brand,$pro,$time,$cycle,$number,$fansNumber,$coop,$other,$logo);
+
+        if( $row > 0 )
+        {
+            $data = array(
+                'info'=>'信息更新成功！',
+                'page' => '信息页面',
+                'url' => 'admin/anchor_need'
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/anchorNeed_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+
+    }
+
+    public function company_need()
+    {
+
+        $result = $this -> company_model -> get_all_company_need();
+        $data = array(
+            'companyNeeds' => $result
+        );
+        $this -> load -> view('admin/company-need-list',$data);
+
+    }
+
+    public function companyNeed_delete()
+    {
+        $companyNeed_id = $this -> input -> get('companyNeed_id');
+        $row = $this -> company_model -> delete_need_by_id($companyNeed_id);
+        if( $row > 0 )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "fail";
+        }
+
+    }
+
+    public function companyNeed_edit()
+    {
+        $companyNeed_id = $this -> uri -> segment(3);
+
+        $row = $this -> company_model -> get_need_by_id($companyNeed_id);
+        
+        $data = array(
+            'companyNeed' => $row
+        );
+        $this -> load -> view('admin/companyNeed-edit',$data);
+    }
+
+
+    public function update_companyNeed_info()
+    {
+        $id = $this -> input -> post('companyNeed_id',true);
+        $brand = $this -> input -> post('companyNeed_brand',true);
+        $pro = $this -> input -> post('companyNeed_pro',true);
+        $time = $this -> input -> post('companyNeed_time',true);
+        $cycle = $this -> input -> post('companyNeed_cycle',true);
+        $bud = $this -> input -> post('companyNeed_bud',true);
+        $other = $this -> input -> post('companyNeed_others',true);
+
+        $photo_old_url = $this -> input -> post('photo_old_url');
+        $this -> upload('companyNeed_photo',$photo_old_url);
+        $logo = $this -> upload('companyNeed_photo',$photo_old_url);
+
+
+        $row = $this -> company_model -> update_companyNeed_by_admin($id,$brand,$pro,$time,$cycle,$bud,$other,$logo);
+
+        if( $row > 0 )
+        {
+            $data = array(
+                'info'=>'信息更新成功！',
+                'page' => '信息页面',
+                'url' => 'admin/company_need'
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/companyNeed_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+
+
+    }
+
+    public function material_mgr()
+    {
+        $result = $this -> anchor_model -> get_all_material();
+
+        $data = array(
+            'matertial' => $result
+        );
+        
+        $this -> load -> view('admin/material-list',$data);
+    }
+
+    public function material_edit()
+    {
+        $id = $this -> uri ->segment(3);
+        $row = $this -> anchor_model -> get_material_by_id($id);
+
+        if( $row )
+        {
+            $data = array(
+                'material' => $row
+            );
+
+            $this -> load -> view('admin/material-edit',$data);
+        }
+
+    }
+
+    public function updata_material()
+    {
+        $id = $this -> input -> post('id',true);
+        $name = $this -> input -> post('material_name',true);
+        $website = $this -> input -> post('material_website',true);
+
+        $photo_old_url = $this -> input -> post('photo_old_url');
+        $this -> upload('material_img',$photo_old_url);
+        $logo = $this -> upload('material_img',$photo_old_url);
+
+        $row = $this -> anchor_model -> update_materail_info($id,$name,$website,$logo);
+
+        if( $row > 0)
+        {
+            $data = array(
+                'info'=>'信息更新成功！',
+                'page' => '信息页面',
+                'url' => 'admin/material_mgr'
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/material_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+    }
+
+
+
+
+
+
 
 
 

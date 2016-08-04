@@ -10,7 +10,6 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <base href="<?php echo site_url();?>">
-
     <link rel="icon" type="image/png" href="assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -71,7 +70,7 @@
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">平台主播注册信息列表</strong> / <small>anchor register list</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">媒体公司需求信息列表</strong> / <small>anchor need list</small></div>
         </div>
 
 
@@ -82,201 +81,160 @@
 <table class="am-table am-table-striped am-table-bordered am-table-compact" id="example">
 <thead>
   	<tr>
-    	<th class="table-type">注册时间</th>
-        <th class="table-type">个人信息</th>
-        <th class="table-type">平台信息</th>
-        <th class="table-type">联系方式</th>
-        <th class="table-type">其他信息</th>
+    	<th class="table-type">添加时间</th>
+        <th class="table-type">广告主资料</th>
+        <th class="table-type">投放信息</th>
+        <th class="table-type">媒体公司需求信息</th>
+        <th class="table-type">其他需求</th>
         <th class="table-type">操作</th>
   	</tr>
 </thead>
 <tbody id="tbody">
 <?php
 	$num = 0;
-	foreach($anchors as $anchor){
+	foreach($companyNeeds as $need){
 	$num++;
 ?>
 
   <tr class="<?php echo $num%2==0?'odd' : 'even' ;?>">
-    <td><?php echo $anchor -> add_time; ?></td>
+    <td><?php echo $need -> add_time; ?></td>
     <td>
     	<p class="am-text-success">
     		<span class="am-icon-copyright"></span>
-    		<?php echo $anchor -> anchor_username; ?>
+    		<?php echo $need -> companyNeed_brand; ?>
     	</p>
     	<p class="am-text-success">
-    		<span class="am-icon-user"></span>
-    		<?php echo $anchor -> anchor_name; ?>
-    	</p>
-    	<p class="am-text-success">
-    		<span class="am-icon-venus-mars"></span>
-    		<?php echo $anchor -> anchor_gender; ?>
-    	</p>
-
-    	
-    </td>
-    <td>
-    	<p class="am-text-danger">
     		<span class="am-icon-briefcase"></span>
-    		<?php echo $anchor -> anchor_platformName; ?>
+    		<?php echo $need -> companyNeed_pro; ?>
     	</p>
-    	<p class="am-text-danger">
-    		<span class="am-icon-qrcode"></span>
-    		<?php echo $anchor -> anchor_platformID; ?>
-    	</p>
-    	<p class="am-text-danger">
-    		<span class="am-icon-language"></span>
-    		<?php echo $anchor -> anchor_platformNickname; ?>
-    	</p>
+    	
 
-
+    	
     </td>
     <td>
-    	<p>
-    		<a href="tel:<?php echo $anchor -> anchor_tel; ?>">
-    		<span class="am-icon-phone"></span>
-    		<?php echo $anchor -> anchor_tel; ?>
-    		</a>
+    	<p class="am-text-danger">
+    		<span class="am-icon-clock-o"></span>
+    		<?php echo $need -> companyNeed_time; ?>
+    	</p>
+    	<p class="am-text-danger">
+    		<span class="am-icon-calendar-check-o"></span>
+    		<?php echo $need -> companyNeed_cycle; ?>
+    	</p>
+    	<p class="am-text-danger">
+    		<span class="am-icon-money"></span>
+    		<?php echo $need -> companyNeed_bud; ?>
+    	</p>
+    </td>
+    <td>
+    	
+    	<p class="am-text-success">
+    		<span class="am-icon-navicon"></span>
+    		<?php echo mb_substr($need -> aderResourceCateString, 0,6)."......"; ?>
+    	</p>
+    	<p class="am-text-success">
+    		<span class="am-icon-plane"></span>
+    		<?php echo mb_substr($need -> aderCityString, 0,6)."......"; ?>
     	</p>
     	
-    	<p>
-    		
-    		<a href="mailto:<?php echo $anchor -> anchor_email; ?>">
-    		<span class="am-icon-envelope-o"></span>
-    		<?php echo $anchor -> anchor_email; ?>
-    		</a>
-    	</p>
-    	
-    	<p>	
-    		<a href="javascript:;">
-    		<span class="am-icon-qq"></span>
-    		<?php echo $anchor -> anchor_qqNum; ?>
-    		</a>
-    	</p>
     </td>
     
     <td>
     	<p class="am-text-default">
-    		<span class="am-icon-users"></span>
-    		<?php echo $anchor -> anchor_fansNumber; ?>
+    		<span class="am-icon-file-text-o"></span>
+    		<?php echo mb_substr($need -> companyNeed_others, 0,30)."......"; ?>
     	</p>
 
-    	<p class="am-text-default">
-    		<span class="am-icon-terminal"></span>
-    		<?php echo $anchor -> anchor_attr; ?>
-    	</p>
-
-    	<p class="am-text-default">
-    		<span class="am-icon-credit-card-alt"></span>
-    		<?php echo $anchor -> anchor_bankAccount; ?>
-    	</p>
 
     	
     </td>
     
-<td selector="<?php echo $anchor -> anchor_id; ?>">
+<td selector="<?php echo $need -> companyNeed_id; ?>">
     <div class="am-btn-toolbar" >
         <div class="am-btn-group am-btn-group-xs">
-        	<button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block" data-am-offcanvas="{target: '#doc-oc-demo<?php echo $anchor -> anchor_id ;?>'}"><span class="am-icon-search"></span> 查&nbsp;&nbsp;&nbsp;&nbsp;看</button>
+        	<button data-id="<?php echo $need -> companyNeed_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block" data-am-modal="{target: '#my-popup<?php echo $need -> companyNeed_id ;?>'}" ><span class="am-icon-search"></span> 查&nbsp;&nbsp;&nbsp;&nbsp;看</button>
             
 
-            <button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/anchor_edit/<?php echo $anchor -> anchor_id ;?>"> <span class="am-icon-pencil"></span> 编辑审核</a></button>
+            <button data-id="<?php echo $need -> companyNeed_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/companyNeed_edit/<?php echo $need -> companyNeed_id ;?>"> <span class="am-icon-pencil"></span> 编辑审核</a></button>
 
-            <button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block am-btn-delete"><span class="am-icon-trash-o"></span> 删&nbsp;&nbsp;&nbsp;&nbsp;除</button>
+            <button data-id="<?php echo $need -> companyNeed_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block am-btn-delete"><span class="am-icon-trash-o"></span> 删&nbsp;&nbsp;&nbsp;&nbsp;除</button>
 
            
 
 <!-- 侧边栏内容 -->
-<div id="doc-oc-demo<?php echo $anchor -> anchor_id ;?>" class="am-offcanvas" >
-  <div class="am-offcanvas-bar am-offcanvas-bar-flip" >
-    <div class="am-offcanvas-content" style="padding-top: 60px;">
-	  	<div class="am-panel am-panel-warning">
-		  <div class="am-panel-hd">
-		    <h3 class="am-panel-title">主播详细信息</h3>
-		  </div>
-			<div class="am-panel-bd" style="text-align:center;">
-			    <img class="am-circle" src="<?php echo $anchor -> anchor_photo ;?>" width="100" height="100"/>
-			</div>
 
-		  	<ul class="am-list am-list-border">
-			  <li>
-			  	<a href="javascript:;">
-			  		注册账号：<?php echo $anchor -> anchor_username; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		真实姓名：<?php echo $anchor -> anchor_name; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		性别：<?php echo $anchor -> anchor_gender; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		直播平台：<?php echo $anchor -> anchor_platformName; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		平台账号：<?php echo $anchor -> anchor_platformID; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		平台昵称：<?php echo $anchor -> anchor_platformNickname; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		粉丝数量：<?php echo $anchor -> anchor_fansNumber; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		手机号码：<?php echo $anchor -> anchor_tel; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		邮箱：<?php echo $anchor -> anchor_email; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		QQ号码：<?php echo $anchor -> anchor_qqNum; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		银行账号：<?php echo $anchor -> anchor_bankAccount; ?>
-			  	</a>
-			  </li>
 
-			  <li>
-			  	<a href="javascript:;">
-			  		主播性质：<?php echo $anchor -> anchor_attr; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		地域：<?php echo $anchor -> anchor_region; ?>/<?php echo $anchor -> anchor_province; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		直播类别：<?php echo $anchor -> anchor_accountCate; ?>
-			  	</a>
-			  </li>
-			  
-			</ul>
-		  <div class="am-panel-footer"><small>注册时间：</small><?php echo $anchor -> add_time; ?></div>
+
+<div class="am-popup" id="my-popup<?php echo $need -> companyNeed_id; ?>">
+  <div class="am-popup-inner">
+    <div class="am-popup-hd">
+      <h4 class="am-popup-title">主播需求详细信息</h4>
+      <span data-am-modal-close
+            class="am-close">&times;</span>
+    </div>
+    <div class="am-popup-bd">
+      <div class="am-panel-bd" style="text-align:center;">
+			    <img class="am-circle" src="<?php echo $need -> companyNeed_photo ;?>" width="100" height="100"/>
 		</div>
+
+    	<ul class="am-list am-list-border">
+			<li>
+			  	<a href="javascript:;"><span class="am-icon-copyright"></span>
+			    广告主品牌：<?php echo $need -> companyNeed_brand; ?>
+			    </a>
+			</li>
+		  	<li>
+			  	<a href="javascript:;"><span class="am-icon-briefcase"></span>
+			    广告主宣传产品：<?php echo $need -> companyNeed_pro; ?>
+			    </a>
+			</li>
+			<li>
+			  	<a href="javascript:;"><span class="am-icon-connectdevelop"></span>
+			    广告主行业：<?php echo $need -> aderCateString; ?>
+			    </a>
+			</li>
+			<li>
+			  	<a href="javascript:;"><span class="am-icon-clock-o"></span>
+			    预计投放时间：<?php echo $need -> companyNeed_time; ?>
+			    </a>
+			</li>
+
+			<li>
+			  	<a href="javascript:;"><span class="am-icon-calendar-check-o"></span>
+			    预计投放周期：<?php echo $need -> companyNeed_cycle; ?>
+			    </a>
+			</li>
+
+			<li>
+			  	<a href="javascript:;"><span class="am-icon-cny"></span>
+			    投放预算：<?php echo $need -> companyNeed_bud; ?>
+			    </a>
+			</li>
+			<li>
+			  	<a href="javascript:;"><span class="am-icon-navicon"></span>
+			    需要资源渠道类型：<?php echo $need -> aderResourceCateString; ?>
+			    </a>
+			</li>
+			<li>
+			  	<a href="javascript:;"><span class="am-icon-smile-o"></span>
+			    投放城市：<?php echo $need -> aderCityString; ?>
+			    </a>
+			</li>
+            <li>
+                <a href="javascript:;"><span class="am-icon-file-text-o"></span>
+                其他需求：
+                <?php echo $need -> companyNeed_others; ?>
+                </a>
+            </li>
+		</ul>
+
+    	
+    
     </div>
   </div>
 </div>
+
+
+
 
         </div>
     </div>
@@ -365,12 +323,10 @@
     
     $(function(){
         $('#tbody').on('click','.am-btn-delete', function(){
-            var $anchor_id = $(this).data('id');
-            var $tr = $('tr[selector='+$anchor_id+']');
+            var $companyNeed_id = $(this).data('id');
+            var $tr = $('tr[selector='+$companyNeed_id+']');
             
-
-            
-            $.get('admin/anchor_delete',{'anchor_id':$anchor_id},function(res){
+            $.get('admin/companyNeed_delete',{'companyNeed_id':$companyNeed_id},function(res){
                 if(res=='success'){
                     $tr.remove();
                     $('#alert').trigger('click');

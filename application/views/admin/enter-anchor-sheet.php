@@ -272,7 +272,7 @@
 
   <div class="am-form-group">
     <div class="am-u-sm-10 am-u-sm-offset-2">
-      <button type="submit" class="am-btn am-btn-success">保存更改</button>
+      <button type="submit" class="am-btn am-btn-success">保存添加</button>
     </div>
   </div>
 </form>

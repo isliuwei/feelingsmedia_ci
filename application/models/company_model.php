@@ -457,7 +457,41 @@ class Company_model extends CI_Model{
     	return $this -> db -> query($sql) -> result();
     	
     }
+
+    public function get_all_company_need()
+    {
+    	return $this -> db -> get('t_companyNeed') -> result();
+    }
+
+    public function delete_need_by_id($companyNeed_id)
+    {
+      $this -> db -> delete('t_companyNeed', array('companyNeed_id' => $companyNeed_id));
+
+      return $this -> db -> affected_rows();
+    }
 	
+	public function get_need_by_id($companyNeed_id)
+    {
+      return $this -> db -> get_where('t_companyNeed',array('companyNeed_id' => $companyNeed_id)) -> row();
+    }
+
+    public function update_companyNeed_by_admin($id,$brand,$pro,$time,$cycle,$bud,$other,$logo)
+    {
+    	$data = array(
+          'companyNeed_brand' => $brand,
+          'companyNeed_pro' => $pro,
+          'companyNeed_time' => $time,
+          'companyNeed_cycle' => $cycle,
+          'companyNeed_bud' => $bud,
+          'companyNeed_others' => $other,
+          'companyNeed_photo' => $logo
+        );
+
+        $this -> db -> where('companyNeed_id',$id);
+        $this -> db -> update('t_companyNeed',$data);
+
+        return $this -> db -> affected_rows();
+    }
 
 
 

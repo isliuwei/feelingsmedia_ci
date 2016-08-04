@@ -255,6 +255,62 @@ class Ader_model extends CI_Model{
 			return $query -> result();
 	}
 
+	public function delete_by_id($ader_id)
+    {
+
+      $this -> db -> delete('t_ader', array('ader_id' => $ader_id));
+
+      return $this -> db -> affected_rows();
+
+    }
+
+    public function get_ader_by_id($ader_id)
+    {
+    	return $this -> db -> get_where('t_ader',array('ader_id' => $ader_id)) -> row();
+    }
+
+
+    public function update_ader_by_all($id,$username,$password,$email,$tel,$company,$website)
+    {
+    	$data = array(
+    		'ader_username' => $username,
+    		'ader_password' => $password,
+    		'ader_email' => $email,
+    		'ader_tel' => $tel,
+    		'ader_companyName' => $company,
+    		'ader_website' => $website
+    	);
+
+    	$this -> db -> where('ader_id', $id);
+    	$this -> db -> update('t_ader', $data);
+
+    	return $this -> db -> affected_rows();
+    }
+
+
+    public function save_ader_by_admin($isEnter,$username,$password,$email,$tel,$company,$website)
+    {
+    	$data = array(
+    		'ader_username' => $username,
+    		'ader_password' => $password,
+    		'ader_email' => $email,
+    		'ader_tel' => $tel,
+    		'ader_companyName' => $company,
+    		'ader_website' => $website,
+    		'isEnter' => $isEnter
+    	);
+
+    	$this -> db -> insert("t_ader",$data);
+
+      	return $this -> db -> affected_rows();
+    }
+
+    public function get_by_enter()
+    {
+    	$sql = "select * from t_ader where isEnter = 1";
+      	return $this -> db -> query($sql) -> result();
+    }
+
 
 
 

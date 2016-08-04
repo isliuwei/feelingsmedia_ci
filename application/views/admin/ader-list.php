@@ -83,10 +83,10 @@
 <thead>
   	<tr>
     	<th class="table-type">注册时间</th>
-        <th class="table-type">个人信息</th>
-        <th class="table-type">平台信息</th>
+        <th class="table-type">用户名</th>
+        <th class="table-type">密码</th>
         <th class="table-type">联系方式</th>
-        <th class="table-type">其他信息</th>
+        <th class="table-type">公司信息</th>
         <th class="table-type">操作</th>
   	</tr>
 </thead>
@@ -98,187 +98,125 @@
 ?>
 
   <tr class="<?php echo $num%2==0?'odd' : 'even' ;?>">
-    <td><?php echo $anchor -> add_time; ?></td>
-    <td><?php echo $anchor -> add_time; ?></td>
-    <td><?php echo $anchor -> add_time; ?></td>
-    <td><?php echo $anchor -> add_time; ?></td>
-    <td><?php echo $anchor -> add_time; ?></td>
-    <td><?php echo $anchor -> add_time; ?></td>
 
-    <!-- <td>
-    	<p class="am-text-success">
-    		<span class="am-icon-copyright"></span>
-    		<?php echo $anchor -> anchor_username; ?>
-    	</p>
-    	<p class="am-text-success">
-    		<span class="am-icon-user"></span>
-    		<?php echo $anchor -> anchor_name; ?>
-    	</p>
-    	<p class="am-text-success">
-    		<span class="am-icon-venus-mars"></span>
-    		<?php echo $anchor -> anchor_gender; ?>
-    	</p>
-
-    	
-    </td>
     <td>
-    	<p class="am-text-danger">
-    		<span class="am-icon-briefcase"></span>
-    		<?php echo $anchor -> anchor_platformName; ?>
-    	</p>
-    	<p class="am-text-danger">
-    		<span class="am-icon-qrcode"></span>
-    		<?php echo $anchor -> anchor_platformID; ?>
-    	</p>
-    	<p class="am-text-danger">
-    		<span class="am-icon-language"></span>
-    		<?php echo $anchor -> anchor_platformNickname; ?>
-    	</p>
-
-
+        <p class="am-text-success">
+            <span class="am-icon-calendar"></span>
+            <?php echo $ader -> add_time; ?>
+        </p>
     </td>
+
     <td>
-    	<p>
-    		<a href="tel:<?php echo $anchor -> anchor_tel; ?>">
-    		<span class="am-icon-phone"></span>
-    		<?php echo $anchor -> anchor_tel; ?>
-    		</a>
-    	</p>
-    	
-    	<p>
-    		
-    		<a href="mailto:<?php echo $anchor -> anchor_email; ?>">
-    		<span class="am-icon-envelope-o"></span>
-    		<?php echo $anchor -> anchor_email; ?>
-    		</a>
-    	</p>
-    	
-    	<p>	
-    		<a href="javascript:;">
-    		<span class="am-icon-qq"></span>
-    		<?php echo $anchor -> anchor_qqNum; ?>
-    		</a>
-    	</p>
+        <p class="am-text-success">
+            <span class="am-icon-copyright"></span>
+            <?php echo $ader -> ader_username; ?>
+        </p>
     </td>
+
+    <td>
+        <p class="am-text-success">
+            <span class="am-icon-qrcode"></span>
+            <?php echo $ader -> ader_password; ?>
+        </p>
+    </td>
+
+    <td>
+
+        <p>
+            <a href="tel:<?php echo $ader -> ader_tel; ?>">
+            <span class="am-icon-phone"></span>
+            <?php echo $ader -> ader_tel; ?>
+            </a>
+        </p>
+        
+        <p>
+            
+            <a href="mailto:<?php echo $ader -> ader_email; ?>">
+            <span class="am-icon-envelope-o"></span>
+            <?php echo $ader -> ader_email; ?>
+            </a>
+        </p>
+
+    </td>
+
+
+
+    <td>
+
+        <p>
+            <span class="am-icon-language"></span>
+            <?php echo $ader -> ader_companyName; ?>
+        </p>
+        
+        <p>
+            <span class="am-icon-global"></span>
+            <?php echo $ader -> ader_website; ?>
+        </p>
+
+    </td>
+
+
+
     
-    <td>
-    	<p class="am-text-default">
-    		<span class="am-icon-users"></span>
-    		<?php echo $anchor -> anchor_fansNumber; ?>
-    	</p>
-
-    	<p class="am-text-default">
-    		<span class="am-icon-terminal"></span>
-    		<?php echo $anchor -> anchor_attr; ?>
-    	</p>
-
-    	<p class="am-text-default">
-    		<span class="am-icon-credit-card-alt"></span>
-    		<?php echo $anchor -> anchor_bankAccount; ?>
-    	</p>
-
-    	
-    </td> -->
     
 <td selector="<?php echo $ader -> ader_id; ?>">
     <div class="am-btn-toolbar" >
         <div class="am-btn-group am-btn-group-xs">
-        	<button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block" data-am-offcanvas="{target: '#doc-oc-demo<?php echo $ader -> ader_id; ?>'}"><span class="am-icon-search"></span> 查&nbsp;&nbsp;&nbsp;&nbsp;看</button>
+        	<button data-id="<?php echo $ader -> ader_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block" data-am-offcanvas="{target: '#doc-oc-demo<?php echo $ader -> ader_id; ?>'}"><span class="am-icon-search"></span> 查&nbsp;&nbsp;&nbsp;&nbsp;看</button>
             
 
-            <button data-id="<?php echo $anchor -> anchor_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/anchor_edit/<?php echo $ader -> ader_id; ?>"> <span class="am-icon-pencil"></span> 编辑审核</a></button>
+            <button data-id="<?php echo $ader -> ader_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/ader_edit/<?php echo $ader -> ader_id; ?>"> <span class="am-icon-pencil"></span> 编辑审核</a></button>
 
             <button data-id="<?php echo $ader -> ader_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block am-btn-delete"><span class="am-icon-trash-o"></span> 删&nbsp;&nbsp;&nbsp;&nbsp;除</button>
 
            
 
 <!-- 侧边栏内容 -->
-<div id="doc-oc-demo<?php echo $anchor -> anchor_id ;?>" class="am-offcanvas" >
+<div id="doc-oc-demo<?php echo $ader -> ader_id ;?>" class="am-offcanvas" >
   <div class="am-offcanvas-bar am-offcanvas-bar-flip" >
     <div class="am-offcanvas-content" style="padding-top: 60px;">
 	  	<div class="am-panel am-panel-warning">
 		  <div class="am-panel-hd">
-		    <h3 class="am-panel-title">主播详细信息</h3>
+		    <h3 class="am-panel-title">广告主详细信息</h3>
 		  </div>
-			<div class="am-panel-bd" style="text-align:center;">
+			<!-- <div class="am-panel-bd" style="text-align:center;">
 			    <img class="am-circle" src="<?php echo $anchor -> anchor_photo ;?>" width="100" height="100"/>
-			</div>
+			</div> -->
 
-		  	<!-- <ul class="am-list am-list-border">
+		  	<ul class="am-list am-list-border">
 			  <li>
 			  	<a href="javascript:;">
-			  		注册账号：<?php echo $anchor -> anchor_username; ?>
+			  		注册账号：<?php echo $ader -> ader_username; ?>
 			  	</a>
 			  </li>
 			  <li>
 			  	<a href="javascript:;">
-			  		真实姓名：<?php echo $anchor -> anchor_name; ?>
+			  		账号密码：<?php echo $ader -> ader_password; ?>
 			  	</a>
 			  </li>
 			  <li>
 			  	<a href="javascript:;">
-			  		性别：<?php echo $anchor -> anchor_gender; ?>
+			  		邮箱：<?php echo $ader -> ader_email; ?>
+			  	</a>
+			  </li>
+              <li>
+                <a href="javascript:;">
+                    电话：<?php echo $ader -> ader_tel; ?>
+                </a>
+              </li>
+			  <li>
+			  	<a href="javascript:;">
+			  	  公司名称：<?php echo $ader -> ader_companyName; ?>
 			  	</a>
 			  </li>
 			  <li>
-			  	<a href="javascript:;">
-			  		直播平台：<?php echo $anchor -> anchor_platformName; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		平台账号：<?php echo $anchor -> anchor_platformID; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		平台昵称：<?php echo $anchor -> anchor_platformNickname; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		粉丝数量：<?php echo $anchor -> anchor_fansNumber; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		手机号码：<?php echo $anchor -> anchor_tel; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		邮箱：<?php echo $anchor -> anchor_email; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		QQ号码：<?php echo $anchor -> anchor_qqNum; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		银行账号：<?php echo $anchor -> anchor_bankAccount; ?>
-			  	</a>
-			  </li>
-
-			  <li>
-			  	<a href="javascript:;">
-			  		主播性质：<?php echo $anchor -> anchor_attr; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		地域：<?php echo $anchor -> anchor_region; ?>/<?php echo $anchor -> anchor_province; ?>
-			  	</a>
-			  </li>
-			  <li>
-			  	<a href="javascript:;">
-			  		直播类别：<?php echo $anchor -> anchor_accountCate; ?>
-			  	</a>
-			  </li>
+                <a href="javascript:;">
+                  公司网站：<?php echo $ader -> ader_website; ?>
+                </a>
+              </li>
 			  
-			</ul> -->
-		  <div class="am-panel-footer"><small>注册时间：</small><?php echo $anchor -> add_time; ?></div>
+			</ul>
+		  <div class="am-panel-footer"><small>注册时间：</small><?php echo $ader -> add_time; ?></div>
 		</div>
     </div>
   </div>
@@ -371,12 +309,10 @@
     
     $(function(){
         $('#tbody').on('click','.am-btn-delete', function(){
-            var $anchor_id = $(this).data('id');
-            var $tr = $('tr[selector='+$anchor_id+']');
+            var $ader_id = $(this).data('id');
+            var $tr = $('tr[selector='+$ader_id+']');
             
-
-            
-            $.get('admin/admin_delete',{'anchor_id':$anchor_id},function(res){
+            $.get('admin/ader_delete',{'ader_id':$ader_id},function(res){
                 if(res=='success'){
                     $tr.remove();
                     $('#alert').trigger('click');

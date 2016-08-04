@@ -607,6 +607,70 @@ class Anchor_model extends CI_Model{
       return $this -> db -> query($sql) -> result();
     }
 
+    public function get_all_anchor_need()
+    {
+      return $this -> db -> get('t_anchorNeed') -> result();
+    }
+
+    public function delete_need_by_id($anchorNeed_id)
+    {
+      $this -> db -> delete('t_anchorNeed', array('anchorNeed_id' => $anchorNeed_id));
+
+      return $this -> db -> affected_rows();
+    }
+
+    public function get_need_by_id($anchorNeed_id)
+    {
+      return $this -> db -> get_where('t_anchorNeed',array('anchorNeed_id' => $anchorNeed_id)) -> row();
+    }
+
+
+    public function update_anchorNeed_by_admin($id,$brand,$pro,$time,$cycle,$number,$fansNumber,$coop,$other,$logo)
+    {
+        $data = array(
+          'anchorNeed_brand' => $brand,
+          'anchorNeed_pro' => $pro,
+          'anchorNeed_time' => $time,
+          'anchorNeed_cycle' => $cycle,
+          'anchorNeed_number' => $number,
+          'anchorNeed_fansNumber' => $fansNumber,
+          'anchorNeed_coopCate' => $coop,
+          'anchorNeed_otherNeed' => $other,
+          'anchorNeed_logo' => $logo
+        );
+
+        $this -> db -> where('anchorNeed_id',$id);
+        $this -> db -> update('t_anchorNeed',$data);
+
+        return $this -> db -> affected_rows();
+    }
+
+
+    public function get_all_material()
+    {
+      return $this -> db -> get('t_material') -> result();
+    }
+
+    public function get_material_by_id($id)
+    {
+      return $this -> db -> get_where('t_material',array('id' => $id)) -> row();
+    }
+
+    public function update_materail_info($id,$name,$website,$logo)
+    {
+      $data = array(
+        'material_name' => $name,
+        'material_website' => $website,
+        'material_img' => $logo
+      );
+
+      $this -> db -> where('id',$id);
+      $this -> db -> update('t_material',$data);
+
+      return $this -> db -> affected_rows();
+
+    }
+
     
 
     

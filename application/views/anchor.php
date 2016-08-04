@@ -135,17 +135,15 @@
       <div class="row">
         <div class="banner col-md-12">
           <ul class="img">
-            <li><a href="#"><img src="img/yyTV.png" alt="YY直播"></a></li>
-            <li><a href="#"><img src="img/yingkeTV.png" alt="映客直播"></a></li>
-            <li><a href="#"><img src="img/zhanqiTV.png" alt="战旗直播"></a></li>
-            <li><a href="#"><img src="img/douyuTV.png" alt="斗鱼TV"></a></li>
-            <li><a href="#"><img src="img/laifenlaTV.png" alt="来疯啦"></a></li>
-            <li><a href="#"><img src="img/qixiuTV.png" alt="奇秀"></a></li>
-            <li><a href="#"><img src="img/huyaTV.png" alt="虎牙直播"></a></li>
-            <li><a href="#"><img src="img/quanminTV.png" alt="全民TV"></a></li>
-            <li><a href="#"><img src="img/longzhuTV.png" alt="龙珠直播"></a></li>
-            <li><a href="#"><img src="img/pandaTV.png" alt="熊猫TV"></a></li>
+          <?php
+            foreach ($material as $img) {
+          ?>
+            <li><a href="<?php echo $img -> material_website;?>" target="_blank"><img src="<?php echo $img -> material_img;?>" alt="<?php echo $img -> material_name;?>" title="<?php echo $img -> material_name;?>"></a></li>
+          <?php
+            }
+          ?>
           </ul>
+
           <div class="carousel-btn">
             <span class="prev"><i class="fa fa-angle-left"></i></span>
             <span class="next"><i class="fa fa-angle-right"></i></span>

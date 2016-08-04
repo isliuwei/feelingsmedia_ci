@@ -60,6 +60,7 @@
       </div>
   </div> -->
 
+
   <header class='navbar navbar-default navbar-fixed-top' id='main-navbar' role='banner'>
 		<div class='container-fluid'>
 			<div class='navbar-header'>
@@ -97,6 +98,7 @@
 			</nav>
 		</div>
 	</header>
+
 
 
   <div class="container cate-container">

@@ -735,6 +735,8 @@ class Company extends CI_Controller {
 		$this -> load -> view('company-list',$data);
 	}
 
+	
+
 
 
 
