@@ -1,23 +1,31 @@
 
 
 angular.module('myApp',[])
-  .controller('FormController', ['$scope',function($scope){
+  .controller('FormController', ['$scope','$http',function($scope,$http){
+    $scope.userdata = {};
+    $scope.logindata = {};
 
-      $scope.userdata = {};
+    setTimeout(function(){
+      $('#captcha-tip').trigger('click');
+    },1000);
 
+    $('#captcha-tip').on('click',function(){
+        $.get('ader/change_cap',function(res){
+          //console.log(res.codeinfo);
+          $('#captcha-img').attr('src',"captcha/"+res.codeinfo.time+".jpg");
+          $('#captcha-img-login').attr('src',"captcha/"+res.codeinfo.time+".jpg");
+          $('#captcha_ci').val(res.codeinfo.word);
+          $('#captcha_ci_login').val(res.codeinfo.word);
+          $scope.userdata.captcha_ci = res.codeinfo.word;
+          $scope.logindata.captcha_ci_login = res.codeinfo.word;
+        },'json');
+    });
 
+    $('#captcha-tip-login').on('click',function(){
+        $('#captcha-tip').trigger('click');
+    });
 
-      //setInterval(function(){console.log($scope.userdata.captcha)},2000);
-
-
-
-      // $scope.submitForm = function(){
-      //   // console.log('表单提交了！');
-      //
-      //   // console.log(userdata);
-      // }
-      $scope.userdata.captcha1 ="bb";
-
+    
 
   }])
   .directive('compare',function(){

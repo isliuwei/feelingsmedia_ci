@@ -106,6 +106,11 @@ class Ader_model extends CI_Model{
 
   }
 
+  	public function get_ader_count()
+    {
+      return $this->db->count_all('t_ader');
+    }
+
 	public function update_by_email_tel($id,$email,$tel)
 	{
 		$data = array(
@@ -309,6 +314,25 @@ class Ader_model extends CI_Model{
     {
     	$sql = "select * from t_ader where isEnter = 1";
       	return $this -> db -> query($sql) -> result();
+    }
+
+    public function get_ader_cate($str1)
+    {
+      $sql = "select * from t_aderCate cate where cate.aderCate_id in".'('.$str1.')';
+      return $this -> db -> query($sql) -> result();
+    }
+
+    public function get_ader_city($str2)
+    {
+      $sql = "select * from t_aderCity cate where cate.aderCity_id in".'('.$str2.')';
+      return $this -> db -> query($sql) -> result();
+    }
+
+    public function get_resource_cate($str1)
+    {
+      $sql = "select * from t_aderResourceCate cate where cate.aderResourceCate_id in".'('.$str1.')';
+      return $this -> db -> query($sql) -> result();
+
     }
 
 

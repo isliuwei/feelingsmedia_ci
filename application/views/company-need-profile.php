@@ -75,7 +75,7 @@
 <div class="container">
   <div class="row">
     <div class="panel panel-default">
-      <div class="panel-heading">媒体咨询公司需求信息列表</div>
+      <div class="panel-heading">合作信息列表</div>
           <table class="table">
             <thead>
               <tr>
@@ -88,36 +88,29 @@
               </tr>
             </thead>
             <tbody>
+            <?php
+              $num = 0;
+              foreach ($cooperateInfo as $coop) {
+            ?>
               <tr>
-                <th scope="row">1</th>
-                <td>斗鱼TV</td>
-                <td>直播平台</td>
-                <td>广州、上海、北京</td>
-                <td>50000元</td>
-                <td>2016年6月</td>
+                <th scope="row"><?php echo ++$num;?></th>
+                <td><?php echo $coop  -> cooperate_company; ?></td>
+                <td><?php echo $coop  -> cooperate_resource; ?></td>
+                <td><?php echo $coop  -> cooperate_region; ?></td>
+                <td><?php echo $coop  -> cooperate_bud; ?></td>
+                <td><?php echo $coop  -> cooperate_time; ?></td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>斗鱼TV</td>
-                <td>直播平台</td>
-                <td>广州、上海、北京</td>
-                <td>50000元</td>
-                <td>2016年6月</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>斗鱼TV</td>
-                <td>直播平台</td>
-                <td>广州、上海、北京</td>
-                <td>50000元</td>
-                <td>2016年6月</td>
-              </tr>
+              <?php
+                }
+              ?>
+              
             </tbody>
           </table>
         </div>
     </div>
 
 
+  <!--
   <nav>
       <ul class="pagination">
           <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
@@ -130,6 +123,7 @@
           <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
        </ul>
   </nav>
+  -->
 </div>
 
 

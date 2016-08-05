@@ -4,6 +4,7 @@ class Welcome extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
+        $this-> load -> helper('file');
 		$this -> load -> helper('captcha');
 
 	}
@@ -11,6 +12,10 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+
+        $hit = read_file('hit.txt');
+        $hit++;
+        write_file('hit.txt', $hit);
 		//验证码配置项
         $vals = array(
             'word'      => rand(1000,9999),
@@ -31,7 +36,7 @@ class Welcome extends CI_Controller {
         );
 
 
-				$this -> load -> view('index',$data);
+		$this -> load -> view('index',$data);
 
 	}
 

@@ -10,6 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <base href="<?php echo site_url();?>">
+
     <link rel="icon" type="image/png" href="assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -70,7 +71,7 @@
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">媒体公司需求信息列表</strong> / <small>anchor need list</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">平台媒体公司注册信息列表</strong> / <small>anchor register list</small></div>
         </div>
 
 
@@ -81,160 +82,150 @@
 <table class="am-table am-table-striped am-table-bordered am-table-compact" id="example">
 <thead>
   	<tr>
-    	<th class="table-type">添加时间</th>
-        <th class="table-type">广告主资料</th>
-        <th class="table-type">投放信息</th>
-        <th class="table-type">媒体公司需求信息</th>
-        <th class="table-type">其他需求</th>
+    	<th class="table-type">注册时间</th>
+        <th class="table-type">账号信息</th>
+        <th class="table-type">公司信息</th>
+        <th class="table-type">联系方式</th>
+        <th class="table-type">资源信息</th>
         <th class="table-type">操作</th>
   	</tr>
 </thead>
 <tbody id="tbody">
 <?php
 	$num = 0;
-	foreach($companyNeeds as $need){
+	foreach($companys as $company){
 	$num++;
 ?>
 
   <tr class="<?php echo $num%2==0?'odd' : 'even' ;?>">
-    <td><?php echo $need -> add_time; ?></td>
+    <td><?php echo $company -> add_time; ?></td>
     <td>
     	<p class="am-text-success">
     		<span class="am-icon-copyright"></span>
-    		<?php echo $need -> companyNeed_brand; ?>
+    		<?php echo $company -> company_username; ?>
     	</p>
     	<p class="am-text-success">
-    		<span class="am-icon-briefcase"></span>
-    		<?php echo $need -> companyNeed_pro; ?>
+    		<span class="am-icon-qrcode"></span>
+    		<?php echo $company -> company_password; ?>
     	</p>
-    	
+    </td>
+    <td>
+    	<p class="am-text-danger">
+    		<span class="am-icon-language"></span>
+    		<?php echo $company -> company_name; ?>
+    	</p>
+    	<p class="am-text-danger">
+    		<span class="am-icon-globe"></span>
+    		<?php echo $company -> company_website; ?>
+    	</p>
 
-    	
     </td>
     <td>
-    	<p class="am-text-danger">
-    		<span class="am-icon-clock-o"></span>
-    		<?php echo $need -> companyNeed_time; ?>
+    	<p>
+    		<a href="tel:<?php echo $company -> company_tel; ?>">
+    		<span class="am-icon-phone"></span>
+    		<?php echo $company -> company_tel; ?>
+    		</a>
     	</p>
-    	<p class="am-text-danger">
-    		<span class="am-icon-calendar-check-o"></span>
-    		<?php echo $need -> companyNeed_cycle; ?>
-    	</p>
-    	<p class="am-text-danger">
-    		<span class="am-icon-money"></span>
-    		<?php echo $need -> companyNeed_bud; ?>
-    	</p>
-    </td>
-    <td>
     	
-    	<p class="am-text-success">
-    		<span class="am-icon-navicon"></span>
-    		<?php echo mb_substr($need -> aderResourceCateString, 0,6)."......"; ?>
+    	<p>
+    		
+    		<a href="mailto:<?php echo $company -> company_email; ?>">
+    		<span class="am-icon-envelope-o"></span>
+    		<?php echo $company -> company_email; ?>
+    		</a>
     	</p>
-    	<p class="am-text-success">
-    		<span class="am-icon-plane"></span>
-    		<?php echo mb_substr($need -> aderCityString, 0,6)."......"; ?>
-    	</p>
+    	
     	
     </td>
     
     <td>
     	<p class="am-text-default">
-    		<span class="am-icon-file-text-o"></span>
-    		<?php echo mb_substr($need -> companyNeed_others, 0,30)."......"; ?>
+    		<span class="am-icon-navicon"></span>
+    		<?php echo mb_substr($company -> company_resourceCate, 0,8)."......"; ?>
     	</p>
 
+    	<p class="am-text-default">
+    		<span class="am-icon-plane"></span>
+    		<?php echo mb_substr($company -> company_resourceCity, 0,8)."......"; ?>
+    	</p>
 
-    	
     </td>
     
-<td selector="<?php echo $need -> companyNeed_id; ?>">
+<td selector="<?php echo $company -> company_id; ?>">
     <div class="am-btn-toolbar" >
         <div class="am-btn-group am-btn-group-xs">
-        	<button data-id="<?php echo $need -> companyNeed_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block" data-am-modal="{target: '#my-popup<?php echo $need -> companyNeed_id ;?>'}" ><span class="am-icon-search"></span> 查&nbsp;&nbsp;&nbsp;&nbsp;看</button>
+        	<button data-id="<?php echo $company -> company_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block" data-am-offcanvas="{target: '#doc-oc-demo<?php echo $company -> company_id ;?>'}"><span class="am-icon-search"></span> 查&nbsp;&nbsp;&nbsp;&nbsp;看</button>
             
 
-            <button data-id="<?php echo $need -> companyNeed_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/companyNeed_edit/<?php echo $need -> companyNeed_id ;?>"> <span class="am-icon-pencil"></span> 编辑审核</a></button>
+            <button data-id="<?php echo $company -> company_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/company_edit/<?php echo $company -> company_id ;?>"> <span class="am-icon-pencil"></span> 编辑审核</a></button>
 
-            <button data-id="<?php echo $need -> companyNeed_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block am-btn-delete"><span class="am-icon-trash-o"></span> 删&nbsp;&nbsp;&nbsp;&nbsp;除</button>
+            <button data-id="<?php echo $company -> company_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block am-btn-delete"><span class="am-icon-trash-o"></span> 删&nbsp;&nbsp;&nbsp;&nbsp;除</button>
+
+            <button data-id="<?php echo $company -> company_id; ?>" class="am-btn am-btn-default am-btn-xs  am-hide-sm-only am-radius am-btn-block"><a style="display:block;" href="admin/cooperate_mgr/<?php echo $company -> company_id ;?>"><span class="am-icon-balance-scale"></span> 合作信息</button>
+
 
            
 
 <!-- 侧边栏内容 -->
+<div id="doc-oc-demo<?php echo $company -> company_id ;?>" class="am-offcanvas" >
+  <div class="am-offcanvas-bar am-offcanvas-bar-flip" >
+    <div class="am-offcanvas-content" style="padding-top: 60px;">
+	  	<div class="am-panel am-panel-warning">
+		  <div class="am-panel-hd">
+		    <h3 class="am-panel-title">媒体公司详细信息</h3>
+		  </div>
+			
 
-
-
-<div class="am-popup" id="my-popup<?php echo $need -> companyNeed_id; ?>">
-  <div class="am-popup-inner">
-    <div class="am-popup-hd">
-      <h4 class="am-popup-title">媒体公司需求详细信息</h4>
-      <span data-am-modal-close
-            class="am-close">&times;</span>
-    </div>
-    <div class="am-popup-bd">
-      <div class="am-panel-bd" style="text-align:center;">
-			    <img class="am-circle" src="<?php echo $need -> companyNeed_photo ;?>" width="100" height="100"/>
+		  	<ul class="am-list am-list-border">
+			  <li>
+			  	<a href="javascript:;">
+			  		注册账号：<?php echo $company -> company_username; ?>
+			  	</a>
+			  </li>
+			  <li>
+			  	<a href="javascript:;">
+			  		账号密码：<?php echo $company -> company_password; ?>
+			  	</a>
+			  </li>
+			  <li>
+			  	<a href="javascript:;">
+			  		公司名称：<?php echo $company -> company_name; ?>
+			  	</a>
+			  </li>
+			  <li>
+			  	<a href="javascript:;">
+			  		公司网站：<?php echo $company -> company_website; ?>
+			  	</a>
+			  </li>
+			  <li>
+			  	<a href="tel:<?php echo $company -> company_tel; ?>">
+			  		联系电话：<?php echo $company -> company_tel; ?>
+			  	</a>
+			  </li>
+			  <li>
+			  	<a href="mailto:<?php echo $company -> company_email; ?>">
+			  		公司邮箱：<?php echo $company -> company_email; ?>
+			  	</a>
+			  </li>
+			  
+			  <li>
+			  	<a href="javascript:;">
+			  		资源渠道：<?php echo $company -> company_resourceCate; ?>
+			  	</a>
+			  </li>
+			  <li>
+			  	<a href="javascript:;">
+			  		资源分布城市：<?php echo $company -> company_resourceCity; ?>
+			  	</a>
+			  </li>
+			  
+			</ul>
+		  <div class="am-panel-footer"><small>注册时间：</small><?php echo $company -> add_time; ?></div>
 		</div>
-
-    	<ul class="am-list am-list-border">
-			<li>
-			  	<a href="javascript:;"><span class="am-icon-copyright"></span>
-			    广告主品牌：<?php echo $need -> companyNeed_brand; ?>
-			    </a>
-			</li>
-		  	<li>
-			  	<a href="javascript:;"><span class="am-icon-briefcase"></span>
-			    广告主宣传产品：<?php echo $need -> companyNeed_pro; ?>
-			    </a>
-			</li>
-			<li>
-			  	<a href="javascript:;"><span class="am-icon-connectdevelop"></span>
-			    广告主行业：<?php echo $need -> aderCateString; ?>
-			    </a>
-			</li>
-			<li>
-			  	<a href="javascript:;"><span class="am-icon-clock-o"></span>
-			    预计投放时间：<?php echo $need -> companyNeed_time; ?>
-			    </a>
-			</li>
-
-			<li>
-			  	<a href="javascript:;"><span class="am-icon-calendar-check-o"></span>
-			    预计投放周期：<?php echo $need -> companyNeed_cycle; ?>
-			    </a>
-			</li>
-
-			<li>
-			  	<a href="javascript:;"><span class="am-icon-cny"></span>
-			    投放预算：<?php echo $need -> companyNeed_bud; ?>
-			    </a>
-			</li>
-			<li>
-			  	<a href="javascript:;"><span class="am-icon-navicon"></span>
-			    需要资源渠道类型：<?php echo $need -> aderResourceCateString; ?>
-			    </a>
-			</li>
-			<li>
-			  	<a href="javascript:;"><span class="am-icon-plane"></span>
-			    投放城市：<?php echo $need -> aderCityString; ?>
-			    </a>
-			</li>
-            <li>
-                <a href="javascript:;"><span class="am-icon-file-text-o"></span>
-                其他需求：
-                <?php echo $need -> companyNeed_others; ?>
-                </a>
-            </li>
-		</ul>
-
-    	
-    
     </div>
   </div>
 </div>
-
-
-
 
         </div>
     </div>
@@ -323,10 +314,10 @@
     
     $(function(){
         $('#tbody').on('click','.am-btn-delete', function(){
-            var $companyNeed_id = $(this).data('id');
-            var $tr = $('tr[selector='+$companyNeed_id+']');
+            var $company_id = $(this).data('id');
+            var $tr = $('tr[selector='+$company_id+']');
             
-            $.get('admin/companyNeed_delete',{'companyNeed_id':$companyNeed_id},function(res){
+            $.get('admin/company_delete',{'company_id':$company_id},function(res){
                 if(res=='success'){
                     $tr.remove();
                     $('#alert').trigger('click');

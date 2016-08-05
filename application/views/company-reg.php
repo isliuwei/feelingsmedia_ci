@@ -346,7 +346,7 @@
                 <input type="checkbox" name="resourceCate[]" value="7">  擎&nbsp;天&nbsp;柱
                 <br>
                 <input type="checkbox" name="resourceCate[]" value="8">  自&nbsp;媒&nbsp;体
-                <input type="checkbox" name="resourceCate[]" value="9">  户外楼梯LED大屏
+                <input type="checkbox" name="resourceCate[]" value="9">  户外楼体LED大屏
             </div>
           </div>
         </div>

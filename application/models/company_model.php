@@ -343,6 +343,11 @@ class Company_model extends CI_Model{
 		return $this->db->count_all('t_companyNeed');
 	}
 
+	public function get_companyReg_count()
+	{
+		return $this->db->count_all('t_company');
+	}
+
 	public function get_company_by_page($per_page,$offset)
     {
         $query = $this -> db -> query( 'select * from t_companyNeed order by add_time desc limit '.$offset.','.$per_page );
@@ -466,6 +471,9 @@ class Company_model extends CI_Model{
     public function delete_need_by_id($companyNeed_id)
     {
       $this -> db -> delete('t_companyNeed', array('companyNeed_id' => $companyNeed_id));
+      $this -> db -> delete('t_r_companyNeed_aderCate', array('companyNeed_id' => $companyNeed_id));
+      $this -> db -> delete('t_r_companyNeed_aderCity', array('companyNeed_id' => $companyNeed_id));
+      $this -> db -> delete('t_r_companyNeed_aderResourceCate', array('companyNeed_id' => $companyNeed_id));
 
       return $this -> db -> affected_rows();
     }
@@ -492,6 +500,208 @@ class Company_model extends CI_Model{
 
         return $this -> db -> affected_rows();
     }
+
+    public function delete_by_id($company_id)
+    {
+    	$this -> db -> delete('t_company', array('company_id' => $company_id));
+    	$this -> db -> delete('t_r_company_companyCity', array('company_id' => $company_id));
+    	$this -> db -> delete('t_r_company_companyResourceCate', array('company_id' => $company_id));
+      	return $this -> db -> affected_rows();
+    }
+
+    public function save_by_admin($isEnter,$username,$email,$password,$tel,$name,$web,$catesString,$citysString,$resourceCate,$resourceCity)
+    {
+    	$data = array(
+    		'isEnter' => $isEnter,
+			'company_username' => $username,
+			'company_email' => $email,
+			'company_password' => $password,
+			'company_tel' => $tel,
+			'company_name' => $name,
+			'company_website' => $web,
+			'company_resourceCate' => $catesString,
+			'company_resourceCity' => $citysString
+		);
+
+
+
+		$this -> db -> insert('t_company',$data);
+		$save_row = $this -> db -> affected_rows();
+		$company_id = $this -> db -> insert_id();
+
+		if( $save_row > 0 )
+		{
+			$one_info = array();
+			$insert_cate_data = array();
+			$one_info['company_id'] = $company_id;
+			for($i = 0; $i < count($resourceCate); $i++) {
+	            $one_info['companyResourceCate_id'] = (int)($resourceCate[$i]);
+	            $insert_cate_data[] = $one_info;
+			}
+
+			$this -> db -> insert_batch("t_r_company_companyResourceCate",$insert_cate_data); 
+  			//return $this -> db -> affected_rows();
+
+			$two_info = array();
+			$insert_city_data = array();
+			$two_info['company_id'] = $company_id;
+  			for($i = 0; $i < count($resourceCity); $i++) {
+	            $two_info['companyCity_id'] = (int)($resourceCity[$i]);
+	            $insert_city_data[] = $two_info;
+			}
+
+
+			$this -> db -> insert_batch("t_r_company_companyCity",$insert_city_data);
+
+			return $this -> db -> affected_rows();
+
+		}
+    }
+
+    public function get_by_enter()
+    {
+      $sql = "select * from t_company where isEnter = 1";
+      return $this -> db -> query($sql) -> result();
+    }
+
+    public function get_by_id($id)
+    {
+    	return $this -> db -> get_where('t_company',array('company_id' => $id)) -> result();
+    }
+
+    public function get_resourceCate_by_id($id)
+    {
+    	return $this -> db -> get_where('t_r_company_companyResourceCate',array('company_id' => $id)) -> result();
+    	
+    }
+
+    public function get_resourceCity_by_id($id)
+    {
+    	return $this -> db -> get_where('t_r_company_companyCity',array('company_id' => $id)) -> result();
+    }
+
+
+    public function update_by_admin($id,$username,$email,$password,$tel,$name,$web,$catesString,$citysString,$resourceCate,$resourceCity)
+    {
+    	$data = array(
+			'company_username' => $username,
+			'company_email' => $email,
+			'company_password' => $password,
+			'company_tel' => $tel,
+			'company_name' => $name,
+			'company_website' => $web,
+			'company_resourceCate' => $catesString,
+			'company_resourceCity' => $citysString
+		);
+
+		$this ->db -> where('company_id', $id);
+        $this ->db -> update('t_company', $data);
+
+        /*更新基础信息*/
+        $row = $this -> db -> affected_rows();
+
+        /*删除原有的分类信息*/
+        $this -> db -> delete('t_r_company_companyCity', array('company_id' => $id));
+    	$this -> db -> delete('t_r_company_companyResourceCate', array('company_id' => $id));
+
+    	/*insert_batch新的分类信息*/
+    	$one_info = array();
+		$insert_cate_data = array();
+		$one_info['company_id'] = $id;
+		for($i = 0; $i < count($resourceCate); $i++) {
+            $one_info['companyResourceCate_id'] = (int)($resourceCate[$i]);
+            $insert_cate_data[] = $one_info;
+		}
+
+		$this -> db -> insert_batch("t_r_company_companyResourceCate",$insert_cate_data); 
+			//return $this -> db -> affected_rows();
+
+		$two_info = array();
+		$insert_city_data = array();
+		$two_info['company_id'] = $id;
+			for($i = 0; $i < count($resourceCity); $i++) {
+            $two_info['companyCity_id'] = (int)($resourceCity[$i]);
+            $insert_city_data[] = $two_info;
+		}
+
+
+		$this -> db -> insert_batch("t_r_company_companyCity",$insert_city_data);
+
+		return $this -> db -> affected_rows();
+
+    }
+
+
+    public function get_cooperate_by_id($id)
+    {
+    	return $this -> db -> get_where('t_cooperate',array('company_id' => $id)) -> result();
+    }
+
+    public function save_cooperate_by_company_id($id,$company,$resource,$region,$bud,$time)
+    {
+    	$data = array(
+    		'cooperate_company' => $company,
+    		'cooperate_resource' => $resource,
+    		'cooperate_region' => $region,
+    		'cooperate_bud' => $bud,
+    		'cooperate_time' => $time,
+    		'company_id' => $id
+    	);
+
+    	$this -> db -> insert('t_cooperate',$data);
+
+    	return $this -> db -> affected_rows();
+    }
+
+    public function get_cooperate_by_coop_id($coop_id)
+    {
+    	return $this -> db -> get_where('t_cooperate',array('cooperate_id' => $coop_id)) -> row();
+    }
+
+    public function update_coop_by_coop_id($id,$company,$resource,$region,$bud,$time)
+    {
+    	$data = array(
+    		'cooperate_company' => $company,
+    		'cooperate_resource' => $resource,
+    		'cooperate_region' => $region,
+    		'cooperate_bud' => $bud,
+    		'cooperate_time' => $time,
+    	);
+
+    	$this ->db -> where('cooperate_id', $id);
+        $this ->db -> update('t_cooperate', $data);
+
+    	return $this -> db -> affected_rows();
+
+    }
+
+
+    public function delete_coop_by_id($cooperate_id)
+    {
+    	$this -> db -> delete('t_cooperate', array('cooperate_id' => $cooperate_id));
+      	return $this -> db -> affected_rows();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

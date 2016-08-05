@@ -45,10 +45,11 @@
       </div>
 
       <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
-        <li><a href="admin/admin_order_mgr" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>微信订单<br/></a></li>
-        <li><a href="admin/admin_offline_order_mgr" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>线下订单<br/></a></li>
-        <li><a href="admin/admin_message_mgr" class="am-text-danger"><!-- <span class="am-icon-btn am-icon-recycle"></span> --><span class="am-icon-btn am-icon-wechat"></span><br/>留言总数<br/></a></li>
-        <li><a href="admin/admin_order_mgr" class="am-text-secondary"><!-- <span class="am-icon-btn am-icon-rmb"></span> --><span class="am-icon-btn am-icon-cc-visa">0元</a></li>
+        <li><a href="admin/anchor_reg" class="am-text-success"><span class="am-icon-btn am-icon-female"></span><br/>注册主播<br/><?php echo $anchorCount ;?></a></li>
+        <li><a href="admin/ader_reg" class="am-text-warning"><span class="am-icon-btn am-icon-street-view"></span><br/>注册广告主<br/><?php echo $aderCount ;?></a></li>
+        <li><a href="admin/admin_message_mgr" class="am-text-danger"><span class="am-icon-btn am-icon-desktop"></span><br/>注册媒体公司<br/><?php echo $companyCount ;?></a></li>
+        <li><a href="welcome/index" class="am-text-primary"><span class="am-icon-btn am-icon-globe"></span><br/>平台访问量<br/><?php echo $hit ;?>+</a></li>
+        
       </ul>
 
       <div class="am-g">

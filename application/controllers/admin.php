@@ -33,7 +33,20 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-		$this -> load -> view('admin/admin-index');
+        $aderCount = $this -> ader_model -> get_ader_count();
+        $anchorCount = $this -> anchor_model -> get_anchor_count();
+        $companyCount = $this -> company_model -> get_companyReg_count();
+        $hit = read_file('hit.txt');
+
+        $data = array(
+            'aderCount' => $aderCount,
+            'anchorCount' => $anchorCount,
+            'companyCount' => $companyCount,
+            'hit' => $hit
+        );
+
+
+		$this -> load -> view('admin/admin-index',$data);
 	}
 
 	public function check_login()
@@ -222,7 +235,7 @@ class Admin extends CI_Controller {
     		'anchors' => $result
     	);
 
-    	$this -> load -> view('admin/anchor-enter-list',$data);
+    	$this -> load -> view('admin/anchor-list',$data);
 
     }
 
@@ -762,6 +775,351 @@ class Admin extends CI_Controller {
             );
             $this -> load -> view('redirect-null',$data);
         }
+    }
+
+
+    public function company_reg()
+    {
+        $result = $this -> company_model -> get_all();
+
+        $data = array(
+            'companys' => $result
+        );
+
+
+        $this -> load -> view('admin/company-list',$data);
+
+    }
+
+    public function company_delete()
+    {
+        $company_id = $this -> input -> get('company_id');
+        $row = $this -> company_model -> delete_by_id($company_id);
+        if( $row > 0 )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "fail";
+        }
+    }
+
+    public function enter_company()
+    {
+        $this -> load -> view('admin/enter-company-sheet');
+    }
+
+    public function save_enter_company_info()
+    {
+        $isEnter = $this -> input -> post('isEnter',true);
+        $username = $this -> input -> post('company_username',true);
+        $email = $this -> input -> post('company_email',true);
+        $password = $this -> input -> post('company_password',true);
+        $tel = $this -> input -> post('company_tel',true);
+        $name = $this -> input -> post('company_name',true);
+        $web = $this -> input -> post('company_website',true);
+        $resourceCate = $this -> input -> post('resourceCate',true);
+        $resourceCity = $this -> input -> post('resourceCity',true);
+
+        function createStr($array,$attr)
+        {
+            $string = "";
+            for($i=0;$i<count($array);$i++){
+                $string.=$array[$i]->$attr.',';
+            };
+            return substr($string,0,-1);
+
+        }
+
+        if($resourceCate)
+        {
+            $catesql = implode(',',$resourceCate); 
+            $cates = $this -> company_model -> getCates($catesql);
+            $catesString = createStr($cates,'aderResourceName');
+        }
+        else
+        {
+            $catesString="";
+        }
+
+        if($resourceCity)
+        {
+            $citysql = implode(',',$resourceCity);
+            $citys = $this -> company_model -> getCitys($citysql);
+            $citysString = createStr($citys,'aderCity_name');
+        }
+        else
+        {
+            $citysString="";
+        }
+        
+        $row = $this -> company_model -> save_by_admin($isEnter,$username,$email,$password,$tel,$name,$web,$catesString,$citysString,$resourceCate,$resourceCity);
+
+
+        if($row>0)
+        {
+            $data = array(
+                'info'=>'信息添加成功！',
+                'page' => '列表页面',
+                'url' => 'admin/enter_company_mgr'
+            );
+            $this -> load -> view('redirect-null',$data);
+
+            
+        }
+          
+
+    }
+
+
+    public function enter_company_mgr()
+    {
+
+        $result = $this -> company_model -> get_by_enter();
+
+        $data = array(
+            'companys' => $result
+        );
+
+        $this -> load -> view('admin/company-enter-list',$data);
+
+    }
+
+    public function company_edit()
+    {
+        $id = $this -> uri -> segment(3);
+        $companyInfo = $this -> company_model -> get_by_id($id);
+
+        function createStr($array,$attr)
+        {
+            $string = "";
+            for($i=0;$i<count($array);$i++){
+                $string.=$array[$i]->$attr.',';
+            };
+            return substr($string,0,-1);
+
+        }
+        $resourceCate = $this -> company_model -> get_resourceCate_by_id($id);
+        $resourceCity = $this -> company_model -> get_resourceCity_by_id($id);
+        if($resourceCate)
+        {
+            
+            $str1 = createStr($resourceCate,'companyResourceCate_id');
+
+            $resourceCateString = $this -> ader_model -> get_resource_cate($str1);
+        }
+        else
+        {
+            $resourceCateString = "";
+        }
+
+
+        if($resourceCity)
+        {
+            
+            $str2 = createStr($resourceCity,'companyCity_id');
+
+            $resourceCityString = $this -> ader_model -> get_ader_city($str2);
+        }
+
+        else
+        {
+            $resourceCityString = "";
+        }
+
+        
+        $data = array(
+            'company' => $companyInfo,
+            'cates' => $resourceCateString,
+            'citys' => $resourceCityString
+        );
+        // var_dump($data);
+        // die();
+
+        $this -> load -> view('admin/company-edit',$data);
+
+
+    }
+
+    public function update_company_info()
+    {
+        $id = $this -> input -> post('company_id',true);
+        $username = $this -> input -> post('company_username',true);
+        $email = $this -> input -> post('company_email',true);
+        $password = $this -> input -> post('company_password',true);
+        $tel = $this -> input -> post('company_tel',true);
+        $name = $this -> input -> post('company_name',true);
+        $web = $this -> input -> post('company_website',true);
+
+        $resourceCate = $this -> input -> post('resourceCate',true);
+        $resourceCity = $this -> input -> post('resourceCity',true);
+
+        function createStr($array,$attr)
+        {
+            $string = "";
+            for($i=0;$i<count($array);$i++){
+                $string.=$array[$i]->$attr.',';
+            };
+            return substr($string,0,-1);
+
+        }
+
+        if($resourceCate)
+        {
+            $catesql = implode(',',$resourceCate); 
+            $cates = $this -> company_model -> getCates($catesql);
+            $catesString = createStr($cates,'aderResourceName');
+        }
+        else
+        {
+            $catesString="";
+        }
+
+        if($resourceCity)
+        {
+            $citysql = implode(',',$resourceCity);
+            $citys = $this -> company_model -> getCitys($citysql);
+            $citysString = createStr($citys,'aderCity_name');
+        }
+        else
+        {
+            $citysString="";
+        }
+
+        $row = $this -> company_model -> update_by_admin($id,$username,$email,$password,$tel,$name,$web,$catesString,$citysString,$resourceCate,$resourceCity);
+
+        if( $row > 0 )
+        {
+
+            $data = array(
+                'info'=>'信息更新成功！',
+                'page' => '信息页面',
+                'url' => 'admin/company_reg'
+            );
+            $this -> load -> view('redirect-null',$data);
+            
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/company_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+        
+        
+    }
+
+    public function cooperate_mgr()
+    {
+        $id = $this -> uri -> segment(3);
+
+        $result = $this -> company_model -> get_cooperate_by_id($id);
+
+        $data = array(
+            'cooperateInfo' => $result
+        );
+        $this -> load -> view('admin/cooperate-list',$data);
+    }
+
+    public function add_cooperate()
+    {
+        $this -> load -> view('admin/add-cooperate');
+    }
+
+    public function save_cooperate()
+    {
+        $id = $this -> input -> post('cooperate_id',true);
+        $company = $this -> input -> post('cooperate_company',true);
+        $resource = $this -> input -> post('cooperate_resource',true);
+        $region = $this -> input -> post('cooperate_region',true);
+        $bud = $this -> input -> post('cooperate_bud',true);
+        $time = $this -> input -> post('cooperate_time',true);
+
+        $row = $this -> company_model -> save_cooperate_by_company_id($id,$company,$resource,$region,$bud,$time);
+
+        if( $row > 0 )
+        {
+
+            $data = array(
+                'info'=>'添加成功！',
+                'page' => '列表页面',
+                'url' => 'admin/cooperate_mgr/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+            
+        }
+        
+    }
+
+    public function cooperate_edit()
+    {
+        $coop_id = $this -> uri -> segment(3);
+        $row = $this -> company_model -> get_cooperate_by_coop_id($coop_id);
+
+        $data = array(
+            'cooperate' => $row
+        );
+
+
+
+        $this -> load -> view('admin/cooperate-edit',$data);
+
+    }
+
+    public function update_cooperate()
+    {
+        $id = $this -> input -> post('cooperate_id',true);
+        $company = $this -> input -> post('cooperate_company',true);
+        $resource = $this -> input -> post('cooperate_resource',true);
+        $region = $this -> input -> post('cooperate_region',true);
+        $bud = $this -> input -> post('cooperate_bud',true);
+        $time = $this -> input -> post('cooperate_time',true);
+
+        $row = $this -> company_model -> update_coop_by_coop_id($id,$company,$resource,$region,$bud,$time);
+
+        if( $row > 0 )
+        {
+
+            $data = array(
+                'info'=>'信息更新成功！',
+                'page' => '信息页面',
+                'url' => 'admin/company_reg'
+            );
+            $this -> load -> view('redirect-null',$data);
+            
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/cooperate_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+
+
+    }
+
+
+    public function cooperate_delete()
+    {
+
+        $cooperate_id = $this -> input -> get('cooperate_id');
+        $row = $this -> company_model -> delete_coop_by_id($cooperate_id);
+        if( $row > 0 )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "fail";
+        }
+
     }
 
 

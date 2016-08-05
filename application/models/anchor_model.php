@@ -458,6 +458,8 @@ class Anchor_model extends CI_Model{
     {
 
       $this -> db -> delete('t_anchor', array('anchor_id' => $anchor_id));
+      $this -> db -> delete('t_r_anchor_anchorCate', array('anchor_id' => $anchor_id));
+
 
       return $this -> db -> affected_rows();
 
@@ -615,6 +617,7 @@ class Anchor_model extends CI_Model{
     public function delete_need_by_id($anchorNeed_id)
     {
       $this -> db -> delete('t_anchorNeed', array('anchorNeed_id' => $anchorNeed_id));
+      $this -> db -> delete('t_r_anchorNeed_aderCate', array('anchorNeed_id' => $anchorNeed_id));
 
       return $this -> db -> affected_rows();
     }

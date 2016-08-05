@@ -245,9 +245,17 @@ class Company extends CI_Controller {
 
 
 
-	public function company_need_profile()//需求信息列表
+	public function company_need_profile()//合作信息列表
 	{
-		$this -> load -> view('company-need-profile');
+		$company_id = $this -> session -> userdata('companyInfo')-> company_id;
+		
+		$result = $this -> company_model -> get_cooperate_by_id($company_id);
+
+        $data = array(
+            'cooperateInfo' => $result
+        );
+
+		$this -> load -> view('company-need-profile',$data);
 	}
 
 	public function update_company_info()
