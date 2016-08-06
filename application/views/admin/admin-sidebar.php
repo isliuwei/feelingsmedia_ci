@@ -54,8 +54,8 @@
               <ul class="am-list am-collapse admin-sidebar-sub" id="other-nav">
                 <li><a href="admin/material_mgr"><span class="am-icon-tag"></span> 素材管理</a></li>
                 <li><a href="admin/write_product"><span class="am-icon-image"></span> 案例录入</a></li>
-                <!-- <li><a href="admin/write_product"><span class="am-icon-briefcase"></span> 反馈管理</a></li>
-                <li><a href="admin/write_product"><span class="am-icon-briefcase"></span> 留言管理</a></li> -->
+                <li><a href="admin/contact_mgr"><span class="am-icon-comments"></span> 留言管理</a></li>
+               <!--  <li><a href="admin/write_product"><span class="am-icon-briefcase"></span> 留言管理</a></li> -->
               </ul>
             </li>
 

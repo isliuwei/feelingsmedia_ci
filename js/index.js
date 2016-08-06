@@ -2,6 +2,7 @@
 
 angular.module('myApp',[])
   .controller('FormController', ['$scope',function($scope){
+    $scope.message = {};
 
     $scope.loginInfo = {};
 

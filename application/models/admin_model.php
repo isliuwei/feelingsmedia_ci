@@ -61,6 +61,30 @@ class Admin_model extends CI_Model {
         return $this -> db -> affected_rows();
     }
 
+    public function save_contact_by_all($content,$name,$email)
+    {
+        $data = array(
+            'contact_content' => $content,
+            'contact_name' => $name,
+            'contact_email' => $email
+        );
+
+        $this -> db -> insert('t_contact',$data);
+        return $this -> db -> affected_rows();
+    }
+
+
+    public function get_all_contact()
+    {
+        return $this -> db -> get('t_contact') -> result();
+    }
+
+    public function delete_contact_by_id($id)
+    {
+        $this -> db -> delete('t_contact', array('contact_id' => $id));
+        return $this -> db -> affected_rows();
+    }
+
     
 
 

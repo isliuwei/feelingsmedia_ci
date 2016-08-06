@@ -1122,6 +1122,55 @@ class Admin extends CI_Controller {
 
     }
 
+    public function save_contact()
+    {
+        $content = $this -> input -> post('content');
+        $name = $this -> input -> post('name');
+        $email = $this -> input -> post('email');
+        
+        $row = $this -> admin_model -> save_contact_by_all($content,$name,$email);
+
+        if( $row > 0)
+        {
+
+            $data = array(
+                'info'=>'留言成功！',
+                'page' => '首页',
+                'url' => 'welcome/index'
+            );
+            $this -> load -> view('redirect-null',$data);
+
+        }
+
+
+    }
+
+    public function contact_mgr()
+    {
+        $result = $this -> admin_model -> get_all_contact();
+        $data = array(
+            'contacts' => $result
+        );
+        $this -> load -> view('admin/contact-list',$data);
+    }
+
+    
+
+
+    public function contact_delete()
+    {
+        $id = $this -> input -> get('contact_id');
+        $row = $this -> admin_model -> delete_contact_by_id($id);
+        if( $row > 0 )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "fail";
+        }
+    }
+
 
 
 
