@@ -53,7 +53,8 @@
               <a class="am-cf" data-am-collapse="{target:'#other-nav' }"><span class="am-icon-magic"></span> 其他管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
               <ul class="am-list am-collapse admin-sidebar-sub" id="other-nav">
                 <li><a href="admin/material_mgr"><span class="am-icon-tag"></span> 素材管理</a></li>
-                <li><a href="admin/write_product"><span class="am-icon-image"></span> 案例录入</a></li>
+                <li><a href="admin/partner_mgr"><span class="am-icon-users"></span> 合作管理</a></li>
+                <li><a href="admin/case_mgr"><span class="am-icon-image"></span> 案例管理</a></li>
                 <li><a href="admin/contact_mgr"><span class="am-icon-comments"></span> 留言管理</a></li>
                <!--  <li><a href="admin/write_product"><span class="am-icon-briefcase"></span> 留言管理</a></li> -->
               </ul>

@@ -85,6 +85,98 @@ class Admin_model extends CI_Model {
         return $this -> db -> affected_rows();
     }
 
+
+    public function get_all_partner()
+    {
+        return $this -> db -> get('t_partner') -> result();
+    }
+    public function get_partner_by_id($id)
+    {
+        return $this -> db -> get_where('t_partner',array('id' => $id)) -> row();
+    }
+
+    public function update_partner_info($id,$name,$web,$logo)
+    {
+        $data = array(
+            'partner_name' => $name,
+            'partner_web' => $web,
+            'partner_img' => $logo
+        );
+
+        $this -> db -> where('id', $id);
+        $this -> db -> update('t_partner', $data);
+        return $this -> db -> affected_rows();
+    }
+
+    public function save_partner_by_all($name,$web,$url)
+    {
+        $data = array(
+            'partner_name' => $name,
+            'partner_web' => $web,
+            'partner_img' => $url
+        );
+
+        $this -> db -> insert('t_partner',$data);
+        return $this -> db -> affected_rows();
+    }
+
+    public function delete_partner_by_id($id)
+    {
+        $this -> db -> delete('t_partner', array('id' => $id));
+        return $this -> db -> affected_rows();
+    }
+
+    public function get_all_case()
+    {
+        return $this -> db -> get('t_case') -> result();
+    }
+
+    public function save_case_by_all($main,$sub,$desc,$cate,$time,$content,$url)
+    {
+        $data = array(
+            'case_mainTitle' => $main,
+            'case_subTitle' => $sub,
+            'case_desc' => $desc,
+            'case_cate' => $cate,
+            'case_time' => $time,
+            'case_content' => $content,
+            'case_img' => $url
+        );
+
+        $this -> db -> insert('t_case',$data);
+        return $this -> db -> affected_rows();
+    }
+
+    public function delete_case_by_id($id)
+    {
+        $this -> db -> delete('t_case', array('case_id' => $id));
+        return $this -> db -> affected_rows();
+    }
+
+    public function get_case_by_id($id)
+    {
+        return $this -> db -> get_where('t_case',array('case_id' => $id)) -> row();
+    }
+
+    public function update_case_by_all($id,$main,$sub,$cate,$desc,$time,$content,$url)
+    {
+        $data = array(
+            'case_mainTitle' => $main,
+            'case_subTitle' => $sub,
+            'case_desc' => $desc,
+            'case_cate' => $cate,
+            'case_time' => $time,
+            'case_content' => $content,
+            'case_img' => $url
+        );
+
+        $this -> db -> where('case_id', $id);
+        $this -> db -> update('t_case', $data);
+        return $this -> db -> affected_rows();
+
+    }
+
+
     
 
 

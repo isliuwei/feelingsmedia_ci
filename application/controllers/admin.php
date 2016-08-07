@@ -1172,6 +1172,260 @@ class Admin extends CI_Controller {
     }
 
 
+    public function partner_mgr()
+    {
+        $result = $this -> admin_model -> get_all_partner();
+
+        $data = array(
+            'partners' => $result
+        );
+
+        $this -> load -> view('admin/partner-list',$data);
+    }
+
+
+    public function partner_edit()
+    {
+        $id = $this -> uri -> segment(3);
+        $row = $this -> admin_model -> get_partner_by_id($id);
+
+        if( $row )
+        {
+            $data = array(
+                'partner' => $row
+            );
+
+            $this -> load -> view('admin/partner-edit',$data);
+        }
+    }
+
+
+    public function updata_partner()
+    {
+
+        $id = $this -> input -> post('id',true);
+        $name = $this -> input -> post('partner_name',true);
+        $web = $this -> input -> post('partner_web',true);
+
+        $photo_old_url = $this -> input -> post('photo_old_url');
+        $this -> upload('partner_img',$photo_old_url);
+        $logo = $this -> upload('partner_img',$photo_old_url);
+
+        $row = $this -> admin_model -> update_partner_info($id,$name,$web,$logo);
+
+        if( $row > 0)
+        {
+            $data = array(
+                'info'=>'信息更新成功！',
+                'page' => '信息页面',
+                'url' => 'admin/partner_mgr'
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/partner_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+
+    }
+
+
+    public function add_partner()
+    {
+        $this -> load -> view('admin/partner-add');
+    }
+
+
+    public function save_partner()
+    {
+        $name = $this -> input -> post('partner_name');
+        $web = $this -> input -> post('partner_web');
+        $this -> upload('partner_img',"");
+        $url = $this -> upload('partner_img',"");
+
+        $row = $this -> admin_model -> save_partner_by_all($name,$web,$url);
+
+        if( $row > 0 )
+        {
+
+            $data = array(
+                'info'=>'添加成功！',
+                'page' => '列表页面',
+                'url' => 'admin/partner_mgr'
+            );
+            $this -> load -> view('redirect-null',$data);
+            
+        }
+    }
+
+    public function partner_delete()
+    {
+        $id = $this -> input -> get('partner_id');
+        $row = $this -> admin_model -> delete_partner_by_id($id);
+        if( $row > 0 )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "fail";
+        }
+
+    }
+
+
+    public function case_mgr()
+    {
+        $result = $this -> admin_model -> get_all_case();
+
+        $data = array(
+            'cases' => $result
+        );
+
+        $this -> load -> view('admin/case-list',$data);
+        
+    }
+
+    public function add_case()
+    {
+        $this -> load -> view('admin/case_add');
+    }
+
+
+    public function save_case()
+    {
+        $main = $this -> input -> post('case_mainTitle');
+        $sub = $this -> input -> post('case_subTitle');
+        $desc = $this -> input -> post('case_desc');
+        $cate = $this -> input -> post('case_cate');
+        $time = $this -> input -> post('case_time');
+        $content = $this -> input -> post('case_content');
+
+
+
+
+        $this -> upload('case_img',"");
+        $url = $this -> upload('case_img',"");
+        $row = $this -> admin_model -> save_case_by_all($main,$sub,$desc,$cate,$time,$content,$url);
+
+
+
+        if( $row > 0 )
+        {
+
+            $data = array(
+                'info'=>'添加成功！',
+                'page' => '列表页面',
+                'url' => 'admin/case_mgr'
+            );
+            $this -> load -> view('redirect-null',$data);
+            
+        }
+
+    }
+
+
+    public function case_delete()
+    {
+        $id = $this -> input -> get('case_id');
+        $row = $this -> admin_model -> delete_case_by_id($id);
+        if( $row > 0 )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "fail";
+        }
+
+    }
+
+    public function case_edit()
+    {
+
+        $id = $this -> uri -> segment(3);
+        $row = $this -> admin_model -> get_case_by_id($id);
+
+        if( $row )
+        {
+            $data = array(
+                'case' => $row
+            );
+
+            $this -> load -> view('admin/case-edit',$data);
+        }
+
+    }
+
+    public function update_case()
+    {
+        $id = $this -> input -> post('case_id');
+        $main = $this -> input -> post('case_mainTitle');
+        $sub = $this -> input -> post('case_subTitle');
+        $cate = $this -> input -> post('case_cate');
+        $desc = $this -> input -> post('case_desc');
+        $time = $this -> input -> post('case_time');
+        $content = $this -> input -> post('case_content'); 
+        $photo_old_url = $this -> input -> post('photo_old_url');
+
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+
+        //图片上传操作
+        $this -> load -> library('upload', $config);
+        $this -> upload -> do_upload('case_img');
+        $upload_data = $this -> upload -> data();
+
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用原来图片
+            $url = $photo_old_url;
+        }
+
+
+        $row = $this -> admin_model -> update_case_by_all($id,$main,$sub,$cate,$desc,$time,$content,$url);
+
+
+        if( $row > 0)
+        {
+            $data = array(
+                'info'=>'信息更新成功！',
+                'page' => '信息页面',
+                'url' => 'admin/case_mgr'
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+        else
+        {
+            $data = array(
+                'info'=>'信息未修改！',
+                'page' => '信息编辑页面',
+                'url' => 'admin/case_edit/'.$id
+            );
+            $this -> load -> view('redirect-null',$data);
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
 
 
 

@@ -82,7 +82,7 @@ material_edit.php<!doctype html>
                                     <!--图片预览-->
                                     <br/>
                                     <small class="am-badge am-badge-success am-radius">预览图</small>
-                                    <div id="imgdiv"><img id="imgShow" width="50%" height="50%" /></div>
+                                    <div id="imgdiv"><img id="imgShow" width="50%"  /></div>
                                     <!--图片预览-->
                                 </div>
                                 <div id="file-list"></div>

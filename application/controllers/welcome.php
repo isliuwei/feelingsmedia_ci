@@ -6,12 +6,15 @@ class Welcome extends CI_Controller {
 		parent::__construct();
         $this-> load -> helper('file');
 		$this -> load -> helper('captcha');
+        $this -> load -> model('admin_model');
 
 	}
 
 
 	public function index()
 	{
+        
+       
 
         $hit = read_file('hit.txt');
         $hit++;
@@ -31,14 +34,26 @@ class Welcome extends CI_Controller {
 
         $cap = create_captcha($vals);
 
+
+        $result = $this -> admin_model -> get_all_partner();
+        $result1 = $this -> admin_model -> get_all_case();
+
         $data = array(
-            'codeinfo' => $cap
+            'codeinfo' => $cap,
+            'partners' => $result,
+            'cases' => $result1
         );
 
 
 		$this -> load -> view('index',$data);
 
 	}
+
+
+    public function case_show()
+    {
+        $this -> load -> view('case-show');
+    }
 
 
 

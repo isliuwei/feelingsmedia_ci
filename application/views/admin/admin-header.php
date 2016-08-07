@@ -17,7 +17,6 @@
     <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
         <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-            <li><a href="mailto:lw.588@163.com"><span class="am-icon-envelope-o"></span><span  id="msg-span" class="am-badge am-badge-warning am-hide" ><marquee id="msg"></marquee></span></a></li>
             <li class="am-dropdown" data-am-dropdown>
                 <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
                     <span class="am-icon-users"></span> 管理员 | <img src="<?php echo $adminInfo -> admin_photo;?>" style="width: 20px;height: 20px;"alt="">&nbsp;<?php echo $adminInfo -> admin_username;?> <span class="am-icon-caret-down"></span>

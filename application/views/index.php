@@ -23,6 +23,12 @@
   <link rel="stylesheet" href="css/contact.css" />
 
 
+  <link rel="stylesheet" href="css/portfolio.jquery.css" />
+
+  
+
+
+
   <style>
     .about-us{
       font-size: 30px;
@@ -68,6 +74,72 @@
       font-size: 30px;
       color: white;
     }
+    /*.slider-box{
+      height: 450px;
+    }
+*/
+
+footer{
+  background-color: #2b2d2e;
+  background-image: url(../feelingsmedia/img/footerbg.png);
+  padding: 20px;
+}
+
+.footer-contact-info li{
+  color: #fff;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 900;
+  line-height: 30px;
+}
+
+.footer-contact-info li a{
+  color: #fff;
+}
+.footer-logo{
+  text-align: left;
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+.map-title{
+  font-size: 18px;
+  background: none;
+  font-weight: 900;
+  
+}
+.page-header{
+  text-align: left;
+}
+
+.footer-partner-title{
+  margin-top: 90px;
+  text-align: left;
+  margin-left: 30px;
+  margin-bottom: 20px;
+
+
+}
+.footer-partner li{
+  list-style-type: none;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+
+.partner-img{
+  opacity: 0.6;
+}
+.partner-img:hover{
+  opacity: 1;
+  border-radius: 10%;
+  /*transform:  rotate(360deg);*/
+  transform:  scale(1.5,1.5);
+}
+.case-container{
+  margin-top: -200px;
+  margin-bottom: 50px;
+}
+
 
 
 
@@ -92,7 +164,7 @@
       </div>
       <nav class='collapse navbar-collapse' role='navigation'>
         <ul class='nav navbar-nav navbar-left'>
-          <li><a href="ader/ader_index">首页</a></li>
+          <li><a href="welcome/index">首页</a></li>
           <li class="active"><a href="javascript:;" class="about">关于我们</a></li>
           <li><a data-toggle="modal" data-target="#contact-form">联系我们</a></li>
         </ul>
@@ -104,7 +176,7 @@
         
       </nav>
     </div>
-  </header>
+</header>
 
 <div class="modal fade" id="contact-form" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -168,88 +240,50 @@
 
 
 
-
-  <!-- particles.js container -->
-<div data-am-widget="slider" class="am-slider am-slider-d2" data-am-slider='{&quot;directionNav&quot;:false}' >
-<div id="particles-js" style="z-index: 1;"></div>
-  <ul class="am-slides">
-
-      <li >
-          <img src="img/index-bg1.jpg">
-
-          <!-- <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">黑龙江国众建筑装饰工程有限公司</h2><p>一个愉悦的空间、一种尊贵的生活、一方独享的天地，都在这里寻求最合适的表达</p></div><a class="am-slider-more">微信公众号已上线，搜索“国众装饰”立即关注</a></div> -->
-         
-      </li>
-      <li >
-          <img src="img/index-bg2.jpg">
-          <!-- <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">黑龙江国众建筑装饰工程有限公司</h2><p>室内外装修改造、设计、施工，17年团队！已有万家用户选择我们，关注一下，尽享多重好礼</p></div><a class="am-slider-more">微信公众号已上线，搜索“国众装饰”立即关注</a></div> -->
-         
-      </li>
-     <li >
-          <img src="img/index-bg3.jpg">
-          <!-- <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">黑龙江国众建筑装饰工程有限公司</h2><p>一个愉悦的空间、一种尊贵的生活、一方独享的天地，都在这里寻求最合适的表达</p></div><a class="am-slider-more">微信公众号已上线，搜索“国众装饰”立即关注</a></div> -->
-         
-      </li>
-     <li >
-          <img src="img/index-bg3.jpg">
-          <!-- <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">黑龙江国众建筑装饰工程有限公司</h2><p>一个愉悦的空间、一种尊贵的生活、一方独享的天地，都在这里寻求最合适的表达</p></div><a class="am-slider-more">微信公众号已上线，搜索“国众装饰”立即关注</a></div> -->
-         
-      </li>
-  </ul>
-</div>
-
-
-
-  <!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
- 
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
   
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="img/demo1.jpg" alt="...">
-      <div id="particles-js"></div>
-      
-    </div>
-    <div class="item">
-      <img src="img/demo2.jpg" alt="...">
-      
-     
-     
-    </div>
-    <div class="item">
 
-      <img src="img/demo3.jpg" alt="...">
+<div class="slider-box">
+  <div data-am-widget="slider" class="am-slider am-slider-d2" data-am-slider='{&quot;directionNav&quot;:false}' >
+  <div id="particles-js" style="z-index: 1;"></div>
+    <ul class="am-slides">
 
-     
-    </div>
-   
+        <li >
+
+            <img class="slider-img" src="img/index-bg1.jpg">
+            
+
+            <!-- <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">黑龙江国众建筑装饰工程有限公司</h2><p>一个愉悦的空间、一种尊贵的生活、一方独享的天地，都在这里寻求最合适的表达</p></div><a class="am-slider-more">微信公众号已上线，搜索“国众装饰”立即关注</a></div> -->
+           
+        </li>
+        <li >
+            <img class="slider-img" src="img/index-bg2.jpg">
+            <!-- <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">黑龙江国众建筑装饰工程有限公司</h2><p>室内外装修改造、设计、施工，17年团队！已有万家用户选择我们，关注一下，尽享多重好礼</p></div><a class="am-slider-more">微信公众号已上线，搜索“国众装饰”立即关注</a></div> -->
+           
+        </li>
+       <li >
+            <img class="slider-img" src="img/index-bg3.jpg">
+            <!-- <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">黑龙江国众建筑装饰工程有限公司</h2><p>一个愉悦的空间、一种尊贵的生活、一方独享的天地，都在这里寻求最合适的表达</p></div><a class="am-slider-more">微信公众号已上线，搜索“国众装饰”立即关注</a></div> -->
+           
+        </li>
+       <li >
+            <img class="slider-img" src="img/index-bg3.jpg">
+            <!-- <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">黑龙江国众建筑装饰工程有限公司</h2><p>一个愉悦的空间、一种尊贵的生活、一方独享的天地，都在这里寻求最合适的表达</p></div><a class="am-slider-more">微信公众号已上线，搜索“国众装饰”立即关注</a></div> -->
+           
+        </li>
+    </ul>
   </div>
- -->
+</div>
   
 
+
+
   
-
-
-
-
- 
-
-
-  <!-- <div class="htmleaf-container"> -->
-
-    <!-- <section class="buttons">
-      <div class="container"> -->
 
 <section class="strips" >
   <article class="strips__strip">
   <div class="strip__content">
    <img class="imgBox" src="img/about-index.png" alt="">
+
    
 
   
@@ -349,93 +383,132 @@
 
 
 
-     <!--  <a  href="#" class="link btn btn-1">慧灵思简介</a>
-      <br>
+<section class="case-container">
+  <center>
+    <h1>平台案例</h1>
+     <!-- <a href="welcome/case_show" >查看更多</a> -->
+    <hr/>
+  </center>
+        <ul class="thumbs">
+        <?php 
+            foreach ($cases as $case) {
+        ?>
+            <li><a href="#thumb<?php echo $case -> case_id ;?>" class="thumbnail" style="background-image: url('<?php echo $case -> case_img ;?>')">
+                <h4><?php echo $case -> case_mainTitle ;?></h4><span class="description"><?php echo $case -> case_desc ;?></span></a>
+            </li>
+        <?php
+            }
+        ?>
+            
+            
+        </ul>
 
-      <a  href="#" class="link btn btn-2"  data-toggle="modal" data-target="#ader-reg">我是广告主</a>
-      <br>
+        <div class="portfolio-content">
+        <?php 
+            foreach ($cases as $case) {
+        ?>
+            <div id="thumb<?php echo $case -> case_id ;?>">
+                <h1><?php echo $case -> case_mainTitle ;?></h1>
+                <p><?php echo $case -> case_content ;?></p>
+            </div>
+        <?php 
+          }
+        ?>
 
-
-
-      <a  href="#" class="link btn btn-5" data-toggle="modal" data-target="#anchor-reg">我是主播</a>
-      <br>
-
-      <a  href="#" class="link btn btn-4" data-toggle="modal" data-target="#company-reg"><span>我是媒体咨询公司</span></a>
-      <br> -->
-
-
-      
-
-
-
-
-
-
-
-      <!-- </div>
-
-    </section> -->
-
-
-<!-- <div id="Bfooter">
-
-      <div class="Bfooter-wrap">
-        <div class="Bfooter-info">
-          
-          <img class="logo-title" src="img/logo-bg.png" alt="">
-          <p>feelingsmedia.com</p>
-          <ul class="about-us">
-            <li><a href="#">关于我们</a></li>
-            <li><a href="#">联系我们</a></li>
-            <li><a href="#">加入我们</a></li>
-            <li><a href="#">用户协议</a></li>
-            <li><a href="#">免责声明</a></li>
-          </ul>
+           
         </div>
-        <div class="Bfooter-contact">
-          <p class="tel"><span><i class="fa fa-phone"></i></span>客服电话：<a href="tel:10086">400-666-8800</a></p>
-          <p class="feedback"><span><i class="fa fa-envelope"></i></span>意见反馈：<a class="mail" href="mailto:forUemail@163.com">forUemail@163.com</a></p>
-          <p class="worktime"><span><i class="fa fa-calendar"></i></span>工作时间：周一到周五 10:00-19:00</p>
-          <p class="address"><span><i class="fa fa-map-marker"></i></span>联系地址：黑龙江省哈尔滨市南岗区黑龙江大学</p>
-          
+</section>
 
-        </div>
+
+
+
+
+
+
+
+
+
+<footer class="footer navbar-static-bottom wrap" >
+      <div class="container wrap">
+        <div class="row">
+          <div class="col-md-4 col-sm-12 col-xs-12  footer-section footer-info">
+          <div class="footer-logo">
+             <img class="logo" style="width: 50px;" alt="" src="img/favicon.ico">
+              <span>feelingsmedia.com</<span>
+          </div>
+
+         
+
+          <ul class="footer-contact-info">
+              <li><h4>联系我们</h4></li>
+              <li><span><i class="fa fa-phone"></i></span> 电话: <a href="tel:15765505994">+86 15765505994</a></li>
+              <li><span><i class="fa fa-envelope"></i></span> 邮箱: <a href="mailto:lwdgzyx@gmail.com">lwdgzyx@gmail.com</a></li>
+              <li><span><i class="fa fa-qq"></i></span> QQ: 445913035</li>
+              <li><span><i class="fa fa-map-marker"></i></span> 联系地址: 黑龙江省哈尔滨市南岗区黑龙江大学</li>
+              <li>Copyright&nbsp<span><i class="fa fa-copyright"></i></span>&nbsp;2016-2016 | 皖ICP备15024039</li>
+            </ul>
+
+
         
+           
+        
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12 footer-section">
+            
+            <h4 class="footer-partner-title">合作伙伴</h4>
+           <ul class="footer-partner">
+           <?php 
+              foreach($partners as $partner){
+           ?>
+             <li><a href="<?php echo $partner -> partner_web ;?>" target="_blank"><img class="partner-img" src="<?php echo $partner -> partner_img ;?>" height="30px" width="60" alt="<?php echo $partner -> partner_name ;?>" title="<?php echo $partner -> partner_name ;?>"></a></li>
+             
+            <?php
+              }
+            ?>
+             
+            </ul>
+            
+          </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12 footer-section">
+            <div class="page-header">
+            <span class="map-title"><i class="fa fa-map"></i> 我们的位置</span>
+        </div>
+        <div id="allmap"  style="height: 250px; width:100%;"></div>
+        </div>
+          
       </div>
 
+  </footer>
+ 
 
-      <hr style="filter: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="100%" color="#987cb9" size="1">
+<script src="http://api.map.baidu.com/api?v=2.0&ak=AMt1vrxwTqGzf1I94PMx7K0u" type="text/javascript"></script>
 
-
-      <div class="Bfooter-detail">
-        <div class="Bcopyright">
-          <p>Copyright&nbsp;&copy;&nbsp;2016-2016 forU.site | 皖ICP备15024039 | Our Team: 李彦宏 马化腾 马云 周鸿祎 库克</p>
-        </div>
-
-        <div class="Bweb-secure">
-          <p>举报通道：</p>
-          <a href="http://net.china.cn/chinese/index.htm" target="_blank"><img src="img/net-china-circle.png" width="20"></a>
-          <a href="http://www.cyberpolice.cn/wfjb/" target="_blank"><img src="img/cyberpolice-circle.png" width="20"></a>
-          <p>技术支持：</p>
-          <a href="http://www.aliyun.com" rel="nofollow" class="external" target="_blank"><img src="img/aly.png" alt="" width="49px"></a>
-        </div>
-
-
-        <div class="Bshare">
-          <ul class="Bshare-list">
-            <li><a class="weibo" href=""><span><i class="fa fa-weibo"></i></span></a></li>
-            <li><a class="facebook" href=""><span><i class="fa fa-facebook"></i></span></a></li>
-            <li><a class="twitter" href=""><span><i class="fa fa-twitter"></i></span></a></li>
-            <li><a class="qq" href=""><span><i class="fa fa-qq"></i></span></a></li>
-            <li><a class="share-alt" href=""><span><i class="fa fa-share-alt"></i></span></a></li>
-          </ul>
-        </div>
-      </div>
-
-  </div> -->
+<script type="text/javascript">
+  // 百度地图API功能
+  var map = new BMap.Map("allmap");
+  var point = new BMap.Point(126.637828, 45.714955);
+  map.centerAndZoom(point, 16);
+  var marker = new BMap.Marker(point);  // 创建标注
+  map.addOverlay(marker);               // 将标注添加到地图中
+  marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+  map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+  //map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+  map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+</script>
 
 
-</div>
+
+
+
+
+
+
+
+     
+
+
+
 
 
 
@@ -881,6 +954,23 @@ Expand.init();
 
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/app.js"></script>
+
+
+<script src="js/portfolio.jquery.js"></script>
+
+<script>
+  $(document).ready(function() {
+      $('.thumbs').portfolio({
+          cols: 4,
+          transition: 'slideDown'
+      });
+  });
+</script>
+
+
+
+
+
 
 
 

@@ -52,7 +52,7 @@
         
       </ul>
 
-      <div class="am-g">
+      <!-- <div class="am-g">
         <div class="am-u-sm-12">
           <table class="am-table am-table-bd am-table-striped admin-content-table">
             <thead>
@@ -152,7 +152,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <footer class="admin-content-footer">
